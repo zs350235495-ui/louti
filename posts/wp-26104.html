@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shadowrocket（小火箭）iOS新手全功能图文教程：节点导入、规则分流与模块脚本 - 节点白皮书 · 学术智库</title>
+  <meta name="description" content="Shadowrocket（俗称小火箭）凭借出色的系统稳定性、极低的后台耗电量以及强大的规则配置能力，成为了苹果 iOS 生态中最具统治力的代理工具。本文专为新手打造，系统剖析从海外 Apple ID 获取与购买正版小火箭、一键导入机场订阅、配置全局与规则模式，到使用第三方精细分流规则过滤应用内开屏广告的全套技巧。">
+  <meta name="keywords" content="Shadowrocket教程,小火箭下载,iOS翻墙,小火箭节点导入,小火箭规则,美区Apple ID,免流分流">
+  <meta property="og:title" content="Shadowrocket（小火箭）iOS新手全功能图文教程：节点导入、规则分流与模块脚本">
+  <meta property="og:description" content="Shadowrocket（俗称小火箭）凭借出色的系统稳定性、极低的后台耗电量以及强大的规则配置能力，成为了苹果 iOS 生态中最具统治力的代理工具。本文专为新手打造，系统剖析从海外 Apple ID 获取与购买正版小火箭、一键导入机场订阅、配置全局与规则模式，到使用第三方精细分流规则过滤应用内开屏广告的全套技巧。">
+  <meta property="og:type" content="article">
+  <meta name="author" content="移动终端研究室">
+  <link rel="canonical" href="https://tizivpn.net/posts/wp-26104.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'PingFang SC', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #F8FAFC; color: #0F172A; }
+    .prose h2 { color: #09090B; font-weight: 800; font-size: 1.35rem; margin-top: 2.2rem; margin-bottom: 0.9rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 0.5rem; }
+    .prose h3 { color: #1E293B; font-weight: 700; font-size: 1.15rem; margin-top: 1.6rem; margin-bottom: 0.6rem; }
+    .prose p { margin-bottom: 1.1rem; line-height: 1.8; color: #334155; }
+    .prose ul, .prose ol { margin-bottom: 1.2rem; padding-left: 1.4rem; color: #334155; }
+    .prose li { margin-bottom: 0.45rem; line-height: 1.7; }
+    .prose code { background: #F1F5F9; border: 1px solid #CBD5E1; padding: 0.15rem 0.35rem; border-radius: 0.25rem; font-family: 'JetBrains Mono', monospace; font-size: 0.85em; }
+    .prose pre { background: #0F172A; color: #F8FAFC; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1.4rem; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; }
+    .prose pre code { background: transparent; border: none; padding: 0; color: inherit; }
+    .prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; font-size: 0.85rem; }
+    .prose th { background: #F1F5F9; border: 1px solid #CBD5E1; padding: 0.6rem 0.8rem; text-align: left; font-weight: 700; color: #0F172A; }
+    .prose td { border: 1px solid #E2E8F0; padding: 0.55rem 0.8rem; color: #334155; }
+    .prose blockquote { border-left: 4px solid #2563EB; background: #EFF6FF; padding: 0.75rem 1rem; border-radius: 0 0.375rem 0.375rem 0; margin-bottom: 1.2rem; color: #1E3A8A; font-size: 0.88rem; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Shadowrocket（小火箭）iOS新手全功能图文教程：节点导入、规则分流与模块脚本",
+    "description": "Shadowrocket（俗称小火箭）凭借出色的系统稳定性、极低的后台耗电量以及强大的规则配置能力，成为了苹果 iOS 生态中最具统治力的代理工具。本文专为新手打造，系统剖析从海外 Apple ID 获取与购买正版小火箭、一键导入机场订阅、配置全局与规则模式，到使用第三方精细分流规则过滤应用内开屏广告的全套技巧。",
+    "author": {
+      "@type": "Organization",
+      "name": "节点白皮书全球网络性能观测智库"
+    },
+    "datePublished": "2026-10-06",
+    "inLanguage": "zh-CN"
+  }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
+
+  <!-- 顶部科技感学术导航 -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-white/90 border-b border-slate-300 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center space-x-2.5 text-[#0F172A] hover:text-blue-700 transition-colors text-xs sm:text-sm font-bold group">
+        <svg class="w-4 h-4 text-slate-500 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        <span>返回白皮书天梯总榜</span>
+      </a>
+      <div class="flex items-center space-x-3 text-xs font-mono text-slate-600">
+        <span class="px-2.5 py-0.5 rounded bg-slate-100 border border-slate-300 text-[#0F172A] font-bold">WP-26104</span>
+        <span class="hidden sm:inline font-bold text-emerald-700">● PEER-REVIEWED</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 正文学术论文主体 -->
+  <main class="flex-grow max-w-5xl mx-auto px-4 sm:px-6 py-10 w-full">
+    
+    <!-- 面包屑导航 -->
+    <nav class="text-xs font-mono text-slate-500 mb-6 flex items-center space-x-2">
+      <a href="../index.html" class="hover:text-blue-700">首页</a>
+      <span>/</span>
+      <a href="../index.html#view-papers" class="hover:text-blue-700">深度文献库</a>
+      <span>/</span>
+      <span class="text-[#09090B] font-bold">wp-26104</span>
+    </nav>
+
+    <!-- 论文头部 Meta -->
+    <header class="bg-white rounded-xl border border-slate-300 p-6 sm:p-8 shadow-sm mb-8">
+      <div class="flex items-center space-x-2 text-xs font-mono font-bold text-blue-700 uppercase tracking-wider mb-2.5">
+        <span>MOBILE APPS & CONFIGURATION</span>
+        <span class="text-slate-400">/</span>
+        <span>RESEARCH ARCHIVE</span>
+      </div>
+      
+      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#09090B] tracking-tight leading-snug mb-3">
+        Shadowrocket（小火箭）iOS新手全功能图文教程：节点导入、规则分流与模块脚本
+      </h1>
+      <p class="text-sm font-medium text-slate-600 mb-6">
+        App Store 正版下载指引、一键订阅更新、按需连接配置与全网广告过滤实操
+      </p>
+
+      <div class="flex flex-wrap gap-2 mb-6">
+        <span class="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-slate-100 text-[#0F172A] border border-slate-300">#Shadowrocket</span> <span class="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-slate-100 text-[#0F172A] border border-slate-300">#小火箭教程</span> <span class="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-slate-100 text-[#0F172A] border border-slate-300">#iOS科学上网</span> <span class="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-slate-100 text-[#0F172A] border border-slate-300">#规则分流</span> <span class="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-slate-100 text-[#0F172A] border border-slate-300">#模块插件</span>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 border-y border-slate-200 text-xs font-mono">
+        <div>
+          <span class="text-slate-400 block mb-0.5">研究机构</span>
+          <span class="font-bold text-[#09090B]">节点白皮书评测中心</span>
+        </div>
+        <div>
+          <span class="text-slate-400 block mb-0.5">发行日期</span>
+          <span class="font-bold text-[#09090B]">2026-10-06</span>
+        </div>
+        <div>
+          <span class="text-slate-400 block mb-0.5">阅读时长</span>
+          <span class="font-bold text-[#09090B]">15 min read</span>
+        </div>
+        <div>
+          <span class="text-slate-400 block mb-0.5">文献标识码</span>
+          <span class="font-bold text-blue-700 font-mono">10.2610/nr.26104</span>
+        </div>
+      </div>
+
+      <!-- 论文摘要框 -->
+      <div class="mt-6 p-4 sm:p-5 rounded-lg bg-slate-50 border border-slate-300 text-xs leading-relaxed text-slate-700">
+        <div class="flex items-center space-x-1.5 mb-1.5">
+          <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+          <strong class="font-mono text-[#09090B] uppercase font-bold tracking-wider">Abstract (文献摘要)</strong>
+        </div>
+        <p class="font-medium text-slate-700">Shadowrocket（俗称小火箭）凭借出色的系统稳定性、极低的后台耗电量以及强大的规则配置能力，成为了苹果 iOS 生态中最具统治力的代理工具。本文专为新手打造，系统剖析从海外 Apple ID 获取与购买正版小火箭、一键导入机场订阅、配置全局与规则模式，到使用第三方精细分流规则过滤应用内开屏广告的全套技巧。</p>
+      </div>
+    </header>
+
+    <!-- 论文核心正文 -->
+    <article class="bg-white rounded-xl border border-slate-300 p-6 sm:p-10 shadow-sm prose max-w-none text-slate-800">
+      
+      <h2>一、 正版获取与防骗鉴别</h2>
+      <p>由于地区政策限制，Shadowrocket 在中国大陆区 App Store 已下架。新手在获取小火箭时务必注意：</p>
+      <ul>
+        <li><strong>认准开发者与图标</strong>：正版 Shadowrocket 开发者为 <strong>Shadow Launch Technology Limited</strong>，图标为浅蓝色背景上的白色火箭图案，官方售价为 $2.99 美元。</li>
+        <li><strong>警惕山寨钓鱼应用</strong>：国内 App Store 中经常出现名字类似但带有广告或诱导付费的山寨应用（如“小火箭加速器”、“ShadowRocket Pro”等），此类山寨应用存在严重的隐私泄漏风险。</li>
+        <li><strong>合规获取路径</strong>：建议用户自行注册一个美区或港区 Apple ID，通过正规渠道购买苹果礼品卡（Apple Gift Card）完成充值购买。</li>
+      </ul>
+
+      <h2>二、 节点订阅导入与自动化更新实操</h2>
+      <p>购买并安装好 Shadowrocket 后，节点导入支持以下三种最主流的方式：</p>
+      <ol>
+        <li><strong>一键导入（最推荐）</strong>：登录机场用户中心（如环球梯、大佬云等），在“我的订阅”或“仪表盘”中点击“一键导入 Shadowrocket”，系统会自动唤起小火箭并完成节点同步。</li>
+        <li><strong>扫码导入</strong>：在小火箭首页右上角点击扫描二维码图标，直接扫描机场网站上的专属订阅二维码。</li>
+        <li><strong>手动 URL 添加</strong>：点击首页右上角“+”，类型选择 <strong>Subscribe</strong>，在 URL 一栏粘贴机场提供的专属订阅地址，点击右上角保存。</li>
+      </ol>
+      <p><strong>进阶小技巧：开启“自动更新”</strong>。进入“设置” -> “订阅”，勾选“打开时更新”与“自动后台更新”。这样每次启动客户端或在网络切换时，节点列表与最新可用节点都会保持最新状态。</p>
+
+      <h2>三、 全局路由四大模式深度解析</h2>
+      <p>在 Shadowrocket 底部首页可以看到“全局路由”选项，包含四种模式：</p>
+      <ul>
+        <li><strong>配置（Config）——强烈推荐日常使用</strong>：客户端会根据预设的规则表，智能判断流量走向：国内网站（百度、微信、B站）走本地直连，海外受限网站（Google、YouTube、ChatGPT）自动通过代理节点，实现无感极速浏览。</li>
+        <li><strong>代理（Proxy）</strong>：所有网络流量强行全部通过当前选中的代理节点发送。仅用于临时排查规则失效问题，日常使用会导致国内网站访问变慢或消耗宝贵的代理流量。</li>
+        <li><strong>直连（Direct）</strong>：所有流量完全绕过代理，相当于关闭代理功能。</li>
+        <li><strong>场景（Scene）</strong>：可针对不同 Wi-Fi SSID 或蜂窝网络自动切换不同路由规则与节点，适合高级办公用户。</li>
+      </ul>
+
+      <h2>四、 精细化第三方分流规则导入</h2>
+      <p>默认规则有时难以应对日新月异的应用分流需求。推荐导入社区维护的精细规则集（如 ACL4SSR 或 Loyalsoldier 规则）：</p>
+      <p>在底部导航点击“配置” -> 右上角“+”，输入优质开源规则链接后下载并选中生效。精细规则不仅能精准分流 Netflix、TikTok、Spotify 与 OpenAI，还能在网络层静默拦截大量国内 App 的启动开屏广告和行为跟踪探针，显著提升日常用机清爽度。</p>
+
+      <h2>五、 按需连接（On-Demand）与无感自动化体验</h2>
+      <p>许多 iPhone 用户厌烦每次出门打开浏览器都要手动去点开小火箭开关。Shadowrocket 原生支持 iOS 系统的 <strong>按需连接（On-Demand）</strong> 架构：</p>
+      <ul>
+        <li><strong>智能休眠与唤醒</strong>：在“设置”中开启“按需连接”，可以指定当设备连接到家庭特定信任 Wi-Fi 时自动暂停代理，切换到蜂窝网络移动数据或外部公共 Wi-Fi 时秒级自动拉起 VPN 隧道。</li>
+        <li><strong>配合 iOS 快捷指令（Shortcuts）自动化</strong>：用户可以在苹果“快捷指令”App 中创建自动化流：例如“当打开 YouTube / Twitter / ChatGPT 时，自动开启小火箭；当关闭这些 App 30秒后，自动关闭连接”。这不仅能让续航与电量几乎零损耗，还能带来真正润物细无声的现代智能化体验。</li>
+      </ul>
+
+      <h2>六、 HTTPS解密（MITM）与脚本模块进阶注意事项</h2>
+      <p>小火箭进阶功能中包含了 <strong>HTTPS 解密（MITM）</strong> 与 <strong>模块重写（Script）</strong>。这一功能通过在 iOS 本地信任自签 CA 证书，实现对 App 数据报文的动态重写与广告过滤。但在开启该功能时必须注意：严格只添加可信来源的社区模块，切勿信任来源不明的第三方证书，以保护个人网银与隐私敏感数据的绝对安全。</p>
+      <p>此外，对于经常出差或频繁在多设备间流转的用户，Shadowrocket 还支持通过 iCloud Drive 实现全配置与节点订阅的无缝云端同步备份。只需在多台 iPhone 与 iPad 上登录同一个 Apple 账户，即可实现节点增删改查一处生效、全端即时响应的高效联动体验。</p>
+    
+
+      <!-- 官方推荐直达与关联评测条 -->
+      <section class="not-prose mt-12 pt-8 border-t-2 border-slate-200">
+        <div class="bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-xl p-6 sm:p-8 shadow-md">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
+            <div>
+              <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-widest block mb-1">RECOMMENDED AIRPORT NETWORK</span>
+              <h3 class="text-lg font-bold text-white">基于本文实验评测的优质专线服务商</h3>
+              <p class="text-xs text-slate-300 mt-1">严格经过晚高峰 20:30-23:00 链路丢包压测，符合本文提出的低抖动高吞吐标准：</p>
+            </div>
+            <a href="../index.html" class="inline-flex items-center px-4 py-2 rounded-lg bg-white text-slate-900 hover:bg-slate-100 font-bold text-xs transition-all shadow-sm">
+              查看全部 15 家实测榜单 →
+            </a>
+          </div>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs pt-2">
+            <a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="noopener noreferrer" class="p-3 bg-white/10 hover:bg-white/20 rounded-lg border border-white/10 transition-colors block">
+              <div class="font-bold text-white flex items-center justify-between">
+                <span>环球梯 (天梯榜首)</span>
+                <span class="text-[10px] text-amber-300 font-mono">7折码: HQ66</span>
+              </div>
+              <p class="text-[11px] text-slate-300 mt-1">旗舰级内网互联 IPLC/IEPL 专线，0.01% 极低丢包</p>
+            </a>
+            <a href="https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa" target="_blank" rel="noopener noreferrer" class="p-3 bg-white/10 hover:bg-white/20 rounded-lg border border-white/10 transition-colors block">
+              <div class="font-bold text-white flex items-center justify-between">
+                <span>大佬云 (第二名)</span>
+                <span class="text-[10px] text-amber-300 font-mono">7折码: dly88</span>
+              </div>
+              <p class="text-[11px] text-slate-300 mt-1">企业级专线互联架构，时延 22.4ms，不限设备并发</p>
+            </a>
+            <a href="https://ppsvip01.shandianshuaff.com/#/?code=QbLF8tjB" target="_blank" rel="noopener noreferrer" class="p-3 bg-white/10 hover:bg-white/20 rounded-lg border border-white/10 transition-colors block">
+              <div class="font-bold text-white flex items-center justify-between">
+                <span>闪电鼠 (第三名)</span>
+                <span class="text-[10px] text-amber-300 font-mono">7折码: sds88</span>
+              </div>
+              <p class="text-[11px] text-slate-300 mt-1">单节点最高 2.5Gbps，全节点 x1 倍率，晚高峰不限速</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 引用规范条目 -->
+      <footer class="not-prose mt-8 p-4 bg-slate-50 border border-slate-200 rounded-lg text-xs font-mono text-slate-600">
+        <div class="font-bold text-[#09090B] mb-1">文献标准引用格式 (Citation Reference)：</div>
+        <div class="text-[11px] select-all leading-relaxed bg-white p-2.5 rounded border border-slate-200">
+          Node Report Initiative (2026). <em>Shadowrocket（小火箭）iOS新手全功能图文教程：节点导入、规则分流与模块脚本</em>. Global Topology & Protocol Whitepaper, Research Paper WP-26104, DOI: 10.2610/nr.26104.
+        </div>
+      </footer>
+    </article>
+
+    <!-- 返回顶部与翻页导航 -->
+    <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-600">
+      <a href="../index.html" class="inline-flex items-center hover:text-blue-700 transition-colors">
+        ← 返回天梯榜单与文献列表
+      </a>
+      <a href="#top" class="hover:text-blue-700 transition-colors">
+        返回顶部 ↑
+      </a>
+    </div>
+
+  </main>
+
+  <!-- 极简页脚 -->
+  <footer class="bg-white border-t border-slate-300 text-xs text-[#27272A] py-8 mt-12">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        © 2026 NODE REPORT INITIATIVE · 节点白皮书学术智库. 保留所有研究知识产权.
+      </div>
+      <div class="flex items-center space-x-4 font-mono text-[11px]">
+        <a href="https://t.me/huanqiuti8899" target="_blank" rel="noopener noreferrer" class="text-blue-700 font-bold hover:underline">Telegram 官方频道</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

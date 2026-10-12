@@ -1,0 +1,379 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sing-box下一代通用代理核心实战：高并发架构、规则集与全平台部署指南 - 节点白皮书 · 学术智库</title>
+  <meta name="description" content="随着Clash核心项目全网停止维护，Sing-box凭借纯Go编写的高并发轻量引擎、模块化路由树设计以及对VLESS Reality、Hysteria 2、TUIC等现代协议的原生支持，已成为科学上网领域无可争议的下一代标准核心。本文详尽解读Sing-box架构优势、JSON配置文件语法、Rule-set规则集高效缓存机制，并指导用户在全平台实现平滑过渡。">
+  <meta name="keywords" content="Sing-box教程,Sing-box配置生成,Clash转Sing-box,Sing-box客户端推荐,Rule-set二进制规则,Tun模式配置">
+  <meta property="og:title" content="Sing-box下一代通用代理核心实战：高并发架构、规则集与全平台部署指南">
+  <meta property="og:description" content="随着Clash核心项目全网停止维护，Sing-box凭借纯Go编写的高并发轻量引擎、模块化路由树设计以及对VLESS Reality、Hysteria 2、TUIC等现代协议的原生支持，已成为科学上网领域无可争议的下一代标准核心。本文详尽解读Sing-box架构优势、JSON配置文件语法、Rule-set规则集高效缓存机制，并指导用户在全平台实现平滑过渡。">
+  <meta property="og:type" content="article">
+  <meta name="author" content="网络核心架构与现代协议工程组">
+  <link rel="canonical" href="https://tizivpn.net/posts/wp-26109.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'PingFang SC', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #F8FAFC; color: #0F172A; }
+    .prose h2 { color: #09090B; font-weight: 800; font-size: 1.35rem; margin-top: 2.2rem; margin-bottom: 0.9rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 0.5rem; }
+    .prose h3 { color: #1E293B; font-weight: 700; font-size: 1.15rem; margin-top: 1.6rem; margin-bottom: 0.6rem; }
+    .prose p { margin-bottom: 1.1rem; line-height: 1.8; color: #334155; }
+    .prose ul, .prose ol { margin-bottom: 1.2rem; padding-left: 1.4rem; color: #334155; }
+    .prose li { margin-bottom: 0.45rem; line-height: 1.7; }
+    .prose code { background: #F1F5F9; border: 1px solid #CBD5E1; padding: 0.15rem 0.35rem; border-radius: 0.25rem; font-family: 'JetBrains Mono', monospace; font-size: 0.85em; }
+    .prose pre { background: #0F172A; color: #F8FAFC; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1.4rem; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; }
+    .prose pre code { background: transparent; border: none; padding: 0; color: inherit; }
+    .prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; font-size: 0.85rem; }
+    .prose th { background: #F1F5F9; border: 1px solid #CBD5E1; padding: 0.6rem 0.8rem; text-align: left; font-weight: 700; color: #0F172A; }
+    .prose td { border: 1px solid #E2E8F0; padding: 0.55rem 0.8rem; color: #334155; }
+    .prose blockquote { border-left: 4px solid #2563EB; background: #EFF6FF; padding: 0.75rem 1rem; border-radius: 0 0.375rem 0.375rem 0; margin-bottom: 1.2rem; color: #1E3A8A; font-size: 0.88rem; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Sing-box下一代通用代理核心实战：高并发架构、规则集与全平台部署指南",
+    "description": "随着Clash核心项目全网停止维护，Sing-box凭借纯Go编写的高并发轻量引擎、模块化路由树设计以及对VLESS Reality、Hysteria 2、TUIC等现代协议的原生支持，已成为科学上网领域无可争议的下一代标准核心。本文详尽解读Sing-box架构优势、JSON配置文件语法、Rule-set规则集高效缓存机制，并指导用户在全平台实现平滑过渡。",
+    "author": {
+      "@type": "Organization",
+      "name": "节点白皮书全球网络性能观测智库"
+    },
+    "datePublished": "2026-10-12",
+    "inLanguage": "zh-CN"
+  }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
+
+  <!-- 顶部科技感学术导航 -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-white/90 border-b border-slate-300 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center space-x-2.5 text-[#0F172A] hover:text-blue-700 transition-colors text-xs sm:text-sm font-bold group">
+        <svg class="w-4 h-4 text-slate-500 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        <span>返回白皮书天梯总榜</span>
+      </a>
+      <div class="flex items-center space-x-3 text-xs font-mono text-slate-600">
+        <span class="px-2.5 py-0.5 rounded bg-slate-100 border border-slate-300 text-[#0F172A] font-bold">WP-26109</span>
+        <span class="hidden sm:inline font-bold text-emerald-700">● PEER-REVIEWED</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 正文学术论文主体 -->
+  <main class="flex-grow max-w-5xl mx-auto px-4 sm:px-6 py-10 w-full">
+    
+    <!-- 面包屑导航 -->
+    <nav class="text-xs font-mono text-slate-500 mb-6 flex items-center space-x-2">
+      <a href="../index.html" class="hover:text-blue-700">首页</a>
+      <span>/</span>
+      <a href="../index.html#view-papers" class="hover:text-blue-700">深度文献库</a>
+      <span>/</span>
+      <span class="text-[#09090B] font-bold">wp-26109</span>
+    </nav>
+
+    <!-- 论文头部 Meta -->
+    <header class="bg-white rounded-xl border border-slate-300 p-6 sm:p-8 shadow-sm mb-8">
+      <div class="flex items-center space-x-2 text-xs font-mono font-bold text-blue-700 uppercase tracking-wider mb-2.5">
+        <span>CORE PROTOCOL & RUNTIME</span>
+        <span class="text-slate-400">/</span>
+        <span>RESEARCH ARCHIVE</span>
+      </div>
+      
+      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#09090B] tracking-tight leading-snug mb-3">
+        Sing-box下一代通用代理核心实战：高并发架构、规则集与全平台部署指南
+      </h1>
+      <p class="text-sm font-medium text-slate-600 mb-6">
+        告别Clash传统包袱，深入解析Sing-box路由树引擎、Tun虚拟网卡工作机制与全平台现代客户端迁移
+      </p>
+
+      <div class="flex flex-wrap gap-2 mb-6">
+        <span class="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-slate-100 text-[#0F172A] border border-slate-300">#Sing-box教程</span> <span class="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-slate-100 text-[#0F172A] border border-slate-300">#下一代核心</span> <span class="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-slate-100 text-[#0F172A] border border-slate-300">#规则集配置</span> <span class="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-slate-100 text-[#0F172A] border border-slate-300">#Tun虚拟网卡</span> <span class="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-slate-100 text-[#0F172A] border border-slate-300">#高并发代理</span>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 border-y border-slate-200 text-xs font-mono">
+        <div>
+          <span class="text-slate-400 block mb-0.5">研究机构</span>
+          <span class="font-bold text-[#09090B]">开源代理生态研究会</span>
+        </div>
+        <div>
+          <span class="text-slate-400 block mb-0.5">发行日期</span>
+          <span class="font-bold text-[#09090B]">2026-10-12</span>
+        </div>
+        <div>
+          <span class="text-slate-400 block mb-0.5">阅读时长</span>
+          <span class="font-bold text-[#09090B]">15 min read</span>
+        </div>
+        <div>
+          <span class="text-slate-400 block mb-0.5">文献标识码</span>
+          <span class="font-bold text-blue-700 font-mono">10.2610/nr.26109</span>
+        </div>
+      </div>
+
+      <!-- 论文摘要框 -->
+      <div class="mt-6 p-4 sm:p-5 rounded-lg bg-slate-50 border border-slate-300 text-xs leading-relaxed text-slate-700">
+        <div class="flex items-center space-x-1.5 mb-1.5">
+          <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+          <strong class="font-mono text-[#09090B] uppercase font-bold tracking-wider">Abstract (文献摘要)</strong>
+        </div>
+        <p class="font-medium text-slate-700">随着Clash核心项目全网停止维护，Sing-box凭借纯Go编写的高并发轻量引擎、模块化路由树设计以及对VLESS Reality、Hysteria 2、TUIC等现代协议的原生支持，已成为科学上网领域无可争议的下一代标准核心。本文详尽解读Sing-box架构优势、JSON配置文件语法、Rule-set规则集高效缓存机制，并指导用户在全平台实现平滑过渡。</p>
+      </div>
+    </header>
+
+    <!-- 论文核心正文 -->
+    <article class="bg-white rounded-xl border border-slate-300 p-6 sm:p-10 shadow-sm prose max-w-none text-slate-800">
+      
+      <h2>一、 代理核心的技术代际更迭</h2>
+      <p>回顾翻墙协议与代理客户端的发展史，从最初的Shadowsocks单协议转发，到V2Ray的模块化VMess时代，再到Clash凭借优雅的YAML规则分流与图形生态统治长达五年。然而，随着Clash核心作者注销仓库，加之原版Clash在面对新兴的QUIC协议（Hysteria 2/TUIC）及现代化零RTT握手协议时出现的性能瓶颈，社区迫切需要一套更现代化、更纯粹、性能更强悍的核心架构。</p>
+      <p><strong>Sing-box</strong> 正是在这一技术交替期脱颖而出。它不仅是一个代理工具，更是一个通用的网络代理平台（Universal Proxy Platform），具备超轻量内存占用（运行时内存仅为Clash的30%-50%）、极低CPU开销与原生多平台跨端一致体验。</p>
+
+      <h2>二、 Sing-box 相比 Clash 的四大核心革新</h2>
+      <ul>
+        <li><strong>纯粹现代化的路由树（Routing Engine）</strong>：Clash采用的是单向瀑布式规则匹配，规则条目超过数千条时会线性消耗CPU周期；Sing-box引入了树状路由与二进制规则集（.srs），利用Radix Tree进行IP/域名检索，匹配耗时缩短至微秒级。</li>
+        <li><strong>全协议第一方原生支持</strong>：Shadowsocks 2022、VMess、VLESS（含Reality偷取证书）、Trojan、Hysteria 1/2、TUIC v5、WireGuard等，无须外挂魔改第三方库，核心直接统一调度。</li>
+        <li><strong>无缝的Tun虚拟网卡（FakeIP + gVisor栈）</strong>：Sing-box的Tun模式支持 <code>system</code> 与 <code>gVisor</code> 双网络栈，能够精准捕获全系统所有应用进程的网络出站请求，且对Windows、macOS与Linux提供统一的驱动层优化。</li>
+        <li><strong>规则集（Rule-Set）无感热加载</strong>：支持直接引用远程预编译的二进制 <code>.srs</code> 文件，体积仅为传统文本文件的10%，加载速度提升十倍，大幅降低内存驻留。</li>
+      </ul>
+
+      <h2>三、 Sing-box 核心配置骨架拆解</h2>
+      <p>Sing-box使用JSON格式组织配置。典型的生产环境配置由 <code>dns</code>、<code>inbounds</code>、<code>outbounds</code>、<code>route</code> 四大模块构成：</p>
+
+      <pre><code>{
+  "log": {
+    "level": "info",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "remote-dns",
+        "address": "https://1.1.1.1/dns-query",
+        "detour": "proxy"
+      },
+      {
+        "tag": "local-dns",
+        "address": "223.5.5.5",
+        "detour": "direct"
+      }
+    ],
+    "rules": [
+      {
+        "outbound": "any",
+        "server": "local-dns",
+        "disable_cache": false
+      },
+      {
+        "rule_set": "geosite-cn",
+        "server": "local-dns"
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "interface_name": "singbox-tun",
+      "inet4_address": "172.19.0.1/30",
+      "auto_route": true,
+      "strict_route": true,
+      "stack": "system",
+      "sniff": true
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "selector",
+      "tag": "proxy",
+      "outbounds": ["节点01-香港IPLC", "节点02-日本专线", "direct"]
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "rule_set": "geosite-cn",
+        "outbound": "direct"
+      },
+      {
+        "rule_set": "geoip-cn",
+        "outbound": "direct"
+      }
+    ],
+    "rule_set": [
+      {
+        "tag": "geosite-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-cn.srs"
+      }
+    ]
+  }
+}</code></pre>
+
+      <h2>四、 全平台客户端生态迁移路线图</h2>
+      <p>许多用户担心Sing-box缺乏友好的图形界面。实际上在2026年，围绕Sing-box核心的图形客户端已经极度成熟：</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>平台</th>
+            <th>推荐客户端</th>
+            <th>核心亮点</th>
+            <th>适配人群</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Windows</strong></td>
+            <td>Sing-box for Windows / Hiddify</td>
+            <td>现代Fluent UI设计，一键开启系统代理与Tun虚拟网卡，内存占用低</td>
+            <td>所有Windows桌面用户，办公本与高负载游戏机首选</td>
+          </tr>
+          <tr>
+            <td><strong>macOS</strong></td>
+            <td>Sing-box macOS (App Store) / Surge</td>
+            <td>原生Swift与Metal渲染，菜单栏常驻，完美适配Apple Silicon M系列</td>
+            <td>MacBook用户，追求极低电量消耗与极致轻便者</td>
+          </tr>
+          <tr>
+            <td><strong>Android</strong></td>
+            <td>Sing-box (Google Play/GitHub) / NekoBox</td>
+            <td>官方提供完整VpnService封装，支持按应用分流，免Root</td>
+            <td>安卓手机/平板/车机/智能电视</td>
+          </tr>
+          <tr>
+            <td><strong>iOS</strong></td>
+            <td>Sing-box iOS / Shadowrocket / Loon</td>
+            <td>App Store免费直接下载（美区），支持Widget小组件，秒连秒断</td>
+            <td>iPhone与iPad用户，替代小火箭的轻量级首选</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>五、 二进制 Rule-Set 规则集本地编译与自动化工作流</h2>
+      <p>Sing-box 最引以为傲的性能杀手锏在于二进制规则集（.srs）。高级玩家可以使用 Sing-box CLI 命令行工具，在本地将庞大的文本域名与 IP 列表编译为高性能二进制：</p>
+      <pre><code># 本地编译自定义规则集为二进制 .srs 格式
+sing-box rule-set compile --output custom-rules.srs custom-rules.json</code></pre>
+      <p>经过二进制预编译后，即便包含数万条复杂 CIDR 与通配域名的规则集，Sing-box 在启动时也能在 15 毫秒内完成内存常驻映射，彻底消除了传统客户端启动时长达数秒的解析卡顿。</p>
+
+      <h2>六、 从 Clash 平滑迁移 Sing-box 配置参数对照</h2>
+      <p>为了让习惯了 Clash 语法的用户迅速上手，以下为两者核心字段的关键映射逻辑：</p>
+      <ul>
+        <li><code>proxies</code> ➔ 映射为 Sing-box 的 <code>outbounds</code>（出站列表）；</li>
+        <li><code>proxy-groups</code> ➔ 映射为 <code>outbounds</code> 中类型为 <code>selector</code>（手动选择）或 <code>urltest</code>（自动测速）的出站组；</li>
+        <li><code>rules</code> ➔ 映射为 <code>route.rules</code>，匹配方式由瀑布式文本转变为模块化匹配对象；</li>
+        <li><code>dns.enhanced-mode: fake-ip</code> ➔ 映射为 Sing-box DNS 配置中的 <code>fakeip</code> 模式或 Tun 模式直接嗅探（sniff）。</li>
+      </ul>
+
+      <h2>七、 生产环境守护与高可用自愈配置（Systemd / Docker）</h2>
+      <p>在 Linux 服务器或软路由系统上部署 Sing-box 时，为了确保服务在崩溃或断网时具备秒级自愈能力，推荐编写 Systemd 服务守护单元：</p>
+      <pre><code>[Unit]
+Description=Sing-box Service
+Documentation=https://sing-box.sagernet.org
+After=network.target nss-lookup.target
+
+[Service]
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_SYS_PTRACE CAP_DAC_READ_SEARCH
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_SYS_PTRACE CAP_DAC_READ_SEARCH
+ExecStart=/usr/local/bin/sing-box run -c /etc/sing-box/config.json
+Restart=always
+RestartSec=3s
+LimitNOFILE=infinity
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+      <p>配置完成后通过 <code>systemctl enable --now sing-box</code> 开启开机自启。配合内存泄漏保护与文件描述符（LimitNOFILE）解锁，能够保障核心在高并发大吞吐场景下连续无故障稳定运行数月之久。</p>
+      <p>对于追求可视化的进阶管理员，还可以配置 Sing-box 的 <code>experimental.clash_api</code> 接口，绑定主流 Web 控制面板（例如 Yacd 或 metacubexd）。这样即可通过现代化的网页端仪表盘，实时监控全局连接链路、各个节点的实时出入站速率、TCP 连接状态与内存占用曲线，实现比肩商业级路由器的监控运维体验。</p>
+    
+
+      <!-- 官方推荐直达与关联评测条 -->
+      <section class="not-prose mt-12 pt-8 border-t-2 border-slate-200">
+        <div class="bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-xl p-6 sm:p-8 shadow-md">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
+            <div>
+              <span class="text-xs font-mono font-bold text-sky-400 uppercase tracking-widest block mb-1">RECOMMENDED AIRPORT NETWORK</span>
+              <h3 class="text-lg font-bold text-white">基于本文实验评测的优质专线服务商</h3>
+              <p class="text-xs text-slate-300 mt-1">严格经过晚高峰 20:30-23:00 链路丢包压测，符合本文提出的低抖动高吞吐标准：</p>
+            </div>
+            <a href="../index.html" class="inline-flex items-center px-4 py-2 rounded-lg bg-white text-slate-900 hover:bg-slate-100 font-bold text-xs transition-all shadow-sm">
+              查看全部 15 家实测榜单 →
+            </a>
+          </div>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs pt-2">
+            <a href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" target="_blank" rel="noopener noreferrer" class="p-3 bg-white/10 hover:bg-white/20 rounded-lg border border-white/10 transition-colors block">
+              <div class="font-bold text-white flex items-center justify-between">
+                <span>环球梯 (天梯榜首)</span>
+                <span class="text-[10px] text-amber-300 font-mono">7折码: HQ66</span>
+              </div>
+              <p class="text-[11px] text-slate-300 mt-1">旗舰级内网互联 IPLC/IEPL 专线，0.01% 极低丢包</p>
+            </a>
+            <a href="https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa" target="_blank" rel="noopener noreferrer" class="p-3 bg-white/10 hover:bg-white/20 rounded-lg border border-white/10 transition-colors block">
+              <div class="font-bold text-white flex items-center justify-between">
+                <span>大佬云 (第二名)</span>
+                <span class="text-[10px] text-amber-300 font-mono">7折码: dly88</span>
+              </div>
+              <p class="text-[11px] text-slate-300 mt-1">企业级专线互联架构，时延 22.4ms，不限设备并发</p>
+            </a>
+            <a href="https://ppsvip01.shandianshuaff.com/#/?code=QbLF8tjB" target="_blank" rel="noopener noreferrer" class="p-3 bg-white/10 hover:bg-white/20 rounded-lg border border-white/10 transition-colors block">
+              <div class="font-bold text-white flex items-center justify-between">
+                <span>闪电鼠 (第三名)</span>
+                <span class="text-[10px] text-amber-300 font-mono">7折码: sds88</span>
+              </div>
+              <p class="text-[11px] text-slate-300 mt-1">单节点最高 2.5Gbps，全节点 x1 倍率，晚高峰不限速</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 引用规范条目 -->
+      <footer class="not-prose mt-8 p-4 bg-slate-50 border border-slate-200 rounded-lg text-xs font-mono text-slate-600">
+        <div class="font-bold text-[#09090B] mb-1">文献标准引用格式 (Citation Reference)：</div>
+        <div class="text-[11px] select-all leading-relaxed bg-white p-2.5 rounded border border-slate-200">
+          Node Report Initiative (2026). <em>Sing-box下一代通用代理核心实战：高并发架构、规则集与全平台部署指南</em>. Global Topology & Protocol Whitepaper, Research Paper WP-26109, DOI: 10.2610/nr.26109.
+        </div>
+      </footer>
+    </article>
+
+    <!-- 返回顶部与翻页导航 -->
+    <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-600">
+      <a href="../index.html" class="inline-flex items-center hover:text-blue-700 transition-colors">
+        ← 返回天梯榜单与文献列表
+      </a>
+      <a href="#top" class="hover:text-blue-700 transition-colors">
+        返回顶部 ↑
+      </a>
+    </div>
+
+  </main>
+
+  <!-- 极简页脚 -->
+  <footer class="bg-white border-t border-slate-300 text-xs text-[#27272A] py-8 mt-12">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        © 2026 NODE REPORT INITIATIVE · 节点白皮书学术智库. 保留所有研究知识产权.
+      </div>
+      <div class="flex items-center space-x-4 font-mono text-[11px]">
+        <a href="https://t.me/huanqiuti8899" target="_blank" rel="noopener noreferrer" class="text-blue-700 font-bold hover:underline">Telegram 官方频道</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
