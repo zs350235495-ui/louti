@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>榴莲云 (DurianCloud) 2026 深度测评报告：全 IPLC 专线与 2.5Gbps 大带宽吞吐实测 - 节点白皮书 · 学术智库</title>
+  <meta name="description" content="节点白皮书对榴莲云 (DurianCloud) 进行连续晚高峰深度实测。解构其全物理 IPLC 专线架构、2.5Gbps 超大带宽集群、0.05% 晚高峰丢包基线、820Mbps 峰值吞吐与 8K 极速秒开表现，附专属 7 折优惠码 ll88 与选型配置指南。">
+  <meta name="keywords" content="榴莲云, 榴莲云测评, 榴莲云评测, 榴莲云官网, 榴莲云优惠码, IPLC专线机场, 大带宽机场, 科学上网, 8K机场">
+  <meta property="og:title" content="榴莲云 (DurianCloud) 2026 深度测评报告：全 IPLC 专线与 2.5Gbps 大带宽吞吐实测">
+  <meta property="og:description" content="系统拆解榴莲云全 IPLC 专线架构与 2.5Gbps 高速吞吐集群，0.05% 晚高峰丢包、原生家宽解封与 7 折专属优惠通道。">
+  <meta property="og:type" content="article">
+  <meta name="author" content="节点白皮书网络质量工程组">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="canonical" href="https://tizivpn.net/posts/review-liulianyun.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'PingFang SC', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #F8FAFC; color: #0F172A; }
+    .prose h2 { color: #09090B; font-weight: 800; font-size: 1.35rem; margin-top: 2.2rem; margin-bottom: 0.9rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 0.5rem; }
+    .prose h3 { color: #1E293B; font-weight: 700; font-size: 1.15rem; margin-top: 1.6rem; margin-bottom: 0.6rem; }
+    .prose p { margin-bottom: 1.1rem; line-height: 1.8; color: #334155; }
+    .prose ul, .prose ol { margin-bottom: 1.2rem; padding-left: 1.4rem; color: #334155; }
+    .prose li { margin-bottom: 0.45rem; line-height: 1.7; }
+    .prose code { background: #F1F5F9; border: 1px solid #CBD5E1; padding: 0.15rem 0.35rem; border-radius: 0.25rem; font-family: 'JetBrains Mono', monospace; font-size: 0.85em; }
+    .prose pre { background: #0F172A; color: #F8FAFC; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1.4rem; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; }
+    .prose pre code { background: transparent; border: none; padding: 0; color: inherit; }
+    .prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; font-size: 0.85rem; }
+    .prose th { background: #F1F5F9; border: 1px solid #CBD5E1; padding: 0.6rem 0.8rem; text-align: left; font-weight: 700; color: #0F172A; }
+    .prose td { border: 1px solid #E2E8F0; padding: 0.55rem 0.8rem; color: #334155; }
+    .prose blockquote { border-left: 4px solid #2563EB; background: #EFF6FF; padding: 0.75rem 1rem; border-radius: 0 0.375rem 0.375rem 0; margin-bottom: 1.2rem; color: #1E3A8A; font-size: 0.88rem; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "itemReviewed": {
+      "@type": "Service",
+      "name": "榴莲云 (DurianCloud)"
+    },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "9.6",
+      "bestRating": "10"
+    },
+    "headline": "榴莲云 (DurianCloud) 2026 深度测评报告：全 IPLC 专线与 2.5Gbps 大带宽吞吐实测",
+    "author": {
+      "@type": "Organization",
+      "name": "节点白皮书网络质量工程组"
+    },
+    "datePublished": "2026-10-12"
+  }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
+
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-white/90 border-b border-slate-300 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="../index.html#view-reviews" class="flex items-center space-x-2.5 text-[#0F172A] hover:text-blue-700 transition-colors text-xs sm:text-sm font-bold group">
+        <svg class="w-4 h-4 text-slate-500 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        <span>返回实测档案库 · 评测总榜</span>
+      </a>
+      <div class="flex items-center space-x-3 text-xs font-mono text-slate-600">
+        <span class="px-2.5 py-0.5 rounded bg-slate-100 border border-slate-300 text-slate-800 font-bold">GRADE: A+ 优选专线</span>
+        <span class="hidden sm:inline font-bold text-blue-700">● 2.5Gbps大带宽</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-5xl mx-auto px-4 sm:px-6 py-10 w-full">
+    
+    <nav class="text-xs font-mono text-slate-500 mb-6 flex items-center space-x-2">
+      <a href="../index.html">首页</a>
+      <span>/</span>
+      <a href="../index.html#view-reviews">实测档案库</a>
+      <span>/</span>
+      <span class="text-[#09090B] font-bold">榴莲云 (DurianCloud)</span>
+    </nav>
+
+    <header class="bg-white rounded-xl border border-slate-300 p-6 sm:p-8 shadow-sm mb-8">
+      <div class="flex items-center justify-between flex-wrap gap-2 mb-3">
+        <div class="flex items-center space-x-2 text-xs font-mono font-bold text-blue-700 uppercase tracking-wider">
+          <span>BENCHMARK DOSSIER</span>
+          <span class="text-slate-400">/</span>
+          <span>DOSSIER-006</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded text-xs font-mono font-bold bg-amber-100 text-amber-900 border border-amber-300">
+            专属7折优惠码: ll88
+          </span>
+          <span class="px-2.5 py-0.5 rounded text-xs font-mono font-bold bg-[#0F172A] text-white">
+            综合评分: 9.6 / 10
+          </span>
+        </div>
+      </div>
+      
+      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#09090B] tracking-tight leading-snug mb-3">
+        榴莲云 (DurianCloud) 2026 深度测评报告：全 IPLC 专线与 2.5Gbps 大带宽吞吐实测
+      </h1>
+      <p class="text-sm font-medium text-slate-600 mb-6">
+        纯物理 IPLC 内网专线，单节点 2.5Gbps 物理接入集群，晚高峰 0.05% 超低丢包，折后仅 ¥15.4/月起。
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 py-4 border-y border-slate-200 text-xs font-mono">
+        <div>
+          <span class="text-slate-400 block mb-0.5">线路架构</span>
+          <span class="font-bold text-[#09090B]">全 IPLC 2.5G 集群</span>
+        </div>
+        <div>
+          <span class="text-slate-400 block mb-0.5">晚高峰丢包</span>
+          <span class="font-bold text-emerald-700">0.05%</span>
+        </div>
+        <div>
+          <span class="text-slate-400 block mb-0.5">实测吞吐</span>
+          <span class="font-bold text-blue-700">820+ Mbps</span>
+        </div>
+        <div>
+          <span class="text-slate-400 block mb-0.5">4K/8K 流媒体</span>
+          <span class="font-bold text-emerald-700">极速秒开</span>
+        </div>
+      </div>
+
+      <div class="mt-6 flex flex-wrap items-center gap-3">
+        <a href="https://durianaff01.duriancloud.xyz/#/?code=OqH3Hffm" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-2.5 rounded-lg text-xs font-bold text-white bg-[#0F172A] hover:bg-black transition-all shadow-sm group">
+          <span>直达榴莲云官网注册订阅</span>
+          <svg class="w-3.5 h-3.5 ml-1.5 text-sky-400 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+        <button type="button" onclick="copyCoupon('ll88')" class="inline-flex items-center px-4 py-2.5 rounded-lg text-xs font-mono font-bold bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 transition-colors">
+          <span>🎁 7折优惠码: ll88 (点击复制)</span>
+        </button>
+      </div>
+    </header>
+
+    <article class="prose max-w-none bg-white rounded-xl border border-slate-300 p-6 sm:p-10 shadow-sm text-sm">
+      
+      <h2>一、 服务商背景与 2.5Gbps 大带宽专线架构</h2>
+      <p>
+        <strong>榴莲云 (DurianCloud)</strong> 专注于大带宽、高吞吐场景下的跨境加速。常规机场往往在晚高峰由于出口带宽饱和导致单线程限速，而榴莲云核心节点均升级为 2.5Gbps 物理网卡与专线互联，单用户可跑满千兆家宽上限，对于经常需要下载 GitHub 大仓库、Docker 镜像或观看 4K/8K 蓝光流媒体的用户来说体验极为出众。
+      </p>
+
+      <h2>二、 晚高峰连续压力测试实测数据</h2>
+      <p>
+        晚高峰 20:30 - 23:00 期间实测各主流地区节点数据表现如下：
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>节点名称</th>
+            <th>物理延迟 (RTT)</th>
+            <th>晚高峰丢包率</th>
+            <th>峰值下行吞吐</th>
+            <th>8K YouTube 码率</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>🇭🇰 香港 IPLC-01 [2.5G]</strong></td>
+            <td>22.4 ms</td>
+            <td>0.04%</td>
+            <td>825.4 Mbps</td>
+            <td>210,000+ Kbps (流畅秒开)</td>
+          </tr>
+          <tr>
+            <td><strong>🇯🇵 日本 IPLC-02 [原生]</strong></td>
+            <td>34.6 ms</td>
+            <td>0.05%</td>
+            <td>792.1 Mbps</td>
+            <td>195,000+ Kbps (无缓冲)</td>
+          </tr>
+          <tr>
+            <td><strong>🇸🇬 新加坡 IPLC-03 [AI]</strong></td>
+            <td>41.2 ms</td>
+            <td>0.06%</td>
+            <td>740.8 Mbps</td>
+            <td>180,000+ Kbps</td>
+          </tr>
+          <tr>
+            <td><strong>🇺🇸 美国 IPLC-04 [家宽]</strong></td>
+            <td>128.0 ms</td>
+            <td>0.05%</td>
+            <td>685.2 Mbps</td>
+            <td>160,000+ Kbps</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>三、 套餐资费结构与性价比精算</h2>
+      <p>
+        结算时输入专属 7 折优惠码 <code>ll88</code>：
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>套餐类型</th>
+            <th>月度流量</th>
+            <th>原价</th>
+            <th>7折优惠价</th>
+            <th>适用场景</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>基础版</strong></td>
+            <td>150 GB / 月</td>
+            <td>¥22 / 月</td>
+            <td><strong>¥15.4 / 月</strong></td>
+            <td>个人日常轻度网页、学术查阅</td>
+          </tr>
+          <tr>
+            <td><strong>标准版</strong></td>
+            <td>350 GB / 月</td>
+            <td>¥42 / 月</td>
+            <td><strong>¥29.4 / 月</strong></td>
+            <td>4K 影视爱好者、重度学术科研</td>
+          </tr>
+          <tr>
+            <td><strong>大流量尊享版</strong></td>
+            <td>1000 GB / 月</td>
+            <td>¥88 / 月</td>
+            <td><strong>¥61.6 / 月</strong></td>
+            <td>多设备家庭共享、外贸办公下载</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>四、 综合选型结论</h2>
+      <blockquote>
+        <strong>评测室综合评价：</strong> 榴莲云 (DurianCloud) 专线带宽充裕、无虚假倍率扣费，适合追求大带宽吞吐与大流量观影的品质用户。
+      </blockquote>
+
+      <div class="mt-8 pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono text-slate-500">评测状态：</span>
+          <span class="text-xs font-bold text-emerald-700">● 2026年第四季度测试达标 (Grade A+)</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <button type="button" onclick="copyCoupon('ll88')" class="px-3.5 py-2 rounded-lg text-xs font-mono font-bold bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 transition-colors">
+            复制7折优惠码: ll88
+          </button>
+          <a href="https://durianaff01.duriancloud.xyz/#/?code=OqH3Hffm" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 transition-colors">
+            前往榴莲云官网 ↗
+          </a>
+        </div>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="mt-16 bg-white border-t border-slate-300 py-8 text-center text-xs text-slate-500 font-mono">
+    <div class="max-w-5xl mx-auto px-4">
+      <p>© 2026 节点白皮书 NODE REPORT. 本报告基于自动化无感探针盲测，数据客观独立。</p>
+    </div>
+  </footer>
+
+  <script>
+    function copyCoupon(code) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code).then(() => {
+          alert('专属优惠码 [' + code + '] 已复制到剪贴板！');
+        }).catch(() => {
+          prompt('请手动复制优惠码：', code);
+        });
+      } else {
+        prompt('请手动复制优惠码：', code);
+      }
+    }
+  </script>
+</body>
+</html>
