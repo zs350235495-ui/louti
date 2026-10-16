@@ -4109,13 +4109,98 @@ iptables -t mangle -A POSTROUTING -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --cla
       }, 2000);
     }
 
-    // 6. URL Hash 联动与初始化
-    window.addEventListener('DOMContentLoaded', () => {
-      const hash = window.location.hash.replace('#', '');
-      if (['view-benchmark', 'view-reviews', 'view-papers', 'view-topology', 'view-runaway'].includes(hash)) {
-        switchTab(hash);
+    // 6. 全能 URL 路由分发器与 Hash 联动引擎 (支持 /#article/DOC-XXXXX, /#article/xxx, ?post=xxx 与五大模块)
+    function handleAppRouting() {
+      // 1. 获取 URL 中的路径、Query 参数及 Hash
+      const rawHash = (window.location.hash || '').replace(/^#\/?/, '').trim();
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryTarget = urlParams.get('post') || urlParams.get('article') || urlParams.get('id');
+
+      // 提取候选路由目标（优先 query，其次 hash，再次 pathname）
+      let rawRoute = queryTarget || rawHash;
+      if (!rawRoute && window.location.pathname.includes('/article/')) {
+        rawRoute = window.location.pathname.split('/article/')[1];
       }
-    });
+
+      if (!rawRoute) return;
+
+      // 2. 检查是否为首页 5 大核心 Tab 容器
+      const cleanTab = rawRoute.toLowerCase();
+      if (['view-benchmark', 'view-reviews', 'view-papers', 'view-topology', 'view-runaway'].includes(cleanTab)) {
+        switchTab(cleanTab);
+        return;
+      }
+
+      // 3. 检查并解析文章路由 (形如 /#article/DOC-XXXXX, /#article/wp-xxx, /#doc/xxx, ?post=xxx)
+      const targetFile = resolvePostFile(rawRoute);
+      if (targetFile) {
+        // 原地安全跳转至文章静态详情页 (使用 location.replace 避免历史记录死循环)
+        window.location.replace('./posts/' + targetFile);
+        return;
+      }
+
+      // 4. 未匹配到文章时的 Fallback 容错逻辑
+      if (rawRoute.startsWith('article') || rawRoute.startsWith('doc') || rawRoute.startsWith('wp')) {
+        console.warn('[Router] 未检索到文章编号:', rawRoute, '，自动平滑引导至文献库。');
+        switchTab('view-papers');
+      }
+    }
+
+    // 智能解析器：支持 DOC-XXXXX、WHITEPAPER-XXXXX、WP-XXXXX、纯数字、review-xxx 与大小写兼容
+    function resolvePostFile(raw) {
+      if (!raw) return null;
+      let id = decodeURIComponent(raw).trim().toLowerCase();
+      // 剔除前后冗余斜杠与 hash
+      id = id.replace(/^[#/]+/, '').replace(/\/+$/, '');
+      // 剔除 article/、post/、doc/ 等前缀
+      id = id.replace(/^(article|post|doc)\//, '');
+
+      // 全站文章白名单字典
+      const POST_FILES = [
+        'wp-26101.html', 'wp-26102.html', 'wp-26103.html', 'wp-26104.html',
+        'wp-26105.html', 'wp-26106.html', 'wp-26107.html', 'wp-26108.html',
+        'wp-26109.html', 'wp-26110.html', 'wp-26111.html', 'wp-26112.html',
+        'wp-26113.html', 'wp-26114.html', 'wp-26115.html', 'wp-26116.html',
+        'wp-26119.html', 'wp-26120.html',
+        'review-dalaoyun.html', 'review-edgenode.html', 'review-guangnianti.html',
+        'review-huanqiuti.html', 'review-jilianyun.html', 'review-liulianyun.html',
+        'review-shandianshu.html', 'review-shenxing.html', 'review-shunyun.html',
+        'review-yunjiexian.html', 'huanqiuti.html',
+        '2026-airport-node-recommendation-selection-guide.html',
+        '2026-yiyuan-airport-selection-guide.html'
+      ];
+
+      // 1. 精确匹配
+      if (POST_FILES.includes(id + '.html')) return id + '.html';
+      if (POST_FILES.includes(id)) return id;
+
+      // 2. 兼容 DOC-XXXXX, WHITEPAPER-XXXXX, WP-XXXXX, 纯数字 (如 26119)
+      const numMatch = id.match(/^(?:doc|whitepaper|wp)[-_]?(\d+)$/) || id.match(/^(\d{5})$/);
+      if (numMatch) {
+        const candidate = `wp-${numMatch[1]}.html`;
+        if (POST_FILES.includes(candidate)) return candidate;
+      }
+
+      // 3. 兼容 review-xxx 与纯机场名称缩写
+      const revMatch = id.match(/^(?:review[-_])?([a-z0-9]+)$/);
+      if (revMatch) {
+        const candidate = `review-${revMatch[1]}.html`;
+        if (POST_FILES.includes(candidate)) return candidate;
+      }
+
+      // 4. 模糊后缀或别名匹配
+      for (const f of POST_FILES) {
+        const base = f.replace('.html', '');
+        if (base === id || base.endsWith('-' + id)) return f;
+      }
+
+      return null;
+    }
+
+    // 绑定 load 与 hashchange 双重事件监听，确保初次直开与站内切换均能触发分发
+    window.addEventListener('DOMContentLoaded', handleAppRouting);
+    window.addEventListener('load', handleAppRouting);
+    window.addEventListener('hashchange', handleAppRouting);
   </script>
 
 </body>

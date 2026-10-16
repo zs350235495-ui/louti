@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>正在分发文章路由 - 节点白皮书 · 学术智库</title>
+  <meta name="robots" content="noindex,follow">
+  <script>
+    (function() {
+      // 全站文章白名单字典
+      var POST_FILES = [
+        'wp-26101.html', 'wp-26102.html', 'wp-26103.html', 'wp-26104.html',
+        'wp-26105.html', 'wp-26106.html', 'wp-26107.html', 'wp-26108.html',
+        'wp-26109.html', 'wp-26110.html', 'wp-26111.html', 'wp-26112.html',
+        'wp-26113.html', 'wp-26114.html', 'wp-26115.html', 'wp-26116.html',
+        'wp-26119.html', 'wp-26120.html',
+        'review-dalaoyun.html', 'review-edgenode.html', 'review-guangnianti.html',
+        'review-huanqiuti.html', 'review-jilianyun.html', 'review-liulianyun.html',
+        'review-shandianshu.html', 'review-shenxing.html', 'review-shunyun.html',
+        'review-yunjiexian.html', 'huanqiuti.html',
+        '2026-airport-node-recommendation-selection-guide.html',
+        '2026-yiyuan-airport-selection-guide.html'
+      ];
+
+      function resolvePost(raw) {
+        if (!raw) return null;
+        var id = decodeURIComponent(raw).trim().toLowerCase();
+        id = id.replace(/^[#/]+/, '').replace(/\/+$/, '');
+        id = id.replace(/^(article|post|doc)\//, '');
+
+        if (POST_FILES.indexOf(id + '.html') !== -1) return id + '.html';
+        if (POST_FILES.indexOf(id) !== -1) return id;
+
+        var numMatch = id.match(/^(?:doc|whitepaper|wp)[-_]?(\d+)$/) || id.match(/^(\d{5})$/);
+        if (numMatch) {
+          var cand = 'wp-' + numMatch[1] + '.html';
+          if (POST_FILES.indexOf(cand) !== -1) return cand;
+        }
+
+        var revMatch = id.match(/^(?:review[-_])?([a-z0-9]+)$/);
+        if (revMatch) {
+          var candRev = 'review-' + revMatch[1] + '.html';
+          if (POST_FILES.indexOf(candRev) !== -1) return candRev;
+        }
+
+        for (var i = 0; i < POST_FILES.length; i++) {
+          var base = POST_FILES[i].replace('.html', '');
+          if (base === id || base.indexOf('-' + id) !== -1) {
+            return POST_FILES[i];
+          }
+        }
+        return null;
+      }
+
+      // 获取当前请求路径与参数
+      var path = window.location.pathname || '';
+      var search = window.location.search || '';
+      var hash = window.location.hash || '';
+
+      // 提取可能的路由候选值
+      var candidate = '';
+      if (path.indexOf('/article/') !== -1) {
+        candidate = path.split('/article/')[1];
+      } else if (path.indexOf('/posts/') !== -1) {
+        candidate = path.split('/posts/')[1];
+      } else if (hash.indexOf('article/') !== -1) {
+        candidate = hash.split('article/')[1];
+      } else {
+        var params = new URLSearchParams(search);
+        candidate = params.get('post') || params.get('article') || params.get('id') || '';
+      }
+
+      var target = resolvePost(candidate);
+      if (target) {
+        // 匹配成功：立即原地跳转至对应真实物理文件
+        window.location.replace('/posts/' + target);
+      } else {
+        // 未匹配成功：回退至首页文献库
+        window.location.replace('/#view-papers');
+      }
+    })();
+  </script>
+</head>
+<body style="font-family:sans-serif;text-align:center;padding:50px;background:#F8FAFC;color:#0F172A;">
+  <p>正在定位并加载文章，请稍候...</p>
+</body>
+</html>
