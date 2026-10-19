@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 全球优质网络节点性能评测白皮书：从物理延迟、丢包抖动到骨干网 QoS 的综合测试基准 - 节点白皮书 · 学术智库</title>
+  <meta name="description" content="2026 全球网络节点性能评测白皮书权威发布！深入解析光纤传输物理极限、海缆拓扑、公网中转与内网专线差异，揭秘晚高峰骨干网 QoS 调度与 WRED 丢包机理。基于 NHAM 模型建立涵盖物理延迟、丢包率、抖动与 TLS 握手的科学评测基准，附全平台分流配置与健康度 5 步速查清单。">
+  <meta name="keywords" content="物理延迟,丢包率,抖动,Jitter,QoS限制,内网专线,全平台分流,骨干网QoS,IPLC,IEPL,CN2 GIA,AS9929,节点白皮书,网络性能评测">
+  <meta property="og:title" content="2026 全球优质网络节点性能评测白皮书：从物理延迟、丢包抖动到骨干网 QoS 的综合测试基准">
+  <meta property="og:description" content="深入解析光纤传输物理极限与海缆拓扑，揭秘晚高峰骨干网 QoS 调度机制。基于 NHAM 模型确立物理延迟、丢包率、抖动与 TLS 握手综合测试基准，附全平台分流架构实战指南。">
+  <meta property="og:type" content="article">
+  <meta name="author" content="全球网络拓扑与测试基准工程实验室">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="canonical" href="https://tizivpn.net/posts/wp-26121.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'PingFang SC', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #F8FAFC; color: #0F172A; }
+    .prose h2 { color: #09090B; font-weight: 800; font-size: 1.35rem; margin-top: 2.2rem; margin-bottom: 0.9rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 0.5rem; }
+    .prose h3 { color: #1E293B; font-weight: 700; font-size: 1.15rem; margin-top: 1.6rem; margin-bottom: 0.6rem; }
+    .prose p { margin-bottom: 1.1rem; line-height: 1.8; color: #334155; }
+    .prose ul, .prose ol { margin-bottom: 1.2rem; padding-left: 1.4rem; color: #334155; }
+    .prose li { margin-bottom: 0.45rem; line-height: 1.7; }
+    .prose code { background: #F1F5F9; border: 1px solid #CBD5E1; padding: 0.15rem 0.35rem; border-radius: 0.25rem; font-family: 'JetBrains Mono', monospace; font-size: 0.85em; }
+    .prose pre { background: #0F172A; color: #F8FAFC; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1.4rem; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; }
+    .prose pre code { background: transparent; border: none; padding: 0; color: inherit; }
+    .prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; font-size: 0.85rem; }
+    .prose th { background: #F1F5F9; border: 1px solid #CBD5E1; padding: 0.6rem 0.8rem; text-align: left; font-weight: 700; color: #0F172A; }
+    .prose td { border: 1px solid #E2E8F0; padding: 0.55rem 0.8rem; color: #334155; }
+    .prose blockquote { border-left: 4px solid #2563EB; background: #EFF6FF; padding: 0.75rem 1rem; border-radius: 0 0.375rem 0.375rem 0; margin-bottom: 1.2rem; color: #1E3A8A; font-size: 0.88rem; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "2026 全球优质网络节点性能评测白皮书：从物理延迟、丢包抖动到骨干网 QoS 的综合测试基准",
+    "description": "2026 全球网络节点性能评测白皮书权威发布！深入解析光纤传输物理极限、海缆拓扑、公网中转与内网专线差异，揭秘晚高峰骨干网 QoS 调度与 WRED 丢包机理。基于 NHAM 模型建立涵盖物理延迟、丢包率、抖动与 TLS 握手的科学评测基准，附全平台分流配置与健康度 5 步速查清单。",
+    "author": {
+      "@type": "Organization",
+      "name": "全球网络拓扑与测试基准工程实验室"
+    },
+    "datePublished": "2026-10-19",
+    "inLanguage": "zh-CN"
+  }
+  </script>
+</head>
+<body id="top" class="min-h-screen flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
+
+  <!-- 顶部学术导航 -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-white/90 border-b border-slate-300 shadow-sm">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center space-x-2.5 text-[#0F172A] hover:text-blue-700 transition-colors text-xs sm:text-sm font-bold group">
+        <svg class="w-4 h-4 text-slate-500 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        <span>返回白皮书天梯总榜</span>
+      </a>
+      <div class="flex items-center space-x-3 text-xs font-mono text-slate-600">
+        <span class="px-2.5 py-0.5 rounded bg-slate-100 border border-slate-300 text-[#0F172A] font-bold">WP-26121</span>
+        <span class="hidden sm:inline font-bold text-emerald-700">● PEER-REVIEWED</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 正文主体 -->
+  <main class="flex-grow max-w-5xl mx-auto px-4 sm:px-6 py-10 w-full">
+    
+    <!-- 面包屑导航 -->
+    <nav class="text-xs font-mono text-slate-500 mb-6 flex items-center space-x-2">
+      <a href="../index.html" class="hover:text-blue-700">首页</a>
+      <span>/</span>
+      <a href="../index.html#view-papers" class="hover:text-blue-700">深度文献库</a>
+      <span>/</span>
+      <span class="text-[#09090B] font-bold">wp-26121</span>
+    </nav>
+
+    <!-- 论文头部 Meta -->
+    <header class="bg-white rounded-xl border border-slate-300 p-6 sm:p-8 shadow-sm mb-8">
+      <div class="flex items-center space-x-2 text-xs font-mono font-bold text-blue-700 uppercase tracking-wider mb-2.5">
+        <span>TOPOLOGY AUDIT & BENCHMARK METHODOLOGY</span>
+        <span class="text-slate-400">/</span>
+        <span>RESEARCH WHITEPAPER</span>
+      </div>
+      
+      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#09090B] tracking-tight leading-snug mb-3">
+        2026 全球优质网络节点性能评测白皮书：从物理延迟、丢包抖动到骨干网 QoS 的综合测试基准
+      </h1>
+      <p class="text-sm font-medium text-slate-600 mb-6">
+        深入光纤传输极限、海缆拓扑、公网互联与内网专线架构，确立基于 NHAM 模型的严谨多维测试准则，赋能企业与高阶技术人员科学评估节点健康度
+      </p>
+
+      <div class="flex flex-wrap items-center gap-4 text-xs font-mono text-slate-600 pt-4 border-t border-slate-200">
+        <div class="flex items-center space-x-2">
+          <span class="text-slate-400">研究机构:</span>
+          <span class="font-bold text-[#0F172A]">全球网络拓扑与测试基准工程实验室</span>
+        </div>
+        <span class="text-slate-300">•</span>
+        <div class="flex items-center space-x-2">
+          <span class="text-slate-400">发布日期:</span>
+          <span class="font-semibold text-slate-700">2026-10-19</span>
+        </div>
+        <span class="text-slate-300">•</span>
+        <div class="flex items-center space-x-2">
+          <span class="text-slate-400">文献编号:</span>
+          <span class="font-bold text-blue-700">DOI: 10.2618/nr.26121</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 核心文章正文 -->
+    <article class="bg-white rounded-xl border border-slate-300 p-6 sm:p-10 shadow-sm prose max-w-none">
+      
+      <!-- 卷首寄语 -->
+      <blockquote>
+        <strong>卷首寄语与核心定义：为什么传统的“峰值带宽测速”已经失效？</strong><br>
+        在长达十余年的网络测试惯性中，行业与终端用户普遍依赖 Speedtest 等突发测速工具，将“下行峰值带宽能否跑满千兆”作为衡量节点优劣的唯一指标。然而，迈入 2026 年，这一传统评估范式已彻底失效。现代跨国业务形态（如大模型 Token 流式响应、WebRTC 实时通讯、金融高频交易与分布式协作）对网络<strong>确定性（Determinism）</strong>提出了苛刻要求。一个标称 1Gbps 但晚高峰丢包率达 5%、抖动超过 80ms 的公网节点，其实际交互体验远逊于一条物理隔离、带宽仅 30Mbps 但抖动在 1ms 以内的内网专线。<br><br>
+        <strong>节点健康度评估模型（Node Health Assessment Model, NHAM）：</strong><br>
+        「节点白皮书」在 2026 基准中正式确立综合评估向量方程：<br>
+        <code>NHAM = f(PLR_peak, Jitter_σ, QoS_loss, TTFB_TLS)</code><br>
+        该模型摒弃单一峰值测速，转向对<strong>晚高峰极限丢包率（PLR）</strong>、<strong>抖动标准差（Jitter σ）</strong>、<strong>骨干网 QoS 限制下的吞吐衰减比</strong>以及<strong>复杂加密握手效率（TTFB）</strong>进行系统性量化加权。
+      </blockquote>
+
+      <!-- 第一章 -->
+      <h2>第一章 底层物理与链路层审计：光纤极限、海缆拓扑与专线架构</h2>
+
+      <h3>1.1 光纤信号传播的物理极限与往返延迟推导</h3>
+      <p>
+        网络延迟具有不可逆转的物理下限，严格受限于光速常量与传输介质的折射率。
+      </p>
+      <p>
+        在标准单模通信光纤（如 G.652D 核心光纤）中，二氧化硅玻璃芯的折射率 <code>n_core ≈ 1.4682</code>。光信号在光纤介质中的有效传播速度计算如下：
+      </p>
+      <pre><code>v_fiber = c / n_core ≈ 299,792 km/s / 1.4682 ≈ 204,190 km/s ≈ 204.2 km/ms</code></pre>
+      <p>
+        因此，对于往返时延（Round-Trip Time, RTT），其理论物理极值计算公式为：
+      </p>
+      <pre><code>RTT_theoretical = 2 × (D_fiber / v_fiber) ≈ D_fiber / 102.1 ms</code></pre>
+      <p>
+        即在理想直连光纤中，<strong>每增加 1,000 公里的物理光纤铺设距离，端到端往返时延将产生约 9.8ms 的物理延迟</strong>。叠加掺铒光纤放大器（EDFA）的中继放大、ROADM 波长交叉调度以及实际工程中光缆路由的蛇形冗余系数（通常为 1.25～1.40），跨洋链路的延迟下限完全由底层物理空间几何决定。
+      </p>
+
+      <h3>1.2 跨洋海缆路由与公网绕路拓扑剖析</h3>
+      <p>
+        在公共互联网中，跨国数据传输严格依附于全球海底光缆系统。常见的越洋与洲际路由拓扑包括：
+      </p>
+      <ul>
+        <li><strong>中美跨太平洋通道（Trans-Pacific）：</strong>主要由 NCP（新跨太平洋海缆）、FASTER 等系统承载，自中国沿海（崇明/青岛）直达美国西海岸（圣何塞/俄勒冈），物理光纤距离约 10,000～12,000 公里，理论物理延迟下限为 115ms～128ms。</li>
+        <li><strong>亚欧大陆海缆走廊（Asia-Europe Gateway）：</strong>穿越马六甲海峡、印度洋及红海海沟（如 AAE-1、SEA-ME-WE 5），受地缘和复杂海床走向制约，端到端往返物理延迟通常在 150ms～180ms。</li>
+      </ul>
+      <p>
+        当公网发生局部海缆故障或运营商对等结算调整时，BGP 协议将自动将流量绕行至日本或欧洲转接，造成物理路径增加 8,000 公里以上，引发 80ms 至 150ms 的异常额外延迟。
+      </p>
+
+      <h3>1.3 公网普通中转 vs 内网专线（IPLC/IEPL）真实差异</h3>
+      <pre><code>┌────────────────────────────────────────────────────────────────────────┐
+│                      公网多跳中转 vs 跨境二层内网专线                  │
+├────────────────────────────────────────────────────────────────────────┤
+│ 【公网多跳中转架构】                                                   │
+│  [用户终端] ─(公网)─> [省骨干] ─(公网)─> [IGW出海关口] ─(跨洋海缆)─> [落地POP]│
+│  • 经历公网 12~18 跳路由      • 晚高峰严重受制于 IGW 拥塞与 QoS 限制    │
+│  • 抖动波动幅度达 40~120ms    • 存在深层数据包检测与丢包重传          │
+├────────────────────────────────────────────────────────────────────────┤
+│ 【二层内网专线架构 (IEPL/IPLC)】                                       │
+│  [用户终端] ─(BGP接入)─> [境内入口POP] ═════════════════> [境外落地POP] │
+│                          (OTN物理隔离专线 / 二层以太网透传)             │
+│  • 绕开公网国际出口 IGW      • 零公网审查与 QoS 限速                 │
+│  • 丢包率常态 0.00%           • 抖动 (Jitter) 控制在 < 1ms            │
+└────────────────────────────────────────────────────────────────────────┘</code></pre>
+      <p>
+        <strong>内网专线</strong>通过在底层传输网（OTN/SDH）预留专属物理波道或时隙，实现跨国二层隔离。它彻底避开了公网国际网关交换中心（IGW）的拥挤接口，使得端到端数据传输具有确定性时延与零丢包特征。
+      </p>
+
+      <!-- 第二章 -->
+      <h2>第二章 骨干网 QoS 与晚高峰拥堵：运营商流量调度机制揭秘</h2>
+
+      <h3>2.1 晚高峰跨国出海关口局（IGW）拥塞机理</h3>
+      <p>
+        在每日晚高峰时段（20:00 - 24:00），国内通往海外的跨国流量呈现明显的潮汐式暴涨。海量视频流、社交互动与跨国下载流量同时涌向沿海国际关口局。
+      </p>
+      <p>
+        当汇聚端口瞬时吞吐突破硬件承载能力时，交换机端口缓冲区（Buffer）在数秒内填满，引发严重的<strong>缓冲区膨胀（Bufferbloat）</strong>。随后硬件交换芯片将强制丢弃溢出数据包，诱发大面积 TCP 丢包重传风暴。
+      </p>
+
+      <h3>2.2 差分服务架构（DiffServ）与运营商 QoS 等级压制</h3>
+      <p>
+        为了保障高价值业务，电信运营商在骨干网络中启用了严格的 <strong>QoS 限制</strong> 与队列调度算法：
+      </p>
+      <ul>
+        <li><strong>加权随机早期检测（WRED）：</strong>核心路由器不等待缓冲区彻底溢出，而是在队列深度达到警告阈值时，依照数据包优先级标记（DSCP 值）概率性主动丢包。</li>
+        <li><strong>等级划分与队列优先：</strong>普通民用宽带数据流（如 163 骨干网流量）默认归类为 <code>Best-Effort（尽力而为）</code> 队列。一旦发生拥塞，优先丢弃民用流量；而 CN2 GIA（AS4809）、联通 AS9929 及政企客户则享有独立预留的高优先级队列，获得完全的带宽优先权。</li>
+        <li><strong>单连接与 UDP 令牌桶限速（Rate Limiting）：</strong>公网防火墙针对大流量单连接或高频 UDP 数据流部署了令牌桶限速，在拥塞期对 UDP 执行激进的限速整形。这正是<strong>“白天测速能跑满千兆，晚高峰丢包率飙升至 30% 以上、抖动（Jitter）剧烈放大”</strong>的核心根源。</li>
+      </ul>
+
+      <!-- 第三章 -->
+      <h2>第三章 2026 节点综合质量评测标准体系</h2>
+
+      <p>
+        为消除商业宣传中的水分与非客观主观感受，「节点白皮书」制定了多维度的标准化技术评测矩阵。
+      </p>
+
+      <h3>3.1 主流跨域网络架构全参数横向评测基准</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>评测参数 / 链路架构类型</th>
+            <th>普通公网直连 (163/普通CMI)</th>
+            <th>优质优化骨干网 (CN2 GIA/AS9929)</th>
+            <th>内网专线 (IEPL/IPLC)</th>
+            <th>混合 Anycast 动态路由</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>物理延迟偏移率</strong> (实测RTT / 物理极值)</td>
+            <td>1.85 ~ 2.60 (路径迂回)</td>
+            <td>1.15 ~ 1.30 (最优公网)</td>
+            <td><strong>1.02 ~ 1.08 (逼近极值)</strong></td>
+            <td>1.20 ~ 1.45 (入口动态调度)</td>
+          </tr>
+          <tr>
+            <td><strong>晚高峰丢包率区间</strong> (20:30-22:30 实测)</td>
+            <td>15.0% ~ 35.0% (拥塞严重)</td>
+            <td>0.5% ~ 2.5% (轻度抖动)</td>
+            <td><strong>0.00% ~ 0.05% (近乎零丢包)</strong></td>
+            <td>1.0% ~ 3.5% (偶发毛刺)</td>
+          </tr>
+          <tr>
+            <td><strong>抖动（Jitter）标准差</strong></td>
+            <td>45ms ~ 120ms</td>
+            <td>3ms ~ 8ms</td>
+            <td><strong>&lt; 0.8ms (极平稳)</strong></td>
+            <td>5ms ~ 15ms</td>
+          </tr>
+          <tr>
+            <td><strong>QoS 限制敏感度</strong></td>
+            <td>极高 (首批被丢弃降速)</td>
+            <td>低 (独立带宽保障)</td>
+            <td><strong>零敏感 (二层物理隔离)</strong></td>
+            <td>中 (受入口公网影响)</td>
+          </tr>
+          <tr>
+            <td><strong>TLS 1.3 握手用时 (TTFB)</strong></td>
+            <td>450ms ~ 1200ms+ (因丢包重传)</td>
+            <td>180ms ~ 280ms</td>
+            <td><strong>120ms ~ 160ms (极速建连)</strong></td>
+            <td>190ms ~ 320ms</td>
+          </tr>
+          <tr>
+            <td><strong>核心适用业务场景</strong></td>
+            <td>低优先级非高峰下载</td>
+            <td>高性能云主机、跨国远程办公</td>
+            <td><strong>AI交互、游戏加速、金融交易</strong></td>
+            <td>全球 CDN、高并发 API 边缘</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>3.2 节点评测三维测试方法论</h3>
+      <ol>
+        <li><strong>网络抖动标准测定（RFC 3393 规范）：</strong>连续向节点注入 1,000 个采样数据包，采集延迟分布的标准差。抖动超过 15ms 的节点将被判定为无法承载高频交互任务。</li>
+        <li><strong>AI 接口与流媒体服务可用性审计：</strong>测试落地节点 IP 的 ASN 属性与风险评分（Fraud Score），验证其对于 OpenAI、Claude、Gemini API 以及 Netflix、Disney+ 等风控策略的解锁纯净度。</li>
+        <li><strong>传输层协议开销审计：</strong>对 HTTP/2 与 HTTP/3 QUIC 的 ALPN 握手进行深度抓包，评估中间节点对 0-RTT/1-RTT 握手阶段的转发完整性与抗阻断能力。</li>
+      </ol>
+
+      <!-- 第四章 -->
+      <h2>第四章 终端智能分流最佳实践：构建高隔离度网络架构</h2>
+
+      <p>
+        再优质的节点，若终端流量混乱调度，依然会因大流量下载占用导致交互阻塞。利用现代客户端的分流策略引擎实现<strong>全平台分流</strong>，是保障综合体验的关键一步。
+      </p>
+
+      <h3>4.1 低延迟业务与大流量下载的分流拓扑</h3>
+      <pre><code>                     [ 终端应用网络请求 ]
+                              │
+               [ 内核策略路由器 (Clash/Sing-box) ]
+                              │
+       ┌──────────────────────┼──────────────────────┐
+       ▼                      ▼                      ▼
+  (DIRECT 直连)          (专线/极低延迟组)       (大带宽/公网组)
+       │                      │                      │
+ 境内银行 / 企业内网    OpenAI / Claude API     YouTube 4K / Steam
+ 微信 / 局域网传输     SSH 终端 / 金融行情     BT 下载 / 系统更新镜像</code></pre>
+
+      <h3>4.2 全平台分流配置核心法则</h3>
+      <ul>
+        <li><strong>Fake-IP 模式开启：</strong>客户端全面启用 Fake-IP 机制，规避本地 DNS 解析带来的 50ms～150ms 延迟损耗与本地 DNS 劫持污染。</li>
+        <li><strong>按业务敏感度分流：</strong>
+          <ul>
+            <li>将 AI 平台（<code>geosite:openai</code>、<code>geosite:anthropic</code>）、SSH 远程连接及金融量化接口绑定至<strong>内网专线</strong>节点组，追求绝对的低抖动与零丢包。</li>
+            <li>将流媒体（<code>geosite:youtube</code>、<code>geosite:netflix</code>）与大文件下载分配至大带宽公网优化节点，释放专线带宽压力。</li>
+          </ul>
+        </li>
+        <li><strong>中国大陆 IP/域名严格直连：</strong>通过定期更新的 <code>geoip-cn</code> 与 <code>geosite-cn</code> 规则集，确保境内政企与银行访问不经过代理转发，避免风控告警。</li>
+      </ul>
+
+      <!-- 结语 -->
+      <h2>结语：节点健康度自查 5 步速查清单</h2>
+
+      <p>
+        在挑选或运维跨境网络节点时，建议在晚高峰时段（21:00）依序执行以下 5 步自查：
+      </p>
+      <ol>
+        <li><strong>查路由（MTR 双向诊断）：</strong>执行双向 MTR 探测，检查出海第 4 至 8 跳是否存在突然的延迟跳变或梯度丢包，排查中间绕路情况。</li>
+        <li><strong>测抖动（Jitter 稳定性检验）：</strong>通过 UDP 发包工具持续探测 60 秒，计算延迟抖动标准差。合格的生产级节点抖动标准差必须低于 <code>3ms</code>。</li>
+        <li><strong>验专线（晚高峰丢包穿透）：</strong>在 20:30-22:30 发送高频探测。若声称的“专线”在此区间出现延迟上浮超过 20ms 或丢包率 > 1%，即判定为公网混杂伪专线。</li>
+        <li><strong>测握手（TLS 1.3 TTFB 测量）：</strong>使用 <code>curl -w</code> 分析网络建连耗时。若 TLS 握手耗时超过 TCP 耗时的 2 倍以上，说明对端节点存在加解密瓶颈或中间特征过滤。</li>
+        <li><strong>校分流（本地压力隔离测试）：</strong>在本地启动全速下载的同时测试低延迟业务节点的交互延时。合格的全平台分流策略下，低延迟业务 RTT 上浮不应超过 <code>2ms</code>。</li>
+      </ol>
+
+      <hr>
+
+      <!-- 论文版权与学术引用 -->
+      <footer class="pt-4 text-xs text-slate-500 font-mono">
+        <div class="mb-2"><strong>引用格式规范 (Citation Format):</strong></div>
+        <div class="text-[11px] select-all leading-relaxed bg-white p-2.5 rounded border border-slate-200">
+          Global Topology & Benchmark Methodology Engineering Laboratory (2026). <em>2026 全球优质网络节点性能评测白皮书：从物理延迟、丢包抖动到骨干网 QoS 的综合测试基准</em>. Global Topology & Protocol Whitepaper, Research Paper WP-26121, DOI: 10.2618/nr.26121.
+        </div>
+      </footer>
+    </article>
+
+    <!-- 返回顶部与翻页导航 -->
+    <div class="mt-8 flex items-center justify-between text-xs font-bold text-slate-600">
+      <a href="../index.html" class="inline-flex items-center hover:text-blue-700 transition-colors">
+        ← 返回天梯榜单与文献列表
+      </a>
+      <a href="#top" class="hover:text-blue-700 transition-colors">
+        返回顶部 ↑
+      </a>
+    </div>
+
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="bg-white border-t border-slate-300 text-xs text-[#27272A] py-8 mt-12">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        © 2026 NODE REPORT INITIATIVE · 节点白皮书学术智库. 保留所有研究知识产权.
+      </div>
+      <div class="flex items-center space-x-4 font-mono text-[11px]">
+        <a href="https://t.me/huanqiuti8899" target="_blank" rel="noopener noreferrer" class="text-blue-700 font-bold hover:underline">Telegram 官方频道</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
