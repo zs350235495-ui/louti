@@ -71,6 +71,11 @@
         candidate = params.get('post') || params.get('article') || params.get('id') || '';
       }
 
+      if (candidate.indexOf('tunnel-protocol-performance-benchmark-2026') !== -1 || candidate === 'wp-26122' || candidate === '26122') {
+        window.location.replace('/tunnel-protocol-performance-benchmark-2026.html');
+        return;
+      }
+
       var target = resolvePost(candidate);
       if (target) {
         // 匹配成功：立即原地跳转至对应真实物理文件
