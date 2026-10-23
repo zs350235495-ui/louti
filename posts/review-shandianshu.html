@@ -7,13 +7,16 @@
   <meta name="description" content="节点白皮书对闪电鼠 (ShanDianShu) 展开晚高峰深度实测。解构其全 IPLC 低抖动专线架构、±0.3ms 极低抖动控制、810Mbps 峰值带宽与 4K/AI 原生解封表现，附专属 7 折优惠码 sds88 与选型配置指南。">
   <meta name="keywords" content="闪电鼠, 闪电鼠测评, 闪电鼠评测, 闪电鼠官网, 闪电鼠优惠码, 低延迟机场, 游戏联机机场, 科学上网">
   <meta property="og:title" content="闪电鼠 (ShanDianShu) 2026 深度测评报告：极低抖动专线与电竞/流媒体实测">
+  <meta property="og:url" content="https://tizivpn.net/posts/review-shandianshu.html">
+  <meta property="og:image" content="https://tizivpn.net/assets/logo_globe_preview.jpg">
   <meta property="og:type" content="article">
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="canonical" href="https://tizivpn.net/posts/review-shandianshu.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/tailwind.min.css">
+  <link rel="preload" href="/css/tailwind.min.css" as="style">
+  <link rel="stylesheet" href="/css/tailwind.min.css">
   <style>
     svg { max-width: 100%; }
     body { background-color: #F8FAFC; color: #0F172A; }
@@ -30,12 +33,69 @@
     .prose td { border: 1px solid #E2E8F0; padding: 0.55rem 0.8rem; color: #334155; }
     .prose blockquote { border-left: 4px solid #2563EB; background: #EFF6FF; padding: 0.75rem 1rem; border-radius: 0 0.375rem 0.375rem 0; margin-bottom: 1.2rem; color: #1E3A8A; font-size: 0.88rem; }
   </style>
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="闪电鼠 (ShanDianShu) 2026 深度测评报告：极低抖动专线与电竞/流媒体实测 - 节点白皮书 · 学术智库">
+  <meta name="twitter:description" content="节点白皮书对闪电鼠 (ShanDianShu) 展开晚高峰深度实测。解构其全 IPLC 低抖动专线架构、±0.3ms 极低抖动控制、810Mbps 峰值带宽与 4K/AI 原生解封表现，附专属 7 折优惠码 sds88 与选型配置指南。">
+  <meta name="twitter:image" content="https://tizivpn.net/assets/logo_globe_preview.jpg">
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "headline": "闪电鼠 (ShanDianShu) 2026 深度测评报告：极低抖动专线与电竞/流媒体实测",
+        "description": "节点白皮书对闪电鼠 (ShanDianShu) 展开晚高峰深度实测。解构其全 IPLC 低抖动专线架构、±0.3ms 极低抖动控制、810Mbps 峰值带宽与 4K/AI 原生解封表现，附专属 7 折优惠码 sds88 与选型配置指南。",
+        "author": {
+          "@type": "Organization",
+          "name": "节点白皮书网络质量工程组",
+          "url": "https://tizivpn.net/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "NODE REPORT Research Group",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://tizivpn.net/logo.svg"
+          }
+        },
+        "datePublished": "2026-10-12",
+        "dateModified": "2026-10-23T23:00:00+08:00",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": "https://tizivpn.net/posts/review-shandianshu.html"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "首页",
+            "item": "https://tizivpn.net/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "实测档案库",
+            "item": "https://tizivpn.net/#view-reviews"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "闪电鼠 (ShanDianShu) 2026 深度测评报告：极低抖动专线与电竞/流媒体实测",
+            "item": "https://tizivpn.net/posts/review-shandianshu.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body id="top" class="min-h-screen flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
 
   <header class="sticky top-0 z-50 backdrop-blur-md bg-white/90 border-b border-slate-300 shadow-sm">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-      <a href="../index.html#view-reviews" class="flex items-center space-x-2.5 text-[#0F172A] hover:text-blue-700 transition-colors text-xs sm:text-sm font-bold group">
+      <a href="/#view-reviews" class="flex items-center space-x-2.5 text-[#0F172A] hover:text-blue-700 transition-colors text-xs sm:text-sm font-bold group">
         <svg class="w-4 h-4 text-slate-500 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
         <span>返回实测档案库 · 评测总榜</span>
       </a>
@@ -48,9 +108,9 @@
   <main class="flex-grow max-w-5xl mx-auto px-4 sm:px-6 py-10 w-full">
     
     <nav class="text-xs font-mono text-slate-500 mb-6 flex items-center space-x-2">
-      <a href="../index.html">首页</a>
+      <a href="/">首页</a>
       <span>/</span>
-      <a href="../index.html#view-reviews">实测档案库</a>
+      <a href="/#view-reviews">实测档案库</a>
       <span>/</span>
       <span class="text-[#09090B] font-bold">闪电鼠 (ShanDianShu)</span>
     </nav>
@@ -104,7 +164,7 @@
           结账输入优惠码 <code class="text-blue-700 font-bold bg-white border border-slate-300 px-1.5 py-0.5 rounded">sds88</code> 立减 30%。
         </div>
         <div>
-          <a href="https://123sdsp.shandianshuaff.com/#/?code=yM1jFw1D" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg text-xs font-bold text-white bg-[#0F172A] hover:bg-black transition-all shadow-sm">
+          <a href="/posts/review-huanqiuti.html" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg text-xs font-bold text-white bg-[#0F172A] hover:bg-black transition-all shadow-sm">
             访问闪电鼠官网直达 ↗
           </a>
         </div>
@@ -165,7 +225,7 @@
         <p class="text-xs text-slate-600 mt-1 font-medium">使用专属优惠码 <code class="text-blue-700 font-bold bg-slate-100 px-1.5 py-0.5 rounded">sds88</code>，体验稳定平滑跨境连接。</p>
       </div>
       <div>
-        <a href="https://123sdsp.shandianshuaff.com/#/?code=yM1jFw1D" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-lg text-xs font-bold text-white bg-[#0F172A] hover:bg-black transition-all shadow-sm">
+        <a href="/posts/review-huanqiuti.html" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-lg text-xs font-bold text-white bg-[#0F172A] hover:bg-black transition-all shadow-sm">
           直达闪电鼠官网 ↗
         </a>
       </div>

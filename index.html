@@ -6,6 +6,7 @@
   
   <!-- SEO & 元数据规范 -->
   <title>节点白皮书 - 全球网络拓扑与网络协议年度评测基准</title>
+  <link rel="canonical" href="https://tizivpn.net/">
   <meta name="description" content="节点白皮书致力于全球网络拓扑观测与链路抗拥塞分析，提供透明客观的晚高峰节点性能评测天梯榜、专线丢包基准与网络协议深度测评。">
   <meta name="keywords" content="节点白皮书, 机场评测天梯, 跑路机场黑名单, 晚高峰测速, IPLC专线, IEPL, 网络拓扑准则, 双软路由, DNS防污染, 失联预警">
   <meta name="author" content="NODE REPORT Research Group">
@@ -14,7 +15,13 @@
   <meta property="og:title" content="节点白皮书 - 全球网络拓扑与网络协议年度评测基准">
   <meta property="og:description" content="系统性拆解晚高峰骨干链路抗拥塞能力，消除营销虚标，提供高对比透明可复现的网络延迟基准与跑路机场黑名单预警。">
   <meta property="og:type" content="website">
-  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <meta property="og:url" content="https://tizivpn.net/">
+  <meta property="og:image" content="https://tizivpn.net/assets/logo_globe_preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="节点白皮书 - 全球网络拓扑与网络协议年度评测基准">
+  <meta name="twitter:description" content="系统性拆解晚高峰骨干链路抗拥塞能力，消除营销虚标，提供高对比透明可复现的网络延迟基准与跑路机场黑名单预警。">
+  <meta name="twitter:image" content="https://tizivpn.net/assets/logo_globe_preview.jpg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
   <!-- Google Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +29,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- 本地预编译极速原子化 CSS（杜绝 CDN 阻塞与 FOUC 样式塌陷） -->
-  <link rel="stylesheet" href="./css/tailwind.min.css">
+  <link rel="preload" href="/css/tailwind.min.css" as="style">
+  <link rel="stylesheet" href="/css/tailwind.min.css">
 
   <style>
     /* 核心兜底防御重置：绝对杜绝任何极端弱网状况下的 SVG 爆炸与排版塌陷 */
@@ -58,6 +66,78 @@
       background: #64748B;
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://tizivpn.net/#website",
+        "url": "https://tizivpn.net/",
+        "name": "节点白皮书",
+        "alternateName": "NODE REPORT · 全球网络拓扑与网络协议年度评测基准",
+        "description": "专注于全球跨境网络通信质量、协议效能与拓扑架构观测的独立技术基准与学术智库",
+        "inLanguage": "zh-CN",
+        "publisher": {
+          "@id": "https://tizivpn.net/#organization"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://tizivpn.net/#organization",
+        "name": "NODE REPORT Research Group (节点白皮书研究组)",
+        "url": "https://tizivpn.net/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://tizivpn.net/logo.svg"
+        },
+        "sameAs": [
+          "https://github.com/zs350235495-ui/tiziVPN"
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://tizivpn.net/#lead-researcher",
+        "name": "网络工程技术巡检员",
+        "jobTitle": "Lead Network Measurement Engineer",
+        "worksFor": {
+          "@id": "https://tizivpn.net/#organization"
+        },
+        "description": "负责全球骨干网丢包率、大圆距离时延偏离度及晚高峰 QoS 抗拥塞测试基准的自动化探针监控与实测评定"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://tizivpn.net/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "为什么单次 Speedtest 测速跑满千兆不代表晚高峰网络不卡顿？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "常规多线程测速依赖突发令牌桶分配与缓冲区膨胀，掩盖了抖动与连续丢包。实际通信如流媒体与 SSH 对 99 分位抖动和持续丢包极度敏感，晚高峰丢包超过 0.5% 即会导致 TCP 频繁超时回退。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "IPLC/IEPL 内网专线与普通公网中转的核心技术差异是什么？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "IPLC/IEPL 走物理点对点内网二层/三层隔离通道，完全不经过公网跨境防火墙与国际出口拥堵节点，具备固定的物理光纤延迟、0 丢包 SLA 履约与免受公网 QoS 限速的确定性优势。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "如何通过网络拓扑与 DNS 架构防范 DNS 投毒与连接中断？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "采用主路由 iKuai 负责流控、旁路由运行 Sing-box / Clash 并结合 MosDNS 分流，境外域名通过 DoH/DoT 走代理通道解析，配合 Fake-IP 模式规避本地污染并消除远程解析延迟。"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="min-h-screen flex flex-col font-sans relative selection:bg-sky-200 selection:text-slate-900">
 
@@ -141,12 +221,16 @@
           v2.4 (2026 Q4 Issue)
         </span>
         
-        <a href="https://t.me/huanqiuti8899" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-3 py-1.5 text-xs font-bold text-[#0F172A] bg-white border border-slate-300 rounded-lg shadow-sm hover:border-slate-500 hover:text-blue-700 hover:bg-slate-50 transition-all duration-150 cursor-pointer">
-          <svg class="w-3.5 h-3.5 mr-1.5 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.37.74-.56 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
-          </svg>
-          Telegram 频道
-        </a>
+        <a 
+              href="/posts/2026-airport-node-recommendation-selection-guide.html" 
+              class="inline-flex items-center px-3.5 py-2 rounded-lg bg-[#0F172A] hover:bg-black text-white text-xs font-bold transition-all shadow-sm group active:scale-95 cursor-pointer"
+              title="查阅 2026 年度技术选型与避坑全景指南"
+            >
+              <svg class="w-4 h-4 mr-1.5 text-sky-400 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+              <span>查阅 2026 年度技术选型白皮书</span>
+            </a>
       </div>
 
     </div>
@@ -209,7 +293,7 @@
           <span>独立非盈利网络评测项目 · 2026 年度报告公开版</span>
         </div>
 
-        <!-- 核心主标题 (全页面唯一 <h1> · 纯黑压阵) -->
+        <!-- 核心主标题 (全页面唯一 H1 · 纯黑压阵) -->
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-extrabold tracking-tight text-[#09090B] leading-[1.18] mb-5">
           全球节点拓扑与网络协议年度白皮书
         </h1>
@@ -309,7 +393,7 @@
                   </td>
                   <td class="py-4 px-4">
                     <div class="flex flex-wrap items-center gap-2">
-                      <a href="./posts/review-huanqiuti.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                      <a href="/posts/review-huanqiuti.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                         <span>环球梯</span>
                         <span class="text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 rounded px-1.5 py-0.2 group-hover:bg-blue-600 group-hover:text-white transition-all">测评 📖</span>
                       </a>
@@ -359,20 +443,20 @@
                   <td class="py-4 px-4 sm:px-6 text-right">
                     <div class="flex items-center justify-end space-x-1.5">
                       <a 
-                        href="./posts/review-huanqiuti.html" 
+                        href="/posts/review-huanqiuti.html" 
                         class="px-2.5 py-2 rounded-lg text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-300 transition-all inline-flex items-center gap-1 active:scale-95 cursor-pointer"
                         title="阅读环球梯深度技术测评"
                       >
                         <span>测评 📖</span>
                       </a>
                       <a 
-                        href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" 
+                        href="/posts/review-huanqiuti.html" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-[#0F172A] hover:bg-black border border-black shadow-sm transition-all group active:scale-95 cursor-pointer"
-                        title="直达环球梯官方注册与订阅"
+                        title="阅读环球梯深度技术评测报告"
                       >
-                        <span>直达官网</span>
+                        <span>查看测评</span>
                         <svg class="w-3.5 h-3.5 ml-1 text-sky-400 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                       </a>
                     </div>
@@ -389,7 +473,7 @@
                   </td>
                   <td class="py-4 px-4">
                     <div class="flex flex-wrap items-center gap-2">
-                      <a href="./posts/review-dalaoyun.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                      <a href="/posts/review-dalaoyun.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                         <span>大佬云</span>
                         <span class="text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 rounded px-1.5 py-0.2 group-hover:bg-blue-600 group-hover:text-white transition-all">测评 📖</span>
                       </a>
@@ -439,20 +523,20 @@
                   <td class="py-4 px-4 sm:px-6 text-right">
                     <div class="flex items-center justify-end space-x-1.5">
                       <a 
-                        href="./posts/review-dalaoyun.html" 
+                        href="/posts/review-dalaoyun.html" 
                         class="px-2.5 py-2 rounded-lg text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-300 transition-all inline-flex items-center gap-1 active:scale-95 cursor-pointer"
                         title="阅读大佬云深度技术测评"
                       >
                         <span>测评 📖</span>
                       </a>
                       <a 
-                        href="https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa" 
+                        href="/posts/review-dalaoyun.html" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-[#0F172A] hover:bg-black border border-black shadow-sm transition-all group active:scale-95 cursor-pointer"
-                        title="直达大佬云官方注册与订阅"
+                        title="阅读大佬云深度技术评测报告"
                       >
-                        <span>直达官网</span>
+                        <span>查看测评</span>
                         <svg class="w-3.5 h-3.5 ml-1 text-sky-400 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                       </a>
                     </div>
@@ -469,7 +553,7 @@
                   </td>
                   <td class="py-4 px-4">
                     <div class="flex flex-wrap items-center gap-2">
-                      <a href="./posts/review-shandianshu.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                      <a href="/posts/review-shandianshu.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                         <span>闪电鼠</span>
                         <span class="text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 rounded px-1.5 py-0.2 group-hover:bg-blue-600 group-hover:text-white transition-all">测评 📖</span>
                       </a>
@@ -519,20 +603,20 @@
                   <td class="py-4 px-4 sm:px-6 text-right">
                     <div class="flex items-center justify-end space-x-1.5">
                       <a 
-                        href="./posts/review-shandianshu.html" 
+                        href="/posts/review-shandianshu.html" 
                         class="px-2.5 py-2 rounded-lg text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-300 transition-all inline-flex items-center gap-1 active:scale-95 cursor-pointer"
                         title="阅读闪电鼠深度技术测评"
                       >
                         <span>测评 📖</span>
                       </a>
                       <a 
-                        href="https://ppsvip01.shandianshuaff.com/#/?code=QbLF8tjB" 
+                        href="/posts/review-shandianshu.html" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-[#0F172A] hover:bg-black border border-black shadow-sm transition-all group active:scale-95 cursor-pointer"
-                        title="直达闪电鼠官方注册与订阅"
+                        title="阅读闪电鼠深度技术评测报告"
                       >
-                        <span>直达官网</span>
+                        <span>查看测评</span>
                         <svg class="w-3.5 h-3.5 ml-1 text-sky-400 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                       </a>
                     </div>
@@ -549,7 +633,7 @@
                   </td>
                   <td class="py-4 px-4">
                     <div class="flex flex-wrap items-center gap-2">
-                      <a href="./posts/review-yunjiexian.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                      <a href="/posts/review-yunjiexian.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                         <span>云界线</span>
                         <span class="text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 rounded px-1.5 py-0.2 group-hover:bg-blue-600 group-hover:text-white transition-all">测评 📖</span>
                       </a>
@@ -599,20 +683,20 @@
                   <td class="py-4 px-4 sm:px-6 text-right">
                     <div class="flex items-center justify-end space-x-1.5">
                       <a 
-                        href="./posts/review-yunjiexian.html" 
+                        href="/posts/review-yunjiexian.html" 
                         class="px-2.5 py-2 rounded-lg text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-300 transition-all inline-flex items-center gap-1 active:scale-95 cursor-pointer"
                         title="阅读云界线深度技术测评"
                       >
                         <span>测评 📖</span>
                       </a>
                       <a 
-                        href="https://pp01.yunjiexianaff.com/#/?code=bp0ZSKBV" 
+                        href="/posts/review-yunjiexian.html" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-[#0F172A] hover:bg-black border border-black shadow-sm transition-all group active:scale-95 cursor-pointer"
-                        title="直达云界线官方注册与订阅"
+                        title="阅读云界线深度技术评测报告"
                       >
-                        <span>直达官网</span>
+                        <span>查看测评</span>
                         <svg class="w-3.5 h-3.5 ml-1 text-sky-400 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                       </a>
                     </div>
@@ -628,7 +712,7 @@
                   </td>
                   <td class="py-4 px-4">
                     <div class="flex flex-wrap items-center gap-2">
-                      <a href="./posts/review-shenxing.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                      <a href="/posts/review-shenxing.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                         <span>神行加速</span>
                         <span class="text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 rounded px-1.5 py-0.2 group-hover:bg-blue-600 group-hover:text-white transition-all">测评 📖</span>
                       </a>
@@ -678,20 +762,20 @@
                   <td class="py-4 px-4 sm:px-6 text-right">
                     <div class="flex items-center justify-end space-x-1.5">
                       <a 
-                        href="./posts/review-shenxing.html" 
+                        href="/posts/review-shenxing.html" 
                         class="px-2.5 py-2 rounded-lg text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-300 transition-all inline-flex items-center gap-1 active:scale-95 cursor-pointer"
                         title="阅读神行加速深度技术测评"
                       >
                         <span>测评 📖</span>
                       </a>
                       <a 
-                        href="https://pps123.shenxingaff.com/#/?code=6tQ7zHUc" 
+                        href="/posts/review-shenxing.html" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-[#0F172A] hover:bg-black border border-black shadow-sm transition-all group active:scale-95 cursor-pointer"
-                        title="直达神行加速官方注册与订阅"
+                        title="阅读神行加速深度技术评测报告"
                       >
-                        <span>直达官网</span>
+                        <span>查看测评</span>
                         <svg class="w-3.5 h-3.5 ml-1 text-sky-400 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                       </a>
                     </div>
@@ -708,7 +792,7 @@
                   </td>
                   <td class="py-4 px-4">
                     <div class="flex flex-wrap items-center gap-2">
-                      <a href="./posts/review-liulianyun.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                      <a href="/posts/review-liulianyun.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                         <span>榴莲云</span>
                         <span class="text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 rounded px-1.5 py-0.2 group-hover:bg-blue-600 group-hover:text-white transition-all">测评 📖</span>
                       </a>
@@ -758,20 +842,20 @@
                   <td class="py-4 px-4 sm:px-6 text-right">
                     <div class="flex items-center justify-end space-x-1.5">
                       <a 
-                        href="./posts/review-liulianyun.html" 
+                        href="/posts/review-liulianyun.html" 
                         class="px-2.5 py-2 rounded-lg text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-300 transition-all inline-flex items-center gap-1 active:scale-95 cursor-pointer"
                         title="阅读榴莲云深度技术测评"
                       >
                         <span>测评 📖</span>
                       </a>
                       <a 
-                        href="https://123pp01.liulianyunaff.com/#/?code=MsZP3u7G" 
+                        href="/posts/review-liulianyun.html" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-[#0F172A] hover:bg-black border border-black shadow-sm transition-all group active:scale-95 cursor-pointer"
-                        title="直达榴莲云官方注册与订阅"
+                        title="阅读榴莲云深度技术评测报告"
                       >
-                        <span>直达官网</span>
+                        <span>查看测评</span>
                         <svg class="w-3.5 h-3.5 ml-1 text-sky-400 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                       </a>
                     </div>
@@ -788,7 +872,7 @@
                   </td>
                   <td class="py-4 px-4">
                     <div class="flex flex-wrap items-center gap-2">
-                      <a href="./posts/review-jilianyun.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                      <a href="/posts/review-jilianyun.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                         <span>极连云</span>
                         <span class="text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 rounded px-1.5 py-0.2 group-hover:bg-blue-600 group-hover:text-white transition-all">测评 📖</span>
                       </a>
@@ -838,20 +922,20 @@
                   <td class="py-4 px-4 sm:px-6 text-right">
                     <div class="flex items-center justify-end space-x-1.5">
                       <a 
-                        href="./posts/review-jilianyun.html" 
+                        href="/posts/review-jilianyun.html" 
                         class="px-2.5 py-2 rounded-lg text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-300 transition-all inline-flex items-center gap-1 active:scale-95 cursor-pointer"
                         title="阅读极连云深度技术测评"
                       >
                         <span>测评 📖</span>
                       </a>
                       <a 
-                        href="https://haozevpn.jlyvipaff.com/#/?code=jwCMOvQO" 
+                        href="/posts/review-jilianyun.html" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-[#0F172A] hover:bg-black border border-black shadow-sm transition-all group active:scale-95 cursor-pointer"
-                        title="直达极连云官方注册与订阅"
+                        title="阅读极连云深度技术评测报告"
                       >
-                        <span>直达官网</span>
+                        <span>查看测评</span>
                         <svg class="w-3.5 h-3.5 ml-1 text-sky-400 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                       </a>
                     </div>
@@ -867,7 +951,7 @@
                   </td>
                   <td class="py-4 px-4">
                     <div class="flex flex-wrap items-center gap-2">
-                      <a href="./posts/2026-airport-node-recommendation-selection-guide.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                      <a href="/posts/2026-airport-node-recommendation-selection-guide.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                         <span>云图机场</span>
                         <span class="text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 rounded px-1.5 py-0.2 group-hover:bg-blue-600 group-hover:text-white transition-all">评测 📖</span>
                       </a>
@@ -917,20 +1001,20 @@
                   <td class="py-4 px-4 sm:px-6 text-right">
                     <div class="flex items-center justify-end space-x-1.5">
                       <a 
-                        href="./posts/2026-airport-node-recommendation-selection-guide.html" 
+                        href="/posts/2026-airport-node-recommendation-selection-guide.html" 
                         class="px-2.5 py-2 rounded-lg text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-300 transition-all inline-flex items-center gap-1 active:scale-95 cursor-pointer"
                         title="阅读云图机场与专线评测"
                       >
                         <span>评测 📖</span>
                       </a>
                       <a 
-                        href="https://super.ytjcok.org/#/register?code=poKwFVtv" 
+                        href="/posts/2026-airport-node-recommendation-selection-guide.html" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-[#0F172A] hover:bg-black border border-black shadow-sm transition-all group active:scale-95 cursor-pointer"
-                        title="直达云图机场官方注册与订阅"
+                        title="阅读云图机场深度技术评测报告"
                       >
-                        <span>直达官网</span>
+                        <span>查看测评</span>
                         <svg class="w-3.5 h-3.5 ml-1 text-sky-400 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                       </a>
                     </div>
@@ -947,7 +1031,7 @@
                   </td>
                   <td class="py-4 px-4">
                     <div class="flex flex-wrap items-center gap-2">
-                      <a href="./posts/review-guangnianti.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                      <a href="/posts/review-guangnianti.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                         <span>光年梯</span>
                         <span class="text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 rounded px-1.5 py-0.2 group-hover:bg-blue-600 group-hover:text-white transition-all">测评 📖</span>
                       </a>
@@ -997,20 +1081,20 @@
                   <td class="py-4 px-4 sm:px-6 text-right">
                     <div class="flex items-center justify-end space-x-1.5">
                       <a 
-                        href="./posts/review-guangnianti.html" 
+                        href="/posts/review-guangnianti.html" 
                         class="px-2.5 py-2 rounded-lg text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-300 transition-all inline-flex items-center gap-1 active:scale-95 cursor-pointer"
                         title="阅读光年梯深度技术测评"
                       >
                         <span>测评 📖</span>
                       </a>
                       <a 
-                        href="https://gnt001.gntvipaff.cc/#/?code=PQhPFDhO" 
+                        href="/posts/review-guangnianti.html" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-[#0F172A] hover:bg-black border border-black shadow-sm transition-all group active:scale-95 cursor-pointer"
-                        title="直达光年梯官方注册与订阅"
+                        title="阅读光年梯深度技术评测报告"
                       >
-                        <span>直达官网</span>
+                        <span>查看测评</span>
                         <svg class="w-3.5 h-3.5 ml-1 text-sky-400 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                       </a>
                     </div>
@@ -1027,7 +1111,7 @@
                   </td>
                   <td class="py-4 px-4">
                     <div class="flex flex-wrap items-center gap-2">
-                      <a href="./posts/2026-airport-node-recommendation-selection-guide.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                      <a href="/posts/2026-airport-node-recommendation-selection-guide.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                         <span>鲲鹏加速</span>
                         <span class="text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 rounded px-1.5 py-0.2 group-hover:bg-blue-600 group-hover:text-white transition-all">测评 📖</span>
                       </a>
@@ -1076,20 +1160,20 @@
                   <td class="py-4 px-4 sm:px-6 text-right">
                     <div class="flex items-center justify-end space-x-1.5">
                       <a 
-                        href="./posts/2026-airport-node-recommendation-selection-guide.html" 
+                        href="/posts/2026-airport-node-recommendation-selection-guide.html" 
                         class="px-2.5 py-2 rounded-lg text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-300 transition-all inline-flex items-center gap-1 active:scale-95 cursor-pointer"
                         title="阅读鲲鹏加速与节点选型技术测评"
                       >
                         <span>测评 📖</span>
                       </a>
                       <a 
-                        href="https://kunpengjiasu.com/#/register?code=WPugVZUE" 
+                        href="/posts/2026-airport-node-recommendation-selection-guide.html" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-[#0F172A] hover:bg-black border border-black shadow-sm transition-all group active:scale-95 cursor-pointer"
-                        title="直达鲲鹏加速官方注册与订阅"
+                        title="阅读鲲鹏加速深度技术评测报告"
                       >
-                        <span>直达官网</span>
+                        <span>查看测评</span>
                         <svg class="w-3.5 h-3.5 ml-1 text-sky-400 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                       </a>
                     </div>
@@ -1106,7 +1190,7 @@
                   </td>
                   <td class="py-4 px-4">
                     <div class="flex flex-wrap items-center gap-2">
-                      <a href="./posts/2026-airport-node-recommendation-selection-guide.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                      <a href="/posts/2026-airport-node-recommendation-selection-guide.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                         <span>可信云</span>
                         <span class="text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 rounded px-1.5 py-0.2 group-hover:bg-blue-600 group-hover:text-white transition-all">测评 📖</span>
                       </a>
@@ -1155,20 +1239,20 @@
                   <td class="py-4 px-4 sm:px-6 text-right">
                     <div class="flex items-center justify-end space-x-1.5">
                       <a 
-                        href="./posts/2026-airport-node-recommendation-selection-guide.html" 
+                        href="/posts/2026-airport-node-recommendation-selection-guide.html" 
                         class="px-2.5 py-2 rounded-lg text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-300 transition-all inline-flex items-center gap-1 active:scale-95 cursor-pointer"
                         title="阅读可信云与节点选型技术测评"
                       >
                         <span>测评 📖</span>
                       </a>
                       <a 
-                        href="https://everett7623.kosingaff.com/#/?code=sFKkfeYs" 
+                        href="/posts/2026-airport-node-recommendation-selection-guide.html" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-[#0F172A] hover:bg-black border border-black shadow-sm transition-all group active:scale-95 cursor-pointer"
-                        title="直达可信云官方注册与订阅"
+                        title="阅读可信云深度技术评测报告"
                       >
-                        <span>直达官网</span>
+                        <span>查看测评</span>
                         <svg class="w-3.5 h-3.5 ml-1 text-sky-400 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                       </a>
                     </div>
@@ -1185,7 +1269,7 @@
                   </td>
                   <td class="py-4 px-4">
                     <div class="flex flex-wrap items-center gap-2">
-                      <a href="./posts/review-shunyun.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                      <a href="/posts/review-shunyun.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                         <span>瞬云</span>
                         <span class="text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 rounded px-1.5 py-0.2 group-hover:bg-blue-600 group-hover:text-white transition-all">测评 📖</span>
                       </a>
@@ -1234,20 +1318,20 @@
                   <td class="py-4 px-4 sm:px-6 text-right">
                     <div class="flex items-center justify-end space-x-1.5">
                       <a 
-                        href="./posts/review-shunyun.html" 
+                        href="/posts/review-shunyun.html" 
                         class="px-2.5 py-2 rounded-lg text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-300 transition-all inline-flex items-center gap-1 active:scale-95 cursor-pointer"
                         title="阅读瞬云深度技术测评"
                       >
                         <span>测评 📖</span>
                       </a>
                       <a 
-                        href="https://ddd.jichang.best/#/register?code=nldUZaYc" 
+                        href="/posts/review-shunyun.html" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-[#0F172A] hover:bg-black border border-black shadow-sm transition-all group active:scale-95 cursor-pointer"
-                        title="直达瞬云官方注册与订阅"
+                        title="阅读瞬云深度技术评测报告"
                       >
-                        <span>直达官网</span>
+                        <span>查看测评</span>
                         <svg class="w-3.5 h-3.5 ml-1 text-sky-400 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                       </a>
                     </div>
@@ -1264,7 +1348,7 @@
                   </td>
                   <td class="py-4 px-4">
                     <div class="flex flex-wrap items-center gap-2">
-                      <a href="./posts/2026-airport-node-recommendation-selection-guide.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                      <a href="/posts/2026-airport-node-recommendation-selection-guide.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                         <span>速界</span>
                         <span class="text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 rounded px-1.5 py-0.2 group-hover:bg-blue-600 group-hover:text-white transition-all">测评 📖</span>
                       </a>
@@ -1313,20 +1397,20 @@
                   <td class="py-4 px-4 sm:px-6 text-right">
                     <div class="flex items-center justify-end space-x-1.5">
                       <a 
-                        href="./posts/2026-airport-node-recommendation-selection-guide.html" 
+                        href="/posts/2026-airport-node-recommendation-selection-guide.html" 
                         class="px-2.5 py-2 rounded-lg text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-300 transition-all inline-flex items-center gap-1 active:scale-95 cursor-pointer"
                         title="阅读速界与节点选型技术测评"
                       >
                         <span>测评 📖</span>
                       </a>
                       <a 
-                        href="https://pygllc.speedworldaff.cc/#/?code=kcoensXG" 
+                        href="/posts/2026-airport-node-recommendation-selection-guide.html" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-[#0F172A] hover:bg-black border border-black shadow-sm transition-all group active:scale-95 cursor-pointer"
-                        title="直达速界官方注册与订阅"
+                        title="阅读速界深度技术评测报告"
                       >
-                        <span>直达官网</span>
+                        <span>查看测评</span>
                         <svg class="w-3.5 h-3.5 ml-1 text-sky-400 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                       </a>
                     </div>
@@ -1343,7 +1427,7 @@
                   </td>
                   <td class="py-4 px-4">
                     <div class="flex flex-wrap items-center gap-2">
-                      <a href="./posts/2026-airport-node-recommendation-selection-guide.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                      <a href="/posts/2026-airport-node-recommendation-selection-guide.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                         <span>快狸快狸</span>
                         <span class="text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 rounded px-1.5 py-0.2 group-hover:bg-blue-600 group-hover:text-white transition-all">测评 📖</span>
                       </a>
@@ -1392,20 +1476,20 @@
                   <td class="py-4 px-4 sm:px-6 text-right">
                     <div class="flex items-center justify-end space-x-1.5">
                       <a 
-                        href="./posts/2026-airport-node-recommendation-selection-guide.html" 
+                        href="/posts/2026-airport-node-recommendation-selection-guide.html" 
                         class="px-2.5 py-2 rounded-lg text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-300 transition-all inline-flex items-center gap-1 active:scale-95 cursor-pointer"
                         title="阅读快狸快狸与节点选型技术测评"
                       >
                         <span>测评 📖</span>
                       </a>
                       <a 
-                        href="https://fanxiaobin.kuailiaff.com/#/?code=e0cAmK7F" 
+                        href="/posts/2026-airport-node-recommendation-selection-guide.html" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-[#0F172A] hover:bg-black border border-black shadow-sm transition-all group active:scale-95 cursor-pointer"
-                        title="直达快狸快狸官方注册与订阅"
+                        title="阅读快狸快狸深度技术评测报告"
                       >
-                        <span>直达官网</span>
+                        <span>查看测评</span>
                         <svg class="w-3.5 h-3.5 ml-1 text-sky-400 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                       </a>
                     </div>
@@ -1422,7 +1506,7 @@
                   </td>
                   <td class="py-4 px-4">
                     <div class="flex flex-wrap items-center gap-2">
-                      <a href="./posts/review-edgenode.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                      <a href="/posts/review-edgenode.html" class="text-[16px] font-extrabold text-[#09090B] hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                         <span>边缘节点</span>
                         <span class="text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 rounded px-1.5 py-0.2 group-hover:bg-blue-600 group-hover:text-white transition-all">测评 📖</span>
                       </a>
@@ -1471,20 +1555,20 @@
                   <td class="py-4 px-4 sm:px-6 text-right">
                     <div class="flex items-center justify-end space-x-1.5">
                       <a 
-                        href="./posts/review-edgenode.html" 
+                        href="/posts/review-edgenode.html" 
                         class="px-2.5 py-2 rounded-lg text-xs font-bold text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-300 transition-all inline-flex items-center gap-1 active:scale-95 cursor-pointer"
                         title="阅读边缘节点深度技术测评"
                       >
                         <span>测评 📖</span>
                       </a>
                       <a 
-                        href="https://wep.edgenovaaff.com/#/?code=mLLL6h6F" 
+                        href="/posts/review-edgenode.html" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-[#0F172A] hover:bg-black border border-black shadow-sm transition-all group active:scale-95 cursor-pointer"
-                        title="直达边缘节点官方注册与订阅"
+                        title="阅读边缘节点深度技术评测报告"
                       >
-                        <span>直达官网</span>
+                        <span>查看测评</span>
                         <svg class="w-3.5 h-3.5 ml-1 text-sky-400 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                       </a>
                     </div>
@@ -1591,7 +1675,7 @@
               <div class="flex items-start justify-between mb-3">
                 <div>
                   <h3 class="text-xl font-extrabold text-[#09090B] tracking-tight">
-                    <a href="./posts/review-huanqiuti.html" class="hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                    <a href="/posts/review-huanqiuti.html" class="hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                       <span>环球梯 (HuanQiuTi)</span>
                       <svg class="w-4 h-4 text-blue-600 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     </a>
@@ -1642,7 +1726,7 @@
             <div class="pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2.5">
               <div class="flex items-center gap-2">
                 <a 
-                  href="./posts/review-huanqiuti.html" 
+                  href="/posts/review-huanqiuti.html" 
                   class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-sm group active:scale-95"
                 >
                   <span>阅读深度测评报告 📖</span>
@@ -1660,12 +1744,12 @@
               </div>
 
               <a 
-                href="https://123pps01.huanqiutiaff.com/#/?code=j5VBUvw0" 
+                href="/posts/review-huanqiuti.html" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 class="inline-flex items-center px-3 py-2 rounded-lg text-xs font-bold text-[#0F172A] hover:text-blue-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-all cursor-pointer"
               >
-                <span>直达官网 ↗</span>
+                <span>测评档案 ↗</span>
               </a>
             </div>
           </article>
@@ -1686,7 +1770,7 @@
               <div class="flex items-start justify-between mb-3">
                 <div>
                   <h3 class="text-xl font-extrabold text-[#09090B] tracking-tight">
-                    <a href="./posts/review-dalaoyun.html" class="hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                    <a href="/posts/review-dalaoyun.html" class="hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                       <span>大佬云 (DaLaoYun)</span>
                       <svg class="w-4 h-4 text-blue-600 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     </a>
@@ -1735,7 +1819,7 @@
             <div class="pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2.5">
               <div class="flex items-center gap-2">
                 <a 
-                  href="./posts/review-dalaoyun.html" 
+                  href="/posts/review-dalaoyun.html" 
                   class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-sm group active:scale-95"
                 >
                   <span>阅读深度测评报告 📖</span>
@@ -1752,12 +1836,12 @@
               </div>
 
               <a 
-                href="https://ppsvip01.dalaoyunaff.com/#/?code=Iz1GlCVa" 
+                href="/posts/review-dalaoyun.html" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 class="inline-flex items-center px-3 py-2 rounded-lg text-xs font-bold text-[#0F172A] hover:text-blue-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-all cursor-pointer"
               >
-                <span>直达官网 ↗</span>
+                <span>测评档案 ↗</span>
               </a>
             </div>
           </article>
@@ -1778,7 +1862,7 @@
               <div class="flex items-start justify-between mb-3">
                 <div>
                   <h3 class="text-xl font-extrabold text-[#09090B] tracking-tight">
-                    <a href="./posts/review-shandianshu.html" class="hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                    <a href="/posts/review-shandianshu.html" class="hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                       <span>闪电鼠 (ShanDianShu)</span>
                       <svg class="w-4 h-4 text-blue-600 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     </a>
@@ -1826,7 +1910,7 @@
             <div class="pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2.5">
               <div class="flex items-center gap-2">
                 <a 
-                  href="./posts/review-shandianshu.html" 
+                  href="/posts/review-shandianshu.html" 
                   class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-sm group active:scale-95"
                 >
                   <span>阅读深度测评报告 📖</span>
@@ -1843,12 +1927,12 @@
               </div>
 
               <a 
-                href="https://123sdsp.shandianshuaff.com/#/?code=yM1jFw1D" 
+                href="/posts/review-shandianshu.html" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 class="inline-flex items-center px-3 py-2 rounded-lg text-xs font-bold text-[#0F172A] hover:text-blue-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-all cursor-pointer"
               >
-                <span>直达官网 ↗</span>
+                <span>测评档案 ↗</span>
               </a>
             </div>
           </article>
@@ -1869,7 +1953,7 @@
               <div class="flex items-start justify-between mb-3">
                 <div>
                   <h3 class="text-xl font-extrabold text-[#09090B] tracking-tight">
-                    <a href="./posts/review-yunjiexian.html" class="hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                    <a href="/posts/review-yunjiexian.html" class="hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                       <span>云界线 (YunJieXian)</span>
                       <svg class="w-4 h-4 text-blue-600 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     </a>
@@ -1917,7 +2001,7 @@
             <div class="pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2.5">
               <div class="flex items-center gap-2">
                 <a 
-                  href="./posts/review-yunjiexian.html" 
+                  href="/posts/review-yunjiexian.html" 
                   class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-sm group active:scale-95"
                 >
                   <span>阅读深度测评报告 📖</span>
@@ -1934,12 +2018,12 @@
               </div>
 
               <a 
-                href="https://pp01.yunjiexianaff.com/#/?code=bp0ZSKBV" 
+                href="/posts/review-yunjiexian.html" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 class="inline-flex items-center px-3 py-2 rounded-lg text-xs font-bold text-[#0F172A] hover:text-blue-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-all cursor-pointer"
               >
-                <span>直达官网 ↗</span>
+                <span>测评档案 ↗</span>
               </a>
             </div>
           </article>
@@ -1960,7 +2044,7 @@
               <div class="flex items-start justify-between mb-3">
                 <div>
                   <h3 class="text-xl font-extrabold text-[#09090B] tracking-tight">
-                    <a href="./posts/review-shenxing.html" class="hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                    <a href="/posts/review-shenxing.html" class="hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                       <span>神行加速 (ShenXing)</span>
                       <svg class="w-4 h-4 text-blue-600 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     </a>
@@ -2008,7 +2092,7 @@
             <div class="pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2.5">
               <div class="flex items-center gap-2">
                 <a 
-                  href="./posts/review-shenxing.html" 
+                  href="/posts/review-shenxing.html" 
                   class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-sm group active:scale-95"
                 >
                   <span>阅读深度测评报告 📖</span>
@@ -2025,12 +2109,12 @@
               </div>
 
               <a 
-                href="https://shenxing.vip/#/?code=sx2026" 
+                href="/posts/review-shenxing.html" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 class="inline-flex items-center px-3 py-2 rounded-lg text-xs font-bold text-[#0F172A] hover:text-blue-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-all cursor-pointer"
               >
-                <span>直达官网 ↗</span>
+                <span>测评档案 ↗</span>
               </a>
             </div>
           </article>
@@ -2051,7 +2135,7 @@
               <div class="flex items-start justify-between mb-3">
                 <div>
                   <h3 class="text-xl font-extrabold text-[#09090B] tracking-tight">
-                    <a href="./posts/review-liulianyun.html" class="hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                    <a href="/posts/review-liulianyun.html" class="hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                       <span>榴莲云 (DurianCloud)</span>
                       <svg class="w-4 h-4 text-blue-600 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     </a>
@@ -2099,7 +2183,7 @@
             <div class="pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2.5">
               <div class="flex items-center gap-2">
                 <a 
-                  href="./posts/review-liulianyun.html" 
+                  href="/posts/review-liulianyun.html" 
                   class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-sm group active:scale-95"
                 >
                   <span>阅读深度测评报告 📖</span>
@@ -2116,12 +2200,12 @@
               </div>
 
               <a 
-                href="https://pp02.liulianyunaff.com/#/?code=hWb06G1e" 
+                href="/posts/review-liulianyun.html" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 class="inline-flex items-center px-3 py-2 rounded-lg text-xs font-bold text-[#0F172A] hover:text-blue-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-all cursor-pointer"
               >
-                <span>直达官网 ↗</span>
+                <span>测评档案 ↗</span>
               </a>
             </div>
           </article>
@@ -2142,7 +2226,7 @@
               <div class="flex items-start justify-between mb-3">
                 <div>
                   <h3 class="text-xl font-extrabold text-[#09090B] tracking-tight">
-                    <a href="./posts/review-jilianyun.html" class="hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                    <a href="/posts/review-jilianyun.html" class="hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                       <span>极连云 (JiLianYun)</span>
                       <svg class="w-4 h-4 text-blue-600 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     </a>
@@ -2190,7 +2274,7 @@
             <div class="pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2.5">
               <div class="flex items-center gap-2">
                 <a 
-                  href="./posts/review-jilianyun.html" 
+                  href="/posts/review-jilianyun.html" 
                   class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-sm group active:scale-95"
                 >
                   <span>阅读深度测评报告 📖</span>
@@ -2207,12 +2291,12 @@
               </div>
 
               <a 
-                href="https://poajufr.jilianat.homes/#/?code=jwCMOvQO" 
+                href="/posts/review-jilianyun.html" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 class="inline-flex items-center px-3 py-2 rounded-lg text-xs font-bold text-[#0F172A] hover:text-blue-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-all cursor-pointer"
               >
-                <span>直达官网 ↗</span>
+                <span>测评档案 ↗</span>
               </a>
             </div>
           </article>
@@ -2233,7 +2317,7 @@
               <div class="flex items-start justify-between mb-3">
                 <div>
                   <h3 class="text-xl font-extrabold text-[#09090B] tracking-tight">
-                    <a href="./posts/review-guangnianti.html" class="hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                    <a href="/posts/review-guangnianti.html" class="hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                       <span>光年梯 (GuangNianTi)</span>
                       <svg class="w-4 h-4 text-blue-600 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     </a>
@@ -2281,7 +2365,7 @@
             <div class="pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2.5">
               <div class="flex items-center gap-2">
                 <a 
-                  href="./posts/review-guangnianti.html" 
+                  href="/posts/review-guangnianti.html" 
                   class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-sm group active:scale-95"
                 >
                   <span>阅读深度测评报告 📖</span>
@@ -2298,12 +2382,12 @@
               </div>
 
               <a 
-                href="https://bk1dvc.guangnianertt1.homes/#/?code=PQhPFDhO" 
+                href="/posts/review-guangnianti.html" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 class="inline-flex items-center px-3 py-2 rounded-lg text-xs font-bold text-[#0F172A] hover:text-blue-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-all cursor-pointer"
               >
-                <span>直达官网 ↗</span>
+                <span>测评档案 ↗</span>
               </a>
             </div>
           </article>
@@ -2324,7 +2408,7 @@
               <div class="flex items-start justify-between mb-3">
                 <div>
                   <h3 class="text-xl font-extrabold text-[#09090B] tracking-tight">
-                    <a href="./posts/review-edgenode.html" class="hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                    <a href="/posts/review-edgenode.html" class="hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                       <span>边缘节点 (EdgeNode)</span>
                       <svg class="w-4 h-4 text-blue-600 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     </a>
@@ -2371,7 +2455,7 @@
             <div class="pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2.5">
               <div class="flex items-center gap-2">
                 <a 
-                  href="./posts/review-edgenode.html" 
+                  href="/posts/review-edgenode.html" 
                   class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-sm group active:scale-95"
                 >
                   <span>阅读深度测评报告 📖</span>
@@ -2388,12 +2472,12 @@
               </div>
 
               <a 
-                href="https://zvbghs02.ztymforedge.lol/#/?code=mLLL6h6F" 
+                href="/posts/review-edgenode.html" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 class="inline-flex items-center px-3 py-2 rounded-lg text-xs font-bold text-[#0F172A] hover:text-blue-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-all cursor-pointer"
               >
-                <span>直达官网 ↗</span>
+                <span>测评档案 ↗</span>
               </a>
             </div>
           </article>
@@ -2414,7 +2498,7 @@
               <div class="flex items-start justify-between mb-3">
                 <div>
                   <h3 class="text-xl font-extrabold text-[#09090B] tracking-tight">
-                    <a href="./posts/review-shunyun.html" class="hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
+                    <a href="/posts/review-shunyun.html" class="hover:text-blue-700 transition-colors inline-flex items-center gap-1 group">
                       <span>瞬云 (ShunYun)</span>
                       <svg class="w-4 h-4 text-blue-600 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     </a>
@@ -2462,7 +2546,7 @@
             <div class="pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2.5">
               <div class="flex items-center gap-2">
                 <a 
-                  href="./posts/review-shunyun.html" 
+                  href="/posts/review-shunyun.html" 
                   class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-sm group active:scale-95"
                 >
                   <span>阅读深度测评报告 📖</span>
@@ -2479,12 +2563,12 @@
               </div>
 
               <a 
-                href="https://ddd.jichang.best/#/register?code=nldUZaYc" 
+                href="/posts/review-shunyun.html" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 class="inline-flex items-center px-3 py-2 rounded-lg text-xs font-bold text-[#0F172A] hover:text-blue-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 transition-all cursor-pointer"
               >
-                <span>直达官网 ↗</span>
+                <span>测评档案 ↗</span>
               </a>
             </div>
           </article>
@@ -2559,7 +2643,7 @@
               </div>
 
               <h3 class="text-lg font-bold text-[#09090B] leading-snug group-hover:text-blue-700 transition-colors mb-3">
-                <a href="./posts/wp-26121.html" class="focus:outline-none">
+                <a href="/posts/wp-26121.html" class="focus:outline-none">
                   2026 全球优质网络节点性能评测白皮书：从物理延迟、丢包抖动到骨干网 QoS 的综合测试基准
                 </a>
               </h3>
@@ -2579,7 +2663,7 @@
               </div>
 
               <div class="mt-4 pt-3 flex items-center justify-between">
-                <a href="./posts/wp-26121.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
+                <a href="/posts/wp-26121.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
                   阅读完整报告
                   <span class="ml-1 font-bold group-hover/link:translate-x-1 transition-transform">→</span>
                 </a>
@@ -2604,7 +2688,7 @@
               </div>
 
               <h3 class="text-lg font-bold text-[#09090B] leading-snug group-hover:text-blue-700 transition-colors mb-3">
-                <a href="./posts/wp-26120.html" class="focus:outline-none">
+                <a href="/posts/wp-26120.html" class="focus:outline-none">
                   跨境链路质量深度排查：MTR 路由追踪、晚高峰丢包与 IPLC/IEPL 专线抖动优化实战
                 </a>
               </h3>
@@ -2624,7 +2708,7 @@
               </div>
 
               <div class="mt-4 pt-3 flex items-center justify-between">
-                <a href="./posts/wp-26120.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
+                <a href="/posts/wp-26120.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
                   阅读完整报告
                   <span class="ml-1 font-bold group-hover/link:translate-x-1 transition-transform">→</span>
                 </a>
@@ -2649,7 +2733,7 @@
               </div>
 
               <h3 class="text-lg font-bold text-[#09090B] leading-snug group-hover:text-blue-700 transition-colors mb-3">
-                <a href="./posts/wp-26119.html" class="focus:outline-none">
+                <a href="/posts/wp-26119.html" class="focus:outline-none">
                   跨境网络传输瓶颈与拥塞控制调优白皮书：从 TCP 三次握手、BBR 算法到运营商 QoS 限速机制
                 </a>
               </h3>
@@ -2669,7 +2753,7 @@
               </div>
 
               <div class="mt-4 pt-3 flex items-center justify-between">
-                <a href="./posts/wp-26119.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
+                <a href="/posts/wp-26119.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
                   阅读完整报告
                   <span class="ml-1 font-bold group-hover/link:translate-x-1 transition-transform">→</span>
                 </a>
@@ -2694,7 +2778,7 @@
               </div>
 
               <h3 class="text-lg font-bold text-[#09090B] leading-snug group-hover:text-blue-700 transition-colors mb-3">
-                <a href="./posts/wp-26116.html" class="focus:outline-none">
+                <a href="/posts/wp-26116.html" class="focus:outline-none">
                   2026 常见网络节点超时与丢包全解析：从 DNS 污染、MTU 设置到路由绕路的底层诊断手册
                 </a>
               </h3>
@@ -2714,7 +2798,7 @@
               </div>
 
               <div class="mt-4 pt-3 flex items-center justify-between">
-                <a href="./posts/wp-26116.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
+                <a href="/posts/wp-26116.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
                   阅读完整报告
                   <span class="ml-1 font-bold group-hover/link:translate-x-1 transition-transform">→</span>
                 </a>
@@ -2739,7 +2823,7 @@
               </div>
 
               <h3 class="text-lg font-bold text-[#09090B] leading-snug group-hover:text-blue-700 transition-colors mb-3">
-                <a href="./posts/wp-26115.html" class="focus:outline-none">
+                <a href="/posts/wp-26115.html" class="focus:outline-none">
                   2026年全平台科学上网客户端生态横评与深度选型指南：Windows、macOS、iOS与Android终极方案
                 </a>
               </h3>
@@ -2759,7 +2843,7 @@
               </div>
 
               <div class="mt-4 pt-3 flex items-center justify-between">
-                <a href="./posts/wp-26115.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
+                <a href="/posts/wp-26115.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
                   阅读完整报告
                   <span class="ml-1 font-bold group-hover/link:translate-x-1 transition-transform">→</span>
                 </a>
@@ -2783,7 +2867,7 @@
               </div>
 
               <h3 class="text-lg font-bold text-[#09090B] leading-snug group-hover:text-blue-700 transition-colors mb-3">
-                <a href="./posts/wp-26114.html" class="focus:outline-none">
+                <a href="/posts/wp-26114.html" class="focus:outline-none">
                   国际游戏联机与主机跨区加速终极指南：Steam、PS5、Xbox与Switch全优化配置
                 </a>
               </h3>
@@ -2803,7 +2887,7 @@
               </div>
 
               <div class="mt-4 pt-3 flex items-center justify-between">
-                <a href="./posts/wp-26114.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
+                <a href="/posts/wp-26114.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
                   阅读完整报告
                   <span class="ml-1 font-bold group-hover/link:translate-x-1 transition-transform">→</span>
                 </a>
@@ -2827,7 +2911,7 @@
               </div>
 
               <h3 class="text-lg font-bold text-[#09090B] leading-snug group-hover:text-blue-700 transition-colors mb-3">
-                <a href="./posts/wp-26113.html" class="focus:outline-none">
+                <a href="/posts/wp-26113.html" class="focus:outline-none">
                   机场测速指标深度解读：延迟、抖动、丢包率与单线程吞吐对实际体验的真实影响
                 </a>
               </h3>
@@ -2847,7 +2931,7 @@
               </div>
 
               <div class="mt-4 pt-3 flex items-center justify-between">
-                <a href="./posts/wp-26113.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
+                <a href="/posts/wp-26113.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
                   阅读完整报告
                   <span class="ml-1 font-bold group-hover/link:translate-x-1 transition-transform">→</span>
                 </a>
@@ -2871,7 +2955,7 @@
               </div>
 
               <h3 class="text-lg font-bold text-[#09090B] leading-snug group-hover:text-blue-700 transition-colors mb-3">
-                <a href="./posts/wp-26112.html" class="focus:outline-none">
+                <a href="/posts/wp-26112.html" class="focus:outline-none">
                   跨国企业出海与外贸远程办公专线方案：SLA保障、合规策略与SD-WAN部署实践
                 </a>
               </h3>
@@ -2891,7 +2975,7 @@
               </div>
 
               <div class="mt-4 pt-3 flex items-center justify-between">
-                <a href="./posts/wp-26112.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
+                <a href="/posts/wp-26112.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
                   阅读完整报告
                   <span class="ml-1 font-bold group-hover/link:translate-x-1 transition-transform">→</span>
                 </a>
@@ -2915,7 +2999,7 @@
               </div>
 
               <h3 class="text-lg font-bold text-[#09090B] leading-snug group-hover:text-blue-700 transition-colors mb-3">
-                <a href="./posts/wp-26111.html" class="focus:outline-none">
+                <a href="/posts/wp-26111.html" class="focus:outline-none">
                   跨境电商与TikTok出海网络环境搭建白皮书：原生静态住宅IP、防关联与风控规避
                 </a>
               </h3>
@@ -2935,7 +3019,7 @@
               </div>
 
               <div class="mt-4 pt-3 flex items-center justify-between">
-                <a href="./posts/wp-26111.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
+                <a href="/posts/wp-26111.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
                   阅读完整报告
                   <span class="ml-1 font-bold group-hover/link:translate-x-1 transition-transform">→</span>
                 </a>
@@ -2959,7 +3043,7 @@
               </div>
 
               <h3 class="text-lg font-bold text-[#09090B] leading-snug group-hover:text-blue-700 transition-colors mb-3">
-                <a href="./posts/wp-26110.html" class="focus:outline-none">
+                <a href="/posts/wp-26110.html" class="focus:outline-none">
                   Hysteria 2与VLESS Reality协议深度解析：恶劣弱网与高丢包环境的破局之道
                 </a>
               </h3>
@@ -2979,7 +3063,7 @@
               </div>
 
               <div class="mt-4 pt-3 flex items-center justify-between">
-                <a href="./posts/wp-26110.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
+                <a href="/posts/wp-26110.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
                   阅读完整报告
                   <span class="ml-1 font-bold group-hover/link:translate-x-1 transition-transform">→</span>
                 </a>
@@ -3003,7 +3087,7 @@
               </div>
 
               <h3 class="text-lg font-bold text-[#09090B] leading-snug group-hover:text-blue-700 transition-colors mb-3">
-                <a href="./posts/wp-26109.html" class="focus:outline-none">
+                <a href="/posts/wp-26109.html" class="focus:outline-none">
                   Sing-box下一代通用代理核心实战：高并发架构、规则集与全平台部署指南
                 </a>
               </h3>
@@ -3023,7 +3107,7 @@
               </div>
 
               <div class="mt-4 pt-3 flex items-center justify-between">
-                <a href="./posts/wp-26109.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
+                <a href="/posts/wp-26109.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
                   阅读完整报告
                   <span class="ml-1 font-bold group-hover/link:translate-x-1 transition-transform">→</span>
                 </a>
@@ -3047,7 +3131,7 @@
               </div>
 
               <h3 class="text-lg font-bold text-[#09090B] leading-snug group-hover:text-blue-700 transition-colors mb-3">
-                <a href="./posts/wp-26108.html" class="focus:outline-none">
+                <a href="/posts/wp-26108.html" class="focus:outline-none">
                   主路由iKuai+旁路由OpenWrt极速拓扑搭建：全屋科学上网与MosDNS防污染指南
                 </a>
               </h3>
@@ -3067,7 +3151,7 @@
               </div>
 
               <div class="mt-4 pt-3 flex items-center justify-between">
-                <a href="./posts/wp-26108.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
+                <a href="/posts/wp-26108.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
                   阅读完整报告
                   <span class="ml-1 font-bold group-hover/link:translate-x-1 transition-transform">→</span>
                 </a>
@@ -3091,7 +3175,7 @@
               </div>
 
               <h3 class="text-lg font-bold text-[#09090B] leading-snug group-hover:text-blue-700 transition-colors mb-3">
-                <a href="./posts/wp-26107.html" class="focus:outline-none">
+                <a href="/posts/wp-26107.html" class="focus:outline-none">
                   机场跑路雷达与风险特征剖析：如何识别低价大额年付陷阱与庞氏资金盘
                 </a>
               </h3>
@@ -3111,7 +3195,7 @@
               </div>
 
               <div class="mt-4 pt-3 flex items-center justify-between">
-                <a href="./posts/wp-26107.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
+                <a href="/posts/wp-26107.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
                   阅读完整报告
                   <span class="ml-1 font-bold group-hover/link:translate-x-1 transition-transform">→</span>
                 </a>
@@ -3135,7 +3219,7 @@
               </div>
 
               <h3 class="text-lg font-bold text-[#09090B] leading-snug group-hover:text-blue-700 transition-colors mb-3">
-                <a href="./posts/wp-26106.html" class="focus:outline-none">
+                <a href="/posts/wp-26106.html" class="focus:outline-none">
                   ChatGPT与Claude访问故障排查白皮书：AI大模型风控、IP纯净度与防封号指南
                 </a>
               </h3>
@@ -3155,7 +3239,7 @@
               </div>
 
               <div class="mt-4 pt-3 flex items-center justify-between">
-                <a href="./posts/wp-26106.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
+                <a href="/posts/wp-26106.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
                   阅读完整报告
                   <span class="ml-1 font-bold group-hover/link:translate-x-1 transition-transform">→</span>
                 </a>
@@ -3179,7 +3263,7 @@
               </div>
 
               <h3 class="text-lg font-bold text-[#09090B] leading-snug group-hover:text-blue-700 transition-colors mb-3">
-                <a href="./posts/wp-26105.html" class="focus:outline-none">
+                <a href="/posts/wp-26105.html" class="focus:outline-none">
                   海外流媒体4K/8K秒开与原生IP识别：Netflix、Disney+、YouTube解锁原理与选线秘籍
                 </a>
               </h3>
@@ -3199,7 +3283,7 @@
               </div>
 
               <div class="mt-4 pt-3 flex items-center justify-between">
-                <a href="./posts/wp-26105.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
+                <a href="/posts/wp-26105.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
                   阅读完整报告
                   <span class="ml-1 font-bold group-hover/link:translate-x-1 transition-transform">→</span>
                 </a>
@@ -3223,7 +3307,7 @@
               </div>
 
               <h3 class="text-lg font-bold text-[#09090B] leading-snug group-hover:text-blue-700 transition-colors mb-3">
-                <a href="./posts/wp-26104.html" class="focus:outline-none">
+                <a href="/posts/wp-26104.html" class="focus:outline-none">
                   Shadowrocket（小火箭）iOS新手全功能图文教程：节点导入、规则分流与模块脚本
                 </a>
               </h3>
@@ -3243,7 +3327,7 @@
               </div>
 
               <div class="mt-4 pt-3 flex items-center justify-between">
-                <a href="./posts/wp-26104.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
+                <a href="/posts/wp-26104.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
                   阅读完整报告
                   <span class="ml-1 font-bold group-hover/link:translate-x-1 transition-transform">→</span>
                 </a>
@@ -3267,7 +3351,7 @@
               </div>
 
               <h3 class="text-lg font-bold text-[#09090B] leading-snug group-hover:text-blue-700 transition-colors mb-3">
-                <a href="./posts/wp-26103.html" class="focus:outline-none">
+                <a href="/posts/wp-26103.html" class="focus:outline-none">
                   Clash Verge Rev / Mihomo 2026从入门到精通：现代客户端完整分流配置指南
                 </a>
               </h3>
@@ -3287,7 +3371,7 @@
               </div>
 
               <div class="mt-4 pt-3 flex items-center justify-between">
-                <a href="./posts/wp-26103.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
+                <a href="/posts/wp-26103.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
                   阅读完整报告
                   <span class="ml-1 font-bold group-hover/link:translate-x-1 transition-transform">→</span>
                 </a>
@@ -3311,7 +3395,7 @@
               </div>
 
               <h3 class="text-lg font-bold text-[#09090B] leading-snug group-hover:text-blue-700 transition-colors mb-3">
-                <a href="./posts/wp-26102.html" class="focus:outline-none">
+                <a href="/posts/wp-26102.html" class="focus:outline-none">
                   IPLC与IEPL专线深度剖析：为什么晚高峰只有内网专线不卡顿与零丢包
                 </a>
               </h3>
@@ -3331,7 +3415,7 @@
               </div>
 
               <div class="mt-4 pt-3 flex items-center justify-between">
-                <a href="./posts/wp-26102.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
+                <a href="/posts/wp-26102.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
                   阅读完整报告
                   <span class="ml-1 font-bold group-hover/link:translate-x-1 transition-transform">→</span>
                 </a>
@@ -3355,7 +3439,7 @@
               </div>
 
               <h3 class="text-lg font-bold text-[#09090B] leading-snug group-hover:text-blue-700 transition-colors mb-3">
-                <a href="./posts/wp-26101.html" class="focus:outline-none">
+                <a href="/posts/wp-26101.html" class="focus:outline-none">
                   2026年机场推荐与科学上网避坑全指南：从专线架构到节点评测
                 </a>
               </h3>
@@ -3375,7 +3459,7 @@
               </div>
 
               <div class="mt-4 pt-3 flex items-center justify-between">
-                <a href="./posts/wp-26101.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
+                <a href="/posts/wp-26101.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
                   阅读完整报告
                   <span class="ml-1 font-bold group-hover/link:translate-x-1 transition-transform">→</span>
                 </a>
@@ -3898,15 +3982,14 @@ iptables -t mangle -A POSTROUTING -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --cla
               实时同步晚高峰测速报告、节点链路异动与失联跑路预警：
             </p>
             <a 
-              href="https://t.me/huanqiuti8899" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+              href="/posts/2026-airport-node-recommendation-selection-guide.html" 
               class="inline-flex items-center px-3.5 py-2 rounded-lg bg-[#0F172A] hover:bg-black text-white text-xs font-bold transition-all shadow-sm group active:scale-95 cursor-pointer"
+              title="查阅 2026 年度技术选型与避坑全景指南"
             >
-              <svg class="w-4 h-4 mr-1.5 text-sky-400 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.52 2.77-1.18 3.35-1.38 3.73-1.39.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+              <svg class="w-4 h-4 mr-1.5 text-sky-400 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
-              <span>Telegram 官方报告频道</span>
+              <span>查阅 2026 年度技术选型白皮书</span>
             </a>
           </div>
         </div>

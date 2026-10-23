@@ -1,0 +1,91 @@
+# 节点白皮书 (NODE REPORT · tizivpn.net)
+
+> 节点白皮书（https://tizivpn.net）是一个专注于全球跨境网络通信质量、底层协议效能、光缆物理拓扑与骨干网 QoS 观测的独立技术基准智库。本项目杜绝任何虚假商业营销，坚持“底层逻辑、真实实测、可复现步骤”三原则，针对晚高峰骨干链路抗拥塞能力、物理延迟下限、抖动容差及全平台规则分流体系提供客观、透明的工程级基准报告。
+
+## 核心评估模型与方法论 (Methodology)
+
+节点白皮书确立以下三维量化模型作为网络可用性审计基准：
+1. **物理延迟确定性 (Physical RTT Determinism)**: 实测往返时延与大圆距离（Great-Circle Distance）光纤介质传播极限（~4.89 μs/km）的几何偏离比。
+2. **丢包与抖动容差 (Loss & Jitter Tolerance)**: 基于连续 1,000 组 ICMP/UDP 探针采集的抖动均方根（RMS Jitter）及 99 分位丢包率（p99 Loss Rate）。
+3. **骨干 QoS 权重 (Transit CoS Weight)**: 运营商在晚高峰时段（20:00–24:00）针对拥塞丢包的优先级保障策略等级（CAR / WRED / DSCP 调度分析）。
+
+---
+
+## 2026 年度专线节点性能评测天梯榜 (Benchmark Tier)
+
+- **TOP 1: 环球梯 (Huanqiu Ti)** - 全能旗舰 · 极速专线
+  - 核心链路：旗舰级 IPLC/IEPL 点对点专线，多线 BGP 智能容灾入口
+  - 实测数据：晚高峰延迟 19.8ms (±0.2ms)，丢包率 0.01%（零丢包），单节点峰值 2.5Gbps
+  - 特性：原生纯净 IP、4K/8K 流媒体全绿秒开、ChatGPT/Claude 零拦截
+  - 评测档案：https://tizivpn.net/posts/review-huanqiuti.html
+
+- **TOP 2: 大佬云 (DaLao Yun)** - 企业级专线 · 极低抖动
+  - 核心链路：广港、沪日、京德高规格企业内网中继专线，专线冗余储备 >40%
+  - 实测数据：晚高峰延迟 22.4ms (±0.3ms)，丢包率 0.02%，极低单流排队延迟
+  - 特性：原生流媒体全解、不限设备并发、企业出海远程协作首选
+  - 评测档案：https://tizivpn.net/posts/review-dalaoyun.html
+
+- **TOP 3: 闪电鼠 (ShanDian Shu)** - 原生流媒体与游戏特调
+  - 核心链路：全线物理 IPLC 专线集群，统一 1.0x 纯净倍率
+  - 实测数据：晚高峰延迟 23.8ms (±0.3ms)，丢包率 0.03%，单节点 2.5Gbps
+  - 特性：晚高峰满速满载不限速、原生多国节点调度、游戏低抖动特调
+  - 评测档案：https://tizivpn.net/posts/review-shandianshu.html
+
+- **TOP 4: 云界线 (YunJie Xian)** - 全设备并发无限制
+  - 核心链路：企业级 IPLC 架构，单节点出口峰值 2.5Gbps
+  - 实测数据：晚高峰延迟 24.5ms (±0.4ms)，丢包率 0.04%
+  - 特性：全系列套餐不限制在线连接数，多设备与家庭/团队共享无队头阻塞
+  - 评测档案：https://tizivpn.net/posts/review-yunjiexian.html
+
+- **TOP 5: 神行加速 (ShenXing)** - 纯净原生调度 · AI 适配
+  - 核心链路：极速 IPLC/IEPL 专线，骨干网抖动抑制算法优化
+  - 实测数据：晚高峰延迟 22.5ms (±0.2ms)，丢包率 0.02%
+  - 特性：纯净原生 IP 广播、欺诈分清洗、OpenAI / Claude API 零阻断
+  - 评测档案：https://tizivpn.net/posts/review-shenxing.html
+
+- **TOP 6: 榴莲云 (LiuLian Yun)** - 商务差旅容灾备用
+  - 核心链路：全线 IPLC 极速专线，单节点峰值 2.5Gbps
+  - 实测数据：晚高峰延迟 23.1ms (±0.3ms)，丢包率 0.03%
+  - 特性：大流量池不限速、多国节点冗余储备
+  - 评测档案：https://tizivpn.net/posts/review-liulianyun.html
+
+---
+
+## 核心技术白皮书与研报目录 (Research Whitepapers)
+
+- 2026 全球优质网络节点性能评测白皮书: https://tizivpn.net/posts/wp-26121.html
+- 跨境网络高可用容灾与智能故障转移架构: https://tizivpn.net/posts/wp-26120.html
+- 跨境网络传输瓶颈与拥塞控制调优白皮书 (TCP/BBR/QoS): https://tizivpn.net/posts/wp-26119.html
+- 跨境网络链路层 MTU/MSS 最佳实践与黑洞排查: https://tizivpn.net/posts/wp-26116.html
+- 跨平台客户端全景横评 (Clash/Sing-box/Surge): https://tizivpn.net/posts/wp-26115.html
+- 国际游戏联机与主机跨区加速终极指南: https://tizivpn.net/posts/wp-26114.html
+- 机场测速指标深度解读 (延迟/抖动/丢包/单线程吞吐): https://tizivpn.net/posts/wp-26113.html
+- 跨国企业出海与外贸远程办公专线方案 (SD-WAN/SLA): https://tizivpn.net/posts/wp-26112.html
+- 跨境电商与 TikTok 出海网络环境搭建白皮书: https://tizivpn.net/posts/wp-26111.html
+- Hysteria 2 与 VLESS Reality 协议深度对比: https://tizivpn.net/posts/wp-26110.html
+- Sing-box 全平台配置实战与规则分流体系: https://tizivpn.net/posts/wp-26109.html
+- 主路由 iKuai + 旁路由 OpenWrt 拓扑与 MosDNS 防污染: https://tizivpn.net/posts/wp-26108.html
+- 机场晚高峰 QoS 限速机制与丢包成因分析: https://tizivpn.net/posts/wp-26107.html
+- ChatGPT 与 Claude 访问故障排查与 IP 纯净度指南: https://tizivpn.net/posts/wp-26106.html
+- 四大主流科学上网协议深度对比: https://tizivpn.net/posts/wp-26105.html
+- 跑路机场特征识别与风险预警防坑指南: https://tizivpn.net/posts/wp-26104.html
+- IPLC/IEPL 内网专线与 BGP 中转原理深度剖析: https://tizivpn.net/posts/wp-26103.html
+- 机场测速全流程指南: https://tizivpn.net/posts/wp-26102.html
+- 2026 全球优质网络节点性能评测白皮书框架: https://tizivpn.net/posts/wp-26101.html
+- 2026 优质机场节点推荐与选型避坑全景指南: https://tizivpn.net/posts/2026-airport-node-recommendation-selection-guide.html
+- 2026 一元机场避坑与高性价比专线选型指南: https://tizivpn.net/posts/2026-yiyuan-airport-selection-guide.html
+
+---
+
+## 独立实测档案库 (Dossiers & Reviews)
+
+- 环球梯深度测评报告: https://tizivpn.net/posts/review-huanqiuti.html
+- 大佬云深度测评报告: https://tizivpn.net/posts/review-dalaoyun.html
+- 闪电鼠深度测评报告: https://tizivpn.net/posts/review-shandianshu.html
+- 云界线深度测评报告: https://tizivpn.net/posts/review-yunjiexian.html
+- 神行加速深度测评报告: https://tizivpn.net/posts/review-shenxing.html
+- 榴莲云深度测评报告: https://tizivpn.net/posts/review-liulianyun.html
+- 极连云深度测评报告: https://tizivpn.net/posts/review-jilianyun.html
+- 光年梯深度测评报告: https://tizivpn.net/posts/review-guangnianti.html
+- 边缘节点深度测评报告: https://tizivpn.net/posts/review-edgenode.html
+- 瞬云深度测评报告: https://tizivpn.net/posts/review-shunyun.html
