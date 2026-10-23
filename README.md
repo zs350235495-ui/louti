@@ -395,6 +395,7 @@ Client  ◄─ Handshake Done ─── Server (1.0 RTT)
 
 | 报告编号 | 研报主题 | 核心研究范围与工程技术重点 | 在线文献直达 |
 | :---: | :--- | :--- | :---: |
+| **WP-26122** | **2026 新一代网络隧道协议性能与加密开销基准实测 (重磅)** | 传输层握手(TCP/TLS 1.3/QUIC)、包头封装、多平台 CPU 加密吞吐与跨国链路选型 | [👉 点击阅读文献](https://tizivpn.net/tunnel-protocol-performance-benchmark-2026.html) |
 | **WP-26121** | **2026 全球优质网络节点性能评测白皮书 (旗舰篇)** | 物理延迟极限、跨国海缆拓扑、丢包抖动与骨干网 QoS 调度综合测试基准 | [👉 点击阅读文献](https://tizivpn.net/posts/wp-26121.html) |
 | **WP-26120** | 跨境链路质量深度排查与专线抖动调优 | MTR 路由追踪、晚高峰丢包根因与 IPLC/IEPL 专线抖动工程优化实战 | [👉 点击阅读文献](https://tizivpn.net/posts/wp-26120.html) |
 | **WP-26119** | 跨境网络传输瓶颈与拥塞控制调优白皮书 | 从 TCP 三次握手、BBRv3/Cubic 到运营商骨干 QoS 限速机制解析 | [👉 点击阅读文献](https://tizivpn.net/posts/wp-26119.html) |

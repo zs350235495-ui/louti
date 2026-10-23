@@ -191,6 +191,9 @@ const server = http.createServer((req, res) => {
   if (reqPath === '/' || reqPath === '') reqPath = '/index.html';
   
   let localFile = path.join(rootDir, reqPath);
+  if (!fs.existsSync(localFile) && fs.existsSync(localFile + '.html')) {
+    localFile = localFile + '.html';
+  }
   
   if (fs.existsSync(localFile) && fs.statSync(localFile).isFile()) {
     const ext = path.extname(localFile);
