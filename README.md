@@ -287,10 +287,10 @@ Client  ◄─ Handshake Done ─── Server (1.0 RTT)
 
 | 故障现象 | 潜在技术成因 (Root Cause) | 验证排查命令与定位依据 | 权威解决方案 | 关联深度博客报告 |
 | :--- | :--- | :--- | :--- | :--- |
-| **HTTP 403 Forbidden (Cloudflare / WAF)** | 节点 IP 处于欺诈黑名单、数据中心机房 IP (Data Center)、ASN 风险分过高 | `curl -s https://ipinfo.io/json` 查看 `"type": "hosting"` | 更换为原生家宽住宅 IP (Residential IP) 或纯净商业 ISP 节点 | [查看 AI 防封指南](https://tizivpn.net/posts/wp-26106.html) |
+| **HTTP 403 Forbidden (Cloudflare / WAF)** | 节点 IP 处于欺诈黑名单、数据中心机房 IP (Data Center)、ASN 风险分过高 | `curl -s ipinfo.io/json` 查看 `"type": "hosting"` | 更换为原生家宽住宅 IP (Residential IP) 或纯净商业 ISP 节点 | [查看 AI 防封指南](https://tizivpn.net/posts/wp-26106.html) |
 | **Cloudflare 5 秒盾 / Turnstile 无限循环** | 客户端 TLS 指纹（JA3/JA4）异常，非标准浏览器特征匹配；TCP MSS 特征异常 | 浏览器访问抓包显示握手被直接 RST 或返回特有验证 Challenge 页面 | 开启 uTLS 模拟真实 Chrome 浏览器指纹；确保未启用多层异常的 HTTP 标头修改 | [查看协议与指纹报告](https://tizivpn.net/posts/wp-26110.html) |
 | **TLS 握手超时 (Handshake Timeout)** | 跨国海缆 MTU 黑洞（中间节点丢弃了超过限定大小的未分片 DF 数据包） | `ping -M do -s 1400 <TARGET_IP>` 逐级排查最大不分片承载包长 | 在客户端或虚拟网卡接口调低 MTU（建议设置：TCP MSS Clamping 为 1380–1420） | [查看 MTU 排查实战](https://tizivpn.net/posts/wp-26116.html) |
-| **DNS 泄漏 / 解析位置错误** | 操作系统启用 IPv6 导致 DNS 请求穿透代理隧道直奔运营商本地递归 | 访问 `https://browserleaks.com/dns` 发现显示本地运营商 IP | 禁用系统 IPv6 或在代理核心内配置强制 IPv6 流量阻断（`block-ipv6: true`） | [查看软路由防污染](https://tizivpn.net/posts/wp-26108.html) |
+| **DNS 泄漏 / 解析位置错误** | 操作系统启用 IPv6 导致 DNS 请求穿透代理隧道直奔运营商本地递归 | 使用专业 DNS 泄漏工具抓包发现显示本地运营商 IP | 禁用系统 IPv6 或在代理核心内配置强制 IPv6 流量阻断（`block-ipv6: true`） | [查看软路由防污染](https://tizivpn.net/posts/wp-26108.html) |
 | **流媒体提示“不支持当前地区 / Proxy Detected”** | 目标机房广播 IP 缺乏 ASN 原生属性，被流媒体数据库判定为云服务商机房 | MaxMind / IP2Location 风险分 $> 65$ | 选用具备原生纯净流媒体特调 IP 节点 | [查看流媒体解锁秘籍](https://tizivpn.net/posts/wp-26105.html) |
 
 ---
@@ -455,10 +455,15 @@ Client  ◄─ Handshake Done ─── Server (1.0 RTT)
 ```text
 .
 ├── assets/          # 视觉品牌资产、矢量图表与架构渲染图
+├── css/             # 本地预编译生产级样式工程
+│   ├── input.css        # Tailwind 样式源文件与全局重置
+│   └── tailwind.min.css # 31KB 轻量生产级静态原子化样式表
 ├── favicon.svg      # 矢量站点图标
 ├── logo.svg         # 矢量品牌标识
 ├── index.html       # 门户首页（天梯榜动态仪表盘与技术纲领索引）
 ├── 404.html         # 智能容错与白皮书路径自动重定向网关
+├── article/         # 历史路由分发与重定向网关
+│   └── index.html       # 动态路由匹配与物理单页映射
 ├── posts/           # 深度技术白皮书与专项研究报告 HTML 智库
 │   ├── wp-26121.html # 2026 节点性能评测综合基准白皮书 (旗舰篇)
 │   ├── wp-26120.html # 跨境链路质量深度排查与 MTR 调优实战
@@ -473,8 +478,12 @@ Client  ◄─ Handshake Done ─── Server (1.0 RTT)
 │   ├── wp-26102.html # IPLC 与 IEPL 专线深度剖析白皮书
 │   ├── review-*.html # 各大核心专线机场专项实测报告 (环球梯/大佬云/闪电鼠等)
 │   └── ...          # 更多历史研究与专题归档
-├── robots.txt       # 搜索引擎蜘蛛爬行策略定义
-└── sitemap.xml      # 结构化站点地图（全站权重聚合）
+├── robots.txt       # 搜索引擎蜘蛛爬行策略定义 (显式放行样式与 AI 爬虫)
+├── sitemap.xml      # 结构化站点地图（全站 200 OK 物理单页聚合）
+├── llms.txt         # AI 搜索引擎标准引用协议
+├── test-seo-audit.js # 自动化 CI 门禁与 0 死链全站校验脚本
+├── LICENSE          # MIT 开源许可证
+└── tailwind.config.js # Tailwind CSS 预编译配置文件
 ```
 
 ---
@@ -507,4 +516,4 @@ Client  ◄─ Handshake Done ─── Server (1.0 RTT)
 
 ## 📄 开源许可证
 
-本项目基于 [MIT License](LICENSE) 开源发布。
+本项目基于 [MIT License](./LICENSE) 开源发布。
