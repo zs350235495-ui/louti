@@ -313,11 +313,11 @@ Client  ◄─ Handshake Done ─── Server (1.0 RTT)
 | 🏅 **TOP-04** | **云界线 (YunJie Xian)** | 企业级 IPLC 架构 (不限并发) | **24.5 ms** (±0.4ms) | **0.04%** | 2.5 Gbps / 全线无倍率 | 全设备并发无限制 · 全 AI/学术适配 | `yjx888` (7折) | ¥15.0/月起 | [📖 测评报告](https://tizivpn.net/posts/review-yunjiexian.html) |
 | 🏅 **TOP-05** | **神行加速 (ShenXing)** | 全线极速 IPLC/IEPL 专线 | **22.5 ms** (±0.2ms) | **0.02%** | 2.5 Gbps / 统一 1.0x | 纯净原生调度 · ChatGPT/Claude 零拦截 | `sx0077` (7折) | ¥16.0/月起 | [📖 测评报告](https://tizivpn.net/posts/review-shenxing.html) |
 | 🏅 **TOP-06** | **榴莲云 (LiuLian Yun)** | 全线 IPLC 极速专线 | **23.1 ms** (±0.3ms) | **0.03%** | 2.5 Gbps / 晚高峰不限速 | 4K/8K 流媒体全绿 · 稳定无暗扣 | `ll88` (7折) | ¥15.5/月起 | [📖 测评报告](https://tizivpn.net/posts/review-liulianyun.html) |
-| 🏅 **TOP-07** | **极连云 (JiLian Yun)** | 顶级性价比 IEPL 专线 | **24.2 ms** (±0.4ms) | **0.04%** | 1.5 Gbps / 1.0x | 原生 IP 流媒体解锁 · 不限设备数 | `JLY88` (7折) | **¥12.0/月起** | [📖 测评报告](https://tizivpn.net/posts/review-jilianyun.html) |
+| 🏅 **TOP-07** | **极连云 (JiLian Yun)** | 顶级性价比 IEPL 专线 | **24.2 ms** (±0.4ms) | **0.04%** | 1.5 Gbps / 1.0x | 原生 IP 流媒体解锁 · 不限设备数 | `JLY888` (7折) | **¥12.0/月起** | [📖 测评报告](https://tizivpn.net/posts/review-jilianyun.html) |
 | 🏅 **TOP-08** | **云图机场 (YunTu)** | 金融级内网专线传输 | **25.1 ms** (±0.4ms) | **0.04%** | 1.5 Gbps / 统一 1.0x | 原生 IP 纯净调度 · 5台设备并发 | `yt88` (8折) | ¥16.0/月起 | [📖 选型指南](https://tizivpn.net/posts/2026-airport-node-recommendation-selection-guide.html) |
-| 🏅 **TOP-09** | **光年梯 (GuangNian Ti)** | 全线 IPLC 物理专线 | **23.5 ms** (±0.3ms) | **0.03%** | 2.0 Gbps / 高峰不限速 | 新加坡海外运维团队 · 敏感期稳如磐石 | `GNT70` (7折) | ¥17.5/月起 | [📖 测评报告](https://tizivpn.net/posts/review-guangnianti.html) |
-| 🏅 **TOP-12** | **瞬云 (ShunYun)** | ANYCAST + 全专线中继 | **25.4 ms** (±0.4ms) | **0.04%** | 1.5 Gbps / 无倍率 | 全线套餐不限速 · 敏感期高可用切换 | 官方通道 | ¥13.0/月起 | [📖 测评报告](https://tizivpn.net/posts/review-shunyun.html) |
-| 🏅 **TOP-15** | **边缘节点 (EdgeNode)** | 稳定 BGP 中转多入多出 | **27.5 ms** (±0.6ms) | **0.06%** | 1.0 Gbps / 稳定并发 | 官方自研一键登录客户端 · 支持多设备 | 官方通道 | ¥11.5/月起 | [📖 测评报告](https://tizivpn.net/posts/review-edgenode.html) |
+| 🏅 **TOP-09** | **光年梯 (GuangNian Ti)** | 全线 IPLC 物理专线 | **23.5 ms** (±0.3ms) | **0.03%** | 2.0 Gbps / 高峰不限速 | 新加坡海外运维团队 · 敏感期稳如磐石 | `GNT80` (8折) | ¥17.5/月起 | [📖 测评报告](https://tizivpn.net/posts/review-guangnianti.html) |
+| 🏅 **TOP-12** | **瞬云 (ShunYun)** | ANYCAST + 全专线中继 | **25.4 ms** (±0.4ms) | **0.04%** | 1.5 Gbps / 无倍率 | 全线套餐不限速 · 敏感期高可用切换 | `SY888` (特惠) | ¥13.0/月起 | [📖 测评报告](https://tizivpn.net/posts/review-shunyun.html) |
+| 🏅 **TOP-15** | **边缘节点 (EdgeNode)** | 稳定 BGP 中转多入多出 | **27.5 ms** (±0.6ms) | **0.06%** | 1.0 Gbps / 稳定并发 | 官方自研一键登录客户端 · 支持多设备 | `xk808` (特惠) | ¥11.5/月起 | [📖 测评报告](https://tizivpn.net/posts/review-edgenode.html) |
 
 ---
 
