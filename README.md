@@ -311,7 +311,7 @@ Client  ◄─ Handshake Done ─── Server (1.0 RTT)
 | 🥈 **TOP-02** | **大佬云 (DaLao Yun)** | 企业级全专线广港/沪日中继 | **22.4 ms** (±0.3ms) | **0.02%** | 2.0 Gbps / 纯净倍率 | 4K秒开 · 极低抖动 · 原生流媒体全解 | `dly88` (7折) | ¥15.4/月起 | [📖 测评报告](https://tizivpn.net/posts/review-dalaoyun.html) |
 | 🥉 **TOP-03** | **闪电鼠 (ShanDian Shu)** | 全线物理 IPLC 专线集群 | **23.8 ms** (±0.3ms) | **0.03%** | 2.5 Gbps / 全节点 1.0x | 晚高峰满速 · 原生多国节点 · 游戏特调 | `sds88` (7折) | ¥16.8/月起 | [📖 测评报告](https://tizivpn.net/posts/review-shandianshu.html) |
 | 🏅 **TOP-04** | **云界线 (YunJie Xian)** | 企业级 IPLC 架构 (不限并发) | **24.5 ms** (±0.4ms) | **0.04%** | 2.5 Gbps / 全线无倍率 | 全设备并发无限制 · 全 AI/学术适配 | `yjx888` (7折) | ¥15.0/月起 | [📖 测评报告](https://tizivpn.net/posts/review-yunjiexian.html) |
-| 🏅 **TOP-05** | **神行加速 (ShenXing)** | 全线极速 IPLC/IEPL 专线 | **22.5 ms** (±0.2ms) | **0.02%** | 2.5 Gbps / 统一 1.0x | 纯净原生调度 · ChatGPT/Claude 零拦截 | `sx666` (7折) | ¥16.0/月起 | [📖 测评报告](https://tizivpn.net/posts/review-shenxing.html) |
+| 🏅 **TOP-05** | **神行加速 (ShenXing)** | 全线极速 IPLC/IEPL 专线 | **22.5 ms** (±0.2ms) | **0.02%** | 2.5 Gbps / 统一 1.0x | 纯净原生调度 · ChatGPT/Claude 零拦截 | `sx0077` (7折) | ¥16.0/月起 | [📖 测评报告](https://tizivpn.net/posts/review-shenxing.html) |
 | 🏅 **TOP-06** | **榴莲云 (LiuLian Yun)** | 全线 IPLC 极速专线 | **23.1 ms** (±0.3ms) | **0.03%** | 2.5 Gbps / 晚高峰不限速 | 4K/8K 流媒体全绿 · 稳定无暗扣 | `ll88` (7折) | ¥15.5/月起 | [📖 测评报告](https://tizivpn.net/posts/review-liulianyun.html) |
 | 🏅 **TOP-07** | **极连云 (JiLian Yun)** | 顶级性价比 IEPL 专线 | **24.2 ms** (±0.4ms) | **0.04%** | 1.5 Gbps / 1.0x | 原生 IP 流媒体解锁 · 不限设备数 | `JLY88` (7折) | **¥12.0/月起** | [📖 测评报告](https://tizivpn.net/posts/review-jilianyun.html) |
 | 🏅 **TOP-08** | **云图机场 (YunTu)** | 金融级内网专线传输 | **25.1 ms** (±0.4ms) | **0.04%** | 1.5 Gbps / 统一 1.0x | 原生 IP 纯净调度 · 5台设备并发 | `yt88` (8折) | ¥16.0/月起 | [📖 选型指南](https://tizivpn.net/posts/2026-airport-node-recommendation-selection-guide.html) |
@@ -354,7 +354,7 @@ Client  ◄─ Handshake Done ─── Server (1.0 RTT)
 #### 5. 神行加速 (ShenXing) —— 【原生纯净调度与 AI 全通 · S+ 旗舰】
 - **底层架构**：全线部署极速 IPLC/IEPL 混合专线集群，骨干网抖动抑制算法优化，单节点峰值 2.5 Gbps，统一 1.0x 计费。
 - **实测表现**：延迟 **22.5 ms**，丢包 **0.02%**，具备极其严格的 IP 欺诈度清洗体系，OpenAI / Claude 请求通过率达到 99.8%。
-- **资费与礼遇**：输入专属 7折优惠码 `sx666`，月付低至 **¥16.0/月起**。
+- **资费与礼遇**：输入专属 7折优惠码 `sx0077`，月付低至 **¥16.0/月起**。
 - 🔗 **技术研报**：[📖 阅读《神行加速深度技术实测研报》](https://tizivpn.net/posts/review-shenxing.html)
 
 ---

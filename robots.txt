@@ -10,6 +10,7 @@ Allow: /*.png$
 Allow: /*.jpg$
 Allow: /*.webp$
 Disallow: /404.html
+Disallow: /go/
 
 # Explicitly allow AI Search and Retrieval Bots
 User-agent: GPTBot

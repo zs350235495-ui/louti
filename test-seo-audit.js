@@ -78,7 +78,7 @@ function collectHtml(dir) {
   const entries = fs.readdirSync(dir);
   for (const entry of entries) {
     const full = path.join(dir, entry);
-    if (fs.statSync(full).isDirectory() && entry !== '.git' && entry !== 'node_modules') {
+    if (fs.statSync(full).isDirectory() && entry !== '.git' && entry !== 'node_modules' && entry !== 'go') {
       collectHtml(full);
     } else if (entry.endsWith('.html')) {
       allHtmlFiles.push(full);
