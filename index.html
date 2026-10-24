@@ -141,6 +141,30 @@
 </head>
 <body class="min-h-screen flex flex-col font-sans relative selection:bg-sky-200 selection:text-slate-900">
 
+  <!-- 0. 顶部官方 Telegram 交流通道置顶横幅 (极速高亮醒目) -->
+  <aside style="background: linear-gradient(90deg, #0284c7 0%, #0369a1 100%); color: #ffffff;" class="py-2 px-3 text-xs sm:text-sm font-bold shadow-sm relative z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 flex-wrap">
+      <div class="flex items-center space-x-2">
+        <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-white text-[#0284c7] font-bold text-xs shrink-0">
+          <svg class="w-3.5 h-3.5" style="fill: #0284c7;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+        </span>
+        <span class="text-white tracking-wide">
+          【官方通知】官方 Telegram 交流社群已开通，实时推送晚高峰测速报告与失联跑路预警！
+        </span>
+      </div>
+      <a 
+        href="/go/tg/" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        style="background: #ffffff; color: #0284c7; box-shadow: 0 2px 6px rgba(0,0,0,0.15);"
+        class="inline-flex items-center px-3 py-1 rounded-full text-xs font-extrabold hover:bg-sky-50 active:scale-95 transition-all shrink-0 cursor-pointer"
+        title="点击跳转官方 Telegram"
+      >
+        <span>点击加入官方 TG 群 ↗</span>
+      </a>
+    </div>
+  </aside>
+
   <!-- 1. 锐利硬朗玻璃拟态导航栏 (Header) -->
   <header class="sticky top-0 z-50 backdrop-blur-md bg-white/95 border-b border-slate-300 transition-colors shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -225,11 +249,12 @@
           href="/go/tg/" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="inline-flex items-center px-3 py-2 rounded-lg bg-[#229ED9] hover:bg-[#1d8cc1] text-white text-xs font-bold transition-all shadow-sm group active:scale-95 cursor-pointer"
+          style="background: #0284c7 !important; color: #ffffff !important; border: 1px solid #0369a1;"
+          class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold transition-all shadow-md hover:opacity-95 active:scale-95 cursor-pointer shrink-0"
           title="点击直达官方 Telegram 交流频道"
         >
-          <svg class="w-4 h-4 mr-1.5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-          <span>官方 Telegram</span>
+          <svg class="w-4 h-4 mr-1.5 shrink-0" style="fill: #ffffff !important;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+          <span style="color: #ffffff !important; font-weight: 700;">官方 Telegram 交流群</span>
         </a>
 
         <a 
@@ -435,11 +460,12 @@
                         href="/go/tg/" 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold text-sky-700 bg-sky-50 hover:bg-sky-100 border border-sky-300 transition-colors"
+                        style="background: #0284c7 !important; color: #ffffff !important;"
+                        class="inline-flex items-center px-2.5 py-1 rounded text-[11px] font-bold shadow-sm hover:opacity-90 transition-opacity"
                         title="点击直达官方 Telegram 交流通道"
                       >
-                        <svg class="w-3 h-3 mr-1 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-                        <span>TG 客服/交流 ↗</span>
+                        <svg class="w-3 h-3 mr-1 shrink-0" style="fill: #ffffff !important;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+                        <span style="color: #ffffff !important;">TG 客服/交流 ↗</span>
                       </a>
                     </div>
                     <div class="text-xs text-[#3F3F46] font-mono font-medium mt-1">
@@ -1787,11 +1813,12 @@
                   href="/go/tg/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  class="inline-flex items-center px-3 py-2 rounded-lg text-xs font-bold text-sky-700 bg-sky-50 hover:bg-sky-100 border border-sky-300 transition-all cursor-pointer"
+                  style="background: #0284c7 !important; color: #ffffff !important;"
+                  class="inline-flex items-center px-3.5 py-2 rounded-lg text-xs font-bold shadow-md hover:opacity-90 transition-opacity cursor-pointer"
                   title="点击直达官方 Telegram 客服与社群"
                 >
-                  <svg class="w-3.5 h-3.5 mr-1 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-                  <span>TG 客服/交流 ↗</span>
+                  <svg class="w-3.5 h-3.5 mr-1.5 shrink-0" style="fill: #ffffff !important;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+                  <span style="color: #ffffff !important;">TG 客服/交流 ↗</span>
                 </a>
               </div>
 
@@ -4087,11 +4114,12 @@ iptables -t mangle -A POSTROUTING -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --cla
                 href="/go/tg/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                class="inline-flex items-center px-3.5 py-2 rounded-lg bg-[#229ED9] hover:bg-[#1d8cc1] text-white text-xs font-bold transition-all shadow-sm group active:scale-95 cursor-pointer"
+                style="background: #0284c7 !important; color: #ffffff !important;"
+                class="inline-flex items-center px-4 py-2.5 rounded-lg text-xs font-bold transition-all shadow-md hover:opacity-90 group active:scale-95 cursor-pointer"
                 title="点击加入官方 Telegram 交流群"
               >
-                <svg class="w-4 h-4 mr-1.5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-                <span>点击加入官方 Telegram 群 ↗</span>
+                <svg class="w-4 h-4 mr-1.5 shrink-0" style="fill: #ffffff !important;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+                <span style="color: #ffffff !important;">点击加入官方 Telegram 群 ↗</span>
               </a>
               <a 
                 href="/posts/2026-airport-node-recommendation-selection-guide.html" 
@@ -4433,6 +4461,26 @@ iptables -t mangle -A POSTROUTING -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --cla
     window.addEventListener('load', handleAppRouting);
     window.addEventListener('hashchange', handleAppRouting);
   </script>
+
+  <!-- 浮动常驻 Telegram 入口 (右下角高亮浮窗) -->
+  <a 
+    href="/go/tg/" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    id="floating-tg-widget"
+    style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #ffffff !important; box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.5), 0 8px 10px -6px rgba(2, 132, 199, 0.3); border: 2px solid #bae6fd;"
+    class="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-4 py-2.5 rounded-full font-bold text-xs sm:text-sm transition-all duration-300 hover:scale-105 active:scale-95 group cursor-pointer"
+    title="点击直接跳转官方 Telegram 交流群"
+  >
+    <div style="background: rgba(255,255,255,0.25);" class="w-7 h-7 rounded-full flex items-center justify-center shrink-0">
+      <svg class="w-4 h-4" style="fill: #ffffff !important;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+    </div>
+    <div class="flex flex-col text-left">
+      <span class="text-[10px] text-sky-100 font-mono leading-none mb-0.5">在线交流与客服</span>
+      <span class="text-xs sm:text-sm font-extrabold tracking-wide" style="color: #ffffff !important;">官方 Telegram ↗</span>
+    </div>
+    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0" style="box-shadow: 0 0 6px #34d399;"></span>
+  </a>
 
 </body>
 </html>
