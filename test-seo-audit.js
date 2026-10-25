@@ -164,10 +164,11 @@ for (const filePath of allHtmlFiles) {
 if (h1Errors === 0) logPass(`全部内容页面均严格遵循唯一 <h1> 语义标准`);
 if (canonicalErrors === 0) logPass(`全部内容页面均规范挂载 https://tizivpn.net/ Clean Canonical URL`);
 
-// 5.1 全站 HTML Meta Description 与 0 Meta Refresh 规范检查 (杜绝 Bing/Google 报 Meta Description tag missing 或 Meta Refresh tag exists)
-console.log('\n📝 5.1 全站 HTML Meta Description 与 0 Meta Refresh 规范检查');
+// 5.1 全站 HTML Meta Description、0 Meta Refresh 与 单一 <h1> 规范检查 (杜绝 Bing/Google 报 Meta Description tag missing、Meta Refresh 或 H1 tag missing)
+console.log('\n📝 5.1 全站 HTML Meta Description、0 Meta Refresh 与 单一 <h1> 规范检查');
 let descErrors = 0;
 let refreshErrors = 0;
+let h1AllErrors = 0;
 function checkAllHtmlMeta(dir) {
   const entries = fs.readdirSync(dir);
   for (const entry of entries) {
@@ -185,12 +186,18 @@ function checkAllHtmlMeta(dir) {
         logFail(`${rel} 包含 Meta Refresh 标签 (将触发 Bing 警告)`);
         refreshErrors++;
       }
+      const h1Count = (content.match(/<h1[\s>]/gi) || []).length;
+      if (h1Count !== 1) {
+        logFail(`${rel} 包含 ${h1Count} 个 <h1> (必须严格等于 1，杜绝 H1 tag missing)`);
+        h1AllErrors++;
+      }
     }
   }
 }
 checkAllHtmlMeta(rootDir);
 if (descErrors === 0) logPass(`全站所有 HTML 页面 (包括主页、文章页、跳转页、404等) 均完整挂载 Meta Description 标签`);
 if (refreshErrors === 0) logPass(`全站所有 HTML 页面均实现 0 Meta Refresh 标签 (彻底清除 Bing 警告)`);
+if (h1AllErrors === 0) logPass(`全站所有 54 个 HTML 页面均严格遵循唯单一 <h1> 标签标准 (彻底清除 Bing H1 警告)`);
 
 // 6. Schema.org JSON-LD 结构化数据完整性检查
 console.log('\n🏛️ 6. E-E-A-T 实体权威度 (Schema.org JSON-LD @graph) 验证');
