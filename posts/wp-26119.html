@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>跨境网络传输瓶颈与拥塞控制调优白皮书：从 TCP 三次握手、BBR 算法到运营商 QoS 限速机制 - 节点白皮书 · 学术智库</title>
+  <title>跨境传输瓶颈与拥塞控制调优白皮书：TCP 握手、BBR 与 QoS 机制 - 节点白皮书</title>
   <meta name="description" content="深入剖析跨境长肥管道（LFN）传输瓶颈，全面拆解 CUBIC 算法在高 RTT 晚高峰场景下的数学崩溃模型，深度横评 BBR 家族（v1/v2/v3）算法性能，针对运营商 DPI、令牌桶限速与非对称路由黑洞，提供 Linux 协议栈内核参数调优指南与全链路抓包诊断流水线。">
   <meta name="keywords" content="跨境网络传输瓶颈,TCP三次握手,BBR算法,CUBIC算法,QoS限速机制,带宽时延积,BDP,路由黑洞排查,TCP重传优化,Linux内核参数调优,网络抓包分析">
-  <meta property="og:title" content="跨境网络传输瓶颈与拥塞控制调优白皮书：从 TCP 三次握手、BBR 算法到运营商 QoS 限速机制">
+  <meta property="og:title" content="跨境传输瓶颈与拥塞控制调优白皮书：TCP 握手、BBR 与 QoS 机制">
   <meta property="og:description" content="深入剖析跨境长肥管道传输瓶颈，拆解 CUBIC 数学崩溃模型，横评 BBR 家族性能，剖析运营商 DPI 与令牌桶限速，提供完整内核调优参数与全链路抓包诊断指南。">
   <meta property="og:url" content="https://tizivpn.net/posts/wp-26119.html">
   <meta property="og:image" content="https://tizivpn.net/assets/logo_globe_preview.jpg">
@@ -41,7 +41,7 @@
     "@graph": [
       {
         "@type": "TechArticle",
-        "headline": "跨境网络传输瓶颈与拥塞控制调优白皮书：从 TCP 三次握手、BBR 算法到运营商 QoS 限速机制",
+        "headline": "跨境传输瓶颈与拥塞控制调优白皮书：TCP 握手、BBR 与 QoS 机制",
         "description": "深入剖析跨境长肥管道（LFN）传输瓶颈，全面拆解 CUBIC 算法在高 RTT 晚高峰场景下的数学崩溃模型，深度横评 BBR 家族（v1/v2/v3）算法性能，针对运营商 DPI、令牌桶限速与非对称路由黑洞，提供 Linux 协议栈内核参数调优指南与全链路抓包诊断流水线。",
         "author": {
           "@type": "Organization",
@@ -79,7 +79,7 @@
           {
             "@type": "ListItem",
             "position": 3,
-            "name": "跨境网络传输瓶颈与拥塞控制调优白皮书：从 TCP 三次握手、BBR 算法到运营商 QoS 限速机制",
+            "name": "跨境传输瓶颈与拥塞控制调优白皮书：TCP 握手、BBR 与 QoS 机制",
             "item": "https://tizivpn.net/posts/wp-26119.html"
           }
         ]
@@ -89,7 +89,7 @@
   </script>
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="跨境网络传输瓶颈与拥塞控制调优白皮书：从 TCP 三次握手、BBR 算法到运营商 QoS 限速机制 - 节点白皮书 · 学术智库">
+  <meta name="twitter:title" content="跨境传输瓶颈与拥塞控制调优白皮书：TCP 握手、BBR 与 QoS 机制 - 节点白皮书 · 学术智库">
   <meta name="twitter:description" content="深入剖析跨境长肥管道（LFN）传输瓶颈，全面拆解 CUBIC 算法在高 RTT 晚高峰场景下的数学崩溃模型，深度横评 BBR 家族（v1/v2/v3）算法性能，针对运营商 DPI、令牌桶限速与非对称路由黑洞，提供 Linux 协议栈内核参数调优指南与全链路抓包诊断流水线。">
   <meta name="twitter:image" content="https://tizivpn.net/assets/logo_globe_preview.jpg">
 </head>
@@ -130,7 +130,7 @@
       </div>
       
       <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#09090B] tracking-tight leading-snug mb-3">
-        跨境网络传输瓶颈与拥塞控制调优白皮书：从 TCP 三次握手、BBR 算法到运营商 QoS 限速机制
+        跨境传输瓶颈与拥塞控制调优白皮书：TCP 握手、BBR 与 QoS 机制
       </h1>
       <p class="text-sm font-medium text-slate-600 mb-6">
         深入物理极限与协议栈边界，系统性攻克长肥管道（LFN）误码失速、BBR 状态机调度与骨干网 QoS 流量监管难题
@@ -523,7 +523,7 @@ rm -f "${PCAP_OUT}"</code></pre>
       <footer class="not-prose mt-8 p-4 bg-slate-50 border border-slate-200 rounded-lg text-xs font-mono text-slate-600">
         <div class="font-bold text-[#09090B] mb-1">文献标准引用格式 (Citation Reference)：</div>
         <div class="text-[11px] select-all leading-relaxed bg-white p-2.5 rounded border border-slate-200">
-          Transport Protocol Engineering & Traffic Scheduling Laboratory (2026). <em>跨境网络传输瓶颈与拥塞控制调优白皮书：从 TCP 三次握手、BBR 算法到运营商 QoS 限速机制</em>. Global Topology & Protocol Whitepaper, Research Paper WP-26119, DOI: 10.2618/nr.26119.
+          Transport Protocol Engineering & Traffic Scheduling Laboratory (2026). <em>跨境传输瓶颈与拥塞控制调优白皮书：TCP 握手、BBR 与 QoS 机制</em>. Global Topology & Protocol Whitepaper, Research Paper WP-26119, DOI: 10.2618/nr.26119.
         </div>
       </footer>
     </article>

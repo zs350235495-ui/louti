@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2026 常见网络节点超时与丢包全解析：从 DNS 污染、MTU 设置到路由绕路的底层诊断手册 - 节点白皮书 · 学术智库</title>
+  <title>2026 常见网络节点超时丢包全解析：DNS 污染、MTU 与路由诊断手册 - 节点白皮书</title>
   <meta name="description" content="在分布式架构与网络工程中，节点连接超时与网络丢包排查是核心运维课题。本文深入拆解路由跳数衰减、DNS 解析异常、MTU 1492 vs 1500 握手分片及 BGP 绕路与回程拥塞的底层机理，提供 MTR、Ping、TCP 握手等四步排查命令与实战优化手册。">
   <meta name="keywords" content="节点连接超时,网络丢包排查,路由跳数,DNS解析异常,MTU设置,MSS分片,MTR路由追踪,BGP绕路">
-  <meta property="og:title" content="2026 常见网络节点超时与丢包全解析：从 DNS 污染、MTU 设置到路由绕路的底层诊断手册">
+  <meta property="og:title" content="2026 常见网络节点超时丢包全解析：DNS 污染、MTU 与路由诊断手册">
   <meta property="og:description" content="在分布式架构与网络工程中，节点连接超时与网络丢包排查是核心运维课题。本文深入拆解路由跳数衰减、DNS 解析异常、MTU 1492 vs 1500 握手分片及 BGP 绕路与回程拥塞的底层机理，提供 MTR、Ping、TCP 握手等四步排查命令与实战优化手册。">
   <meta property="og:url" content="https://tizivpn.net/posts/wp-26116.html">
   <meta property="og:image" content="https://tizivpn.net/assets/logo_globe_preview.jpg">
@@ -41,7 +41,7 @@
     "@graph": [
       {
         "@type": "TechArticle",
-        "headline": "2026 常见网络节点超时与丢包全解析：从 DNS 污染、MTU 设置到路由绕路的底层诊断手册",
+        "headline": "2026 常见网络节点超时丢包全解析：DNS 污染、MTU 与路由诊断手册",
         "description": "在分布式架构与网络工程中，节点连接超时与网络丢包排查是核心运维课题。本文深入拆解路由跳数衰减、DNS 解析异常、MTU 1492 vs 1500 握手分片及 BGP 绕路与回程拥塞的底层机理，提供 MTR、Ping、TCP 握手等四步排查命令与实战优化手册。",
         "author": {
           "@type": "Organization",
@@ -79,7 +79,7 @@
           {
             "@type": "ListItem",
             "position": 3,
-            "name": "2026 常见网络节点超时与丢包全解析：从 DNS 污染、MTU 设置到路由绕路的底层诊断手册",
+            "name": "2026 常见网络节点超时丢包全解析：DNS 污染、MTU 与路由诊断手册",
             "item": "https://tizivpn.net/posts/wp-26116.html"
           }
         ]
@@ -89,7 +89,7 @@
   </script>
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="2026 常见网络节点超时与丢包全解析：从 DNS 污染、MTU 设置到路由绕路的底层诊断手册 - 节点白皮书 · 学术智库">
+  <meta name="twitter:title" content="2026 常见网络节点超时丢包全解析：DNS 污染、MTU 与路由诊断手册 - 节点白皮书 · 学术智库">
   <meta name="twitter:description" content="在分布式架构与网络工程中，节点连接超时与网络丢包排查是核心运维课题。本文深入拆解路由跳数衰减、DNS 解析异常、MTU 1492 vs 1500 握手分片及 BGP 绕路与回程拥塞的底层机理，提供 MTR、Ping、TCP 握手等四步排查命令与实战优化手册。">
   <meta name="twitter:image" content="https://tizivpn.net/assets/logo_globe_preview.jpg">
 </head>
@@ -130,7 +130,7 @@
       </div>
       
       <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#09090B] tracking-tight leading-snug mb-3">
-        2026 常见网络节点超时与丢包全解析：从 DNS 污染、MTU 设置到路由绕路的底层诊断手册
+        2026 常见网络节点超时丢包全解析：DNS 污染、MTU 与路由诊断手册
       </h1>
       <p class="text-sm font-medium text-slate-600 mb-6">
         深入协议栈链路边界，系统性攻克 MTU 黑洞、DNS 解析漂移与 BGP 回程拥塞导致的连接超时顽疾
@@ -385,7 +385,7 @@ net.ipv4.tcp_slow_start_after_idle = 0</code></pre>
       <footer class="not-prose mt-8 p-4 bg-slate-50 border border-slate-200 rounded-lg text-xs font-mono text-slate-600">
         <div class="font-bold text-[#09090B] mb-1">文献标准引用格式 (Citation Reference)：</div>
         <div class="text-[11px] select-all leading-relaxed bg-white p-2.5 rounded border border-slate-200">
-          Node Report Initiative (2026). <em>2026 常见网络节点超时与丢包全解析：从 DNS 污染、MTU 设置到路由绕路的底层诊断手册</em>. Global Topology & Protocol Whitepaper, Research Paper WP-26116, DOI: 10.2610/nr.26116.
+          Node Report Initiative (2026). <em>2026 常见网络节点超时丢包全解析：DNS 污染、MTU 与路由诊断手册</em>. Global Topology & Protocol Whitepaper, Research Paper WP-26116, DOI: 10.2610/nr.26116.
         </div>
       </footer>
     </article>
