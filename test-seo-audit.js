@@ -164,15 +164,16 @@ for (const filePath of allHtmlFiles) {
 if (h1Errors === 0) logPass(`全部内容页面均严格遵循唯一 <h1> 语义标准`);
 if (canonicalErrors === 0) logPass(`全部内容页面均规范挂载 https://tizivpn.net/ Clean Canonical URL`);
 
-// 5.1 全站 HTML Meta Description 完整性检查 (杜绝 Bing/Google 报 Meta Description tag missing)
-console.log('\n📝 5.1 全站 HTML Meta Description 规范检查');
+// 5.1 全站 HTML Meta Description 与 0 Meta Refresh 规范检查 (杜绝 Bing/Google 报 Meta Description tag missing 或 Meta Refresh tag exists)
+console.log('\n📝 5.1 全站 HTML Meta Description 与 0 Meta Refresh 规范检查');
 let descErrors = 0;
-function checkAllHtmlDescriptions(dir) {
+let refreshErrors = 0;
+function checkAllHtmlMeta(dir) {
   const entries = fs.readdirSync(dir);
   for (const entry of entries) {
     const full = path.join(dir, entry);
     if (fs.statSync(full).isDirectory() && entry !== '.git' && entry !== 'node_modules') {
-      checkAllHtmlDescriptions(full);
+      checkAllHtmlMeta(full);
     } else if (entry.endsWith('.html')) {
       const content = fs.readFileSync(full, 'utf8');
       const rel = path.relative(rootDir, full).replace(/\\/g, '/');
@@ -180,11 +181,16 @@ function checkAllHtmlDescriptions(dir) {
         logFail(`${rel} 缺少 <meta name="description">`);
         descErrors++;
       }
+      if (content.includes('http-equiv="refresh"')) {
+        logFail(`${rel} 包含 Meta Refresh 标签 (将触发 Bing 警告)`);
+        refreshErrors++;
+      }
     }
   }
 }
-checkAllHtmlDescriptions(rootDir);
+checkAllHtmlMeta(rootDir);
 if (descErrors === 0) logPass(`全站所有 HTML 页面 (包括主页、文章页、跳转页、404等) 均完整挂载 Meta Description 标签`);
+if (refreshErrors === 0) logPass(`全站所有 HTML 页面均实现 0 Meta Refresh 标签 (彻底清除 Bing 警告)`);
 
 // 6. Schema.org JSON-LD 结构化数据完整性检查
 console.log('\n🏛️ 6. E-E-A-T 实体权威度 (Schema.org JSON-LD @graph) 验证');
