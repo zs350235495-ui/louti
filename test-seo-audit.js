@@ -115,16 +115,19 @@ for (const filePath of allHtmlFiles) {
     }
   }
 }
-const readmeContent = fs.readFileSync(path.join(rootDir, 'README.md'), 'utf8');
-for (const p of affPatterns) {
-  if (p.test(readmeContent)) {
-    logFail(`在 README.md 中检测到未脱敏返利/推广模式: ${p}`);
-    affFound++;
+const readmePath = path.join(rootDir, 'README.md');
+if (fs.existsSync(readmePath)) {
+  const readmeContent = fs.readFileSync(readmePath, 'utf8');
+  for (const p of affPatterns) {
+    if (p.test(readmeContent)) {
+      logFail(`在 README.md 中检测到未脱敏返利/推广模式: ${p}`);
+      affFound++;
+    }
   }
 }
 
 if (affFound === 0) {
-  logPass(`全站 ${allHtmlFiles.length} 个 HTML 页面与 README.md 均实现 0 返利外链、0 邀请码、0 外部引流`);
+  logPass(`全站 ${allHtmlFiles.length} 个 HTML 页面均实现 0 返利外链、0 邀请码、0 外部引流`);
 }
 
 // 5. 单一 <h1> 语义结构与 Canonical 闭环断言
