@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="节点白皮书安全外部通道分发与 301 重定向中心，正在为您安全建立直连通道。">
+  <link rel="canonical" href="https://tizivpn.net/go.html">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <title>正在安全建立直达通道... - 节点白皮书 · 学术智库</title>
+  <script>
+    (function() {
+      var MAP = {
+        "bianyuan": { u: "aHR0cHM6Ly93ZXAuZWRnZW5vdmFhZmYuY29tLyMvP2NvZGU9bUxMTDZoNkY=", n: "边缘节点", p: "xk808" },
+        "edgenode": { u: "aHR0cHM6Ly93ZXAuZWRnZW5vdmFhZmYuY29tLyMvP2NvZGU9bUxMTDZoNkY=", n: "边缘节点", p: "xk808" },
+        "dalaoyun": { u: "aHR0cHM6Ly9wcHN2aXAwMS5kYWxhb3l1bmFmZi5jb20vIy8/Y29kZT1JejFHbENWYQ==", n: "大佬云", p: "dly88" },
+        "guangnianti": { u: "aHR0cHM6Ly9nbnQwMDEuZ250dmlwYWZmLmNjLyMvP2NvZGU9UFFoUEZEaE8=", n: "光年梯", p: "GNT80" },
+        "huanqiuti": { u: "aHR0cHM6Ly8xMjNwcHMwMS5odWFucWl1dGlhZmYuY29tLyMvP2NvZGU9ajVWQlV2dzA=", n: "环球梯", p: "HQ66" },
+        "jilianyun": { u: "aHR0cHM6Ly9oYW96ZXZwbi5qbHl2aXBhZmYuY29tLyMvP2NvZGU9andDTU92UU8=", n: "极连云", p: "JLY888" },
+        "kexinyun": { u: "aHR0cHM6Ly9ldmVyZXR0NzYyMy5rb3NpbmdhZmYuY29tLyMvP2NvZGU9c0ZLa2ZFWXM=", n: "可信云", p: "kxy80" },
+        "kuaili": { u: "aHR0cHM6Ly9mYW54aWFvYmluLmt1YWlsaWFmZi5jb20vIy8/Y29kZT1lMGNBbUs3Rg==", n: "快狸快狸", p: "kl888" },
+        "kunpeng": { u: "aHR0cHM6Ly9rdW5wZW5namlhc3UuY29tLyMvcmVnaXN0ZXI/Y29kZT1XUHVnVlpVZQ==", n: "鲲鹏加速", p: "官方体验特惠" },
+        "liulianyun": { u: "aHR0cHM6Ly8xMjNwcDAxLmxpdWxpYW55dW5hZmYuY29tLyMvP2NvZGU9TXNaUDN1N0c=", n: "榴莲云", p: "ll88" },
+        "shandianshu": { u: "aHR0cHM6Ly9wcHN2aXAwMS5zaGFuZGlhbnNodWFmZi5jb20vIy8/Y29kZT1RYkxGOHRqQg==", n: "闪电鼠", p: "sds88" },
+        "shenxing": { u: "aHR0cHM6Ly9wcHMxMjMuc2hlbnhpbmdhZmYuY29tLyMvP2NvZGU9NnRRN3pIVWM=", n: "神行加速", p: "sx0077" },
+        "shunyun": { u: "aHR0cHM6Ly9kZGQuamljaGFuZy5iZXN0LyMvcmVnaXN0ZXI/Y29kZT1ubGRVWmFZYw==", n: "瞬云", p: "SY888" },
+        "sujie": { u: "aHR0cHM6Ly9weWdsbGMuc3BlZWR3b3JsZGFmZi5jYy8jLz9jb2RlPWtjb2Vuc1hH", n: "速界", p: "sujie888" },
+        "telegram": { u: "aHR0cHM6Ly90Lm1lL2h1YW5xaXV0aTg4OTk=", n: "官方 Telegram 频道", p: "" },
+        "tg": { u: "aHR0cHM6Ly90Lm1lL2h1YW5xaXV0aTg4OTk=", n: "官方 Telegram 频道", p: "" },
+        "yunjiexian": { u: "aHR0cHM6Ly9wcDAxLnl1bmppZXhpYW5hZmYuY29tLyMvP2NvZGU9YnAwWlNLQlY=", n: "云界线", p: "yjx888" },
+        "yuntu": { u: "aHR0cHM6Ly9zdXBlci55dGpjb2sub3JnLyMvcmVnaXN0ZXI/Y29kZT1wb0t3RlZ0dg==", n: "云图机场", p: "yt88" },
+        "hqt": { u: "aHR0cHM6Ly8xMjNwcHMwMS5odWFucWl1dGlhZmYuY29tLyMvP2NvZGU9ajVWQlV2dzA=", n: "环球梯", p: "HQ66" },
+        "dly": { u: "aHR0cHM6Ly9wcHN2aXAwMS5kYWxhb3l1bmFmZi5jb20vIy8/Y29kZT1JejFHbENWYQ==", n: "大佬云", p: "dly88" },
+        "sds": { u: "aHR0cHM6Ly9wcHN2aXAwMS5zaGFuZGlhbnNodWFmZi5jb20vIy8/Y29kZT1RYkxGOHRqQg==", n: "闪电鼠", p: "sds88" },
+        "yjx": { u: "aHR0cHM6Ly9wcDAxLnl1bmppZXhpYW5hZmYuY29tLyMvP2NvZGU9YnAwWlNLQlY=", n: "云界线", p: "yjx888" },
+        "sxjs": { u: "aHR0cHM6Ly9wcHMxMjMuc2hlbnhpbmdhZmYuY29tLyMvP2NvZGU9NnRRN3pIVWM=", n: "神行加速", p: "sx0077" },
+        "lly": { u: "aHR0cHM6Ly8xMjNwcDAxLmxpdWxpYW55dW5hZmYuY29tLyMvP2NvZGU9TXNaUDN1N0c=", n: "榴莲云", p: "ll88" },
+        "jly": { u: "aHR0cHM6Ly9oYW96ZXZwbi5qbHl2aXBhZmYuY29tLyMvP2NvZGU9andDTU92UU8=", n: "极连云", p: "JLY888" },
+        "ytjc": { u: "aHR0cHM6Ly9zdXBlci55dGpjb2sub3JnLyMvcmVnaXN0ZXI/Y29kZT1wb0t3RlZ0dg==", n: "云图机场", p: "yt88" },
+        "gnt": { u: "aHR0cHM6Ly9nbnQwMDEuZ250dmlwYWZmLmNjLyMvP2NvZGU9UFFoUEZEaE8=", n: "光年梯", p: "GNT80" },
+        "kpjs": { u: "aHR0cHM6Ly9rdW5wZW5namlhc3UuY29tLyMvcmVnaXN0ZXI/Y29kZT1XUHVnVlpVZQ==", n: "鲲鹏加速", p: "官方体验特惠" },
+        "kxy": { u: "aHR0cHM6Ly9ldmVyZXR0NzYyMy5rb3NpbmdhZmYuY29tLyMvP2NvZGU9c0ZLa2ZFWXM=", n: "可信云", p: "kxy80" },
+        "sy": { u: "aHR0cHM6Ly9kZGQuamljaGFuZy5iZXN0LyMvcmVnaXN0ZXI/Y29kZT1ubGRVWmFZYw==", n: "瞬云", p: "SY888" },
+        "sj": { u: "aHR0cHM6Ly9weWdsbGMuc3BlZWR3b3JsZGFmZi5jYy8jLz9jb2RlPWtjb2Vuc1hH", n: "速界", p: "sujie888" },
+        "klkl": { u: "aHR0cHM6Ly9mYW54aWFvYmluLmt1YWlsaWFmZi5jb20vIy8/Y29kZT1lMGNBbUs3Rg==", n: "快狸快狸", p: "kl888" },
+        "edgenova": { u: "aHR0cHM6Ly93ZXAuZWRnZW5vdmFhZmYuY29tLyMvP2NvZGU9bUxMTDZoNkY=", n: "边缘节点", p: "xk808" },
+        "byjd": { u: "aHR0cHM6Ly93ZXAuZWRnZW5vdmFhZmYuY29tLyMvP2NvZGU9bUxMTDZoNkY=", n: "边缘节点", p: "xk808" }
+      };
+
+      function resolveTarget() {
+        var params = new URLSearchParams(window.location.search || '');
+        var id = (params.get('id') || params.get('target') || params.get('aff') || params.get('channel') || '').toLowerCase().trim();
+        
+        if (!id) {
+          var hash = (window.location.hash || '').replace(/^#\/?/, '').toLowerCase().trim();
+          if (hash) id = hash;
+        }
+
+        if (!id) {
+          var p = (window.location.pathname || '').replace(/\/+$/, '');
+          var parts = p.split('/');
+          if (parts.length > 0) {
+            var last = parts[parts.length - 1];
+            if (last && last !== 'go.html' && last !== 'go') {
+              id = last.toLowerCase();
+            }
+          }
+        }
+
+        return MAP[id] || null;
+      }
+
+      var item = resolveTarget();
+      if (item && item.u) {
+        try {
+          var dest = atob(item.u);
+          if (dest && (dest.indexOf('http://') === 0 || dest.indexOf('https://') === 0)) {
+            window.location.replace(dest);
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      }
+
+      window.addEventListener('DOMContentLoaded', function() {
+        var titleEl = document.getElementById('brandTitle');
+        var descEl = document.getElementById('brandDesc');
+        var btnEl = document.getElementById('targetBtn');
+        
+        if (item && item.u) {
+          try {
+            var dest = atob(item.u);
+            document.title = '正在安全跳转至' + item.n + '官网... - 节点白皮书';
+            if (titleEl) titleEl.innerText = '正在直达' + item.n + '官方通道...';
+            if (descEl) {
+              if (item.p) {
+                descEl.innerHTML = '专属优惠码 <code style="font-weight: 700; color: #1d4ed8; background: #eff6ff; padding: 2px 6px; border-radius: 4px;">' + item.p + '</code> 已激活。若页面未自动跳转，请点击下方快捷按钮：';
+              } else {
+                descEl.innerText = '官方认证安全通道已建立。若页面未自动跳转，请点击下方快捷按钮：';
+              }
+            }
+            if (btnEl) {
+              btnEl.href = dest;
+              btnEl.innerText = '前往 ' + item.n + ' 官网 ↗';
+            }
+          } catch (e) {}
+        } else {
+          document.title = '通道未找到 - 节点白皮书 · 学术智库';
+          if (titleEl) titleEl.innerText = '未找到对应的直达目标通道';
+          if (descEl) descEl.innerText = '该直达目标可能已下线或请求参数无效，5 秒后将自动返回学术智库首页。';
+          if (btnEl) {
+            btnEl.href = '/';
+            btnEl.innerText = '返回学术智库首页';
+          }
+          setTimeout(function() {
+            window.location.replace('/');
+          }, 5000);
+        }
+      });
+    })();
+  </script>
+</head>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background-color: #f8fafc; color: #0f172a; padding: 1.5rem; box-sizing: border-box;">
+  <div style="text-align: center; padding: 2.5rem 2rem; background: #ffffff; border-radius: 14px; border: 1px solid #e2e8f0; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.02); max-width: 440px; width: 100%;">
+    <div style="width: 52px; height: 52px; margin: 0 auto 1.25rem; background: #eff6ff; border: 1px solid #dbeafe; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <polyline points="9 12 11 14 15 10"/>
+      </svg>
+    </div>
+    <h1 id="brandTitle" style="margin-top: 0; font-size: 1.25rem; font-weight: 800; color: #09090b; line-height: 1.4;">正在建立安全直达通道...</h1>
+    <p id="brandDesc" style="font-size: 0.875rem; color: #64748b; margin: 0.75rem 0 1.75rem; line-height: 1.6;">专属安全加密与特惠通道已就绪，正在为您安全重定向。若页面未自动跳转，请点击下方快捷按钮：</p>
+    <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+      <a id="targetBtn" href="/" rel="nofollow sponsored noopener noreferrer" style="display: inline-block; padding: 0.6875rem 1.375rem; font-size: 0.875rem; font-weight: 600; color: #ffffff; background: #0f172a; border-radius: 8px; text-decoration: none; box-shadow: 0 2px 4px rgba(15,23,42,0.15);">立即前往官网 ↗</a>
+      <a href="/" style="display: inline-block; padding: 0.6875rem 1.125rem; font-size: 0.875rem; font-weight: 600; color: #475569; background: #f1f5f9; border-radius: 8px; text-decoration: none; border: 1px solid #e2e8f0;">返回首页</a>
+    </div>
+  </div>
+</body>
+</html>

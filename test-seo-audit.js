@@ -31,6 +31,9 @@ const requiredFiles = [
   'llms.txt',
   'index.html',
   '404.html',
+  'go.html',
+  '_redirects',
+  'nginx-redirects.conf',
   'css/tailwind.min.css',
   'favicon.svg',
   'logo.svg'
@@ -129,6 +132,51 @@ if (fs.existsSync(readmePath)) {
 if (affFound === 0) {
   logPass(`全站 ${allHtmlFiles.length} 个 HTML 页面均实现 0 返利外链、0 邀请码、0 外部引流`);
 }
+
+// 4.1 AFF 推广链接 301 隔离与合规跳转闭环审计
+console.log('\n🔒 4.1 AFF 推广链接 301 隔离与合规跳转闭环审计');
+
+// (1) go.html 必须严格包含 meta noindex, nofollow
+const goHtmlContent = fs.readFileSync(path.join(rootDir, 'go.html'), 'utf8');
+if (/<meta[^>]+name=["']robots["'][^>]*content=["'][^"']*noindex,\s*nofollow/i.test(goHtmlContent)) {
+  logPass('go.html 承接页包含严格的 <meta name="robots" content="noindex, nofollow"> 防爬虫建索标签');
+} else {
+  logFail('go.html 缺失 <meta name="robots" content="noindex, nofollow"> 防爬虫建索标签！');
+}
+
+// (2) robots.txt 严禁 Disallow: /go/ 或 /go.html
+const hasDisallowGo = robotsContent.split('\n').some(line => {
+  const trimmed = line.trim();
+  return !trimmed.startsWith('#') && /^Disallow:\s*\/go(\/|\.html)?/i.test(trimmed);
+});
+if (hasDisallowGo) {
+  logFail('robots.txt 存在 Disallow: /go/ 或 /go.html，会导致 Bing Webmaster Tools 报 Blocked 严重错误！');
+} else {
+  logPass('robots.txt 遵循搜索引擎合规策略 (未对 /go/ 或 /go.html 进行 Disallow 拦截)');
+}
+
+// (3) 全站文章与主页中的安全内链格式与 rel 标签断言
+let totalIsolatedAffLinks = 0;
+let nonCompliantAffLinks = 0;
+for (const filePath of allHtmlFiles) {
+  const rel = path.relative(rootDir, filePath).replace(/\\/g, '/');
+  if (rel === 'go.html' || rel.startsWith('go/')) continue;
+  const content = fs.readFileSync(filePath, 'utf8');
+  const goLinks = content.match(/<a\b[^>]*href=["'](?:\/go\.html\?id=|\/go\/)[^"']+["'][^>]*>/gi) || [];
+  totalIsolatedAffLinks += goLinks.length;
+  for (const tag of goLinks) {
+    if (!/rel=["'][^"']*nofollow\s+sponsored\s+noopener\s+noreferrer[^"']*["']/i.test(tag)) {
+      logFail(`${rel}: 跳转链接未完整挂载 rel="nofollow sponsored noopener noreferrer": ${tag}`);
+      nonCompliantAffLinks++;
+    }
+  }
+}
+if (nonCompliantAffLinks === 0 && totalIsolatedAffLinks > 0) {
+  logPass(`全站共 ${totalIsolatedAffLinks} 处推广跳转内链均 100% 规范挂载 rel="nofollow sponsored noopener noreferrer"`);
+} else if (nonCompliantAffLinks > 0) {
+  logFail(`存在 ${nonCompliantAffLinks} 处未达标的推广跳转内链`);
+}
+
 
 // 5. 单一 <h1> 语义结构与 Canonical 闭环断言
 console.log('\n📑 5. 单一 <h1> 标题层级与 Canonical 闭环检查');
@@ -269,7 +317,7 @@ server.listen(PORT, async () => {
     }
 
     // 检查核心静态资源
-    const staticAssets = ['/css/tailwind.min.css', '/favicon.svg', '/logo.svg', '/robots.txt', '/sitemap.xml', '/llms.txt'];
+    const staticAssets = ['/css/tailwind.min.css', '/favicon.svg', '/logo.svg', '/robots.txt', '/sitemap.xml', '/llms.txt', '/go.html'];
     for (const asset of staticAssets) {
       const sc = await fetchStatus(`http://127.0.0.1:${PORT}${asset}`);
       if (sc === 200) {

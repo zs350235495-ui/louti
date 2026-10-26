@@ -10,6 +10,7 @@ Allow: /*.png$
 Allow: /*.jpg$
 Allow: /*.webp$
 Allow: /go/
+Allow: /go.html
 Disallow: /404.html
 
 # Explicitly allow AI Search and Retrieval Bots
