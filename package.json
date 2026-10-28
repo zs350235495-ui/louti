@@ -1,0 +1,19 @@
+{
+  "name": "tizivpn-net",
+  "version": "1.0.0",
+  "description": "节点白皮书 · 学术智库与跨境网络质量工程实验室",
+  "main": "index.html",
+  "scripts": {
+    "test": "node test-seo-audit.js",
+    "indexnow": "node submit-indexnow.js"
+  },
+  "keywords": [
+    "tizivpn",
+    "seo",
+    "eeat",
+    "whitepaper",
+    "benchmark"
+  ],
+  "author": "NODE REPORT Research Group",
+  "license": "MIT"
+}
