@@ -53,6 +53,7 @@
 
 ## 核心技术白皮书与研报目录 (Research Whitepapers)
 
+- 为什么你的 UDP 节点跑分千兆却频繁断流 (QoS/端口跳跃/穿透策略): https://tizivpn.net/posts/wp-26122.html
 - 2026 新一代网络隧道协议性能与加密开销基准实测: https://tizivpn.net/tunnel-protocol-performance-benchmark-2026.html
 - 2026 全球优质网络节点性能评测白皮书: https://tizivpn.net/posts/wp-26121.html
 - 跨境网络高可用容灾与智能故障转移架构: https://tizivpn.net/posts/wp-26120.html
