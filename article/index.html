@@ -69,6 +69,11 @@
         candidate = params.get('post') || params.get('article') || params.get('id') || '';
       }
 
+      if (candidate.indexOf('http3') !== -1 || candidate.indexOf('quic') !== -1 || candidate.indexOf('connection-migration') !== -1) {
+        window.location.replace('/articles/http3-quic-connection-migration-tuning-2026.html');
+        return;
+      }
+
       if (candidate.indexOf('tunnel-protocol-performance-benchmark-2026') !== -1 || candidate === 'wp-26122' || candidate === '26122') {
         window.location.replace('/tunnel-protocol-performance-benchmark-2026.html');
         return;
