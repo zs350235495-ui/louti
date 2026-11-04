@@ -72,6 +72,11 @@
         candidate = params.get('post') || params.get('article') || params.get('id') || '';
       }
 
+      if (candidate.indexOf('cross-border-vpn') !== -1 || candidate.indexOf('ladder-rankings') !== -1 || candidate.indexOf('pc-mobile') !== -1) {
+        window.location.replace('/articles/pc-mobile-cross-border-vpn-ladder-rankings-2026.html');
+        return;
+      }
+
       if (candidate.indexOf('http3') !== -1 || candidate.indexOf('quic') !== -1 || candidate.indexOf('connection-migration') !== -1) {
         window.location.replace('/articles/http3-quic-connection-migration-tuning-2026.html');
         return;
