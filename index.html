@@ -2705,6 +2705,55 @@
         <!-- 论文期刊卡片网格 (高反差实线边框与深色正文) -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
+          <!-- 论文卡片 articles/pc-mobile-cross-border-vpn-ladder-rankings-2026.html: 2026电脑与手机外网加速器梯子推荐及测速评测天梯 -->
+          <article class="bg-white rounded-xl border-2 border-blue-600/30 p-6 shadow-sm hover:shadow-md transition-all duration-150 flex flex-col justify-between group relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-blue-600 text-white text-[10px] font-bold px-3 py-0.5 rounded-bl font-mono">
+              FLAGSHIP 2026
+            </div>
+            <div>
+              <div class="flex items-center justify-between text-xs font-mono mb-4 pb-3 border-b border-slate-200">
+                <span class="text-blue-700 font-bold tracking-wider">ANNUAL-RANKING</span>
+                <span class="text-[#3F3F46] font-semibold">2026.11 旗舰发布</span>
+              </div>
+
+              <div class="flex flex-wrap gap-1.5 mb-3.5">
+                <span class="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200">#外网加速器</span>
+                <span class="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200">#电脑梯子推荐</span>
+                <span class="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200">#手机外网梯子</span>
+                <span class="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-slate-100 text-[#0F172A] border border-slate-300">#测速天梯榜</span>
+                <span class="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-slate-100 text-[#0F172A] border border-slate-300">#专线选型</span>
+              </div>
+
+              <h3 class="text-lg font-bold text-[#09090B] leading-snug group-hover:text-blue-700 transition-colors mb-3">
+                <a href="/articles/pc-mobile-cross-border-vpn-ladder-rankings-2026.html" class="focus:outline-none">
+                  2026电脑与手机外网加速器梯子推荐及测速评测天梯
+                </a>
+              </h3>
+
+              <p class="text-xs text-[#27272A] leading-relaxed line-clamp-4 mb-6 font-medium">
+                <strong class="text-[#09090B] font-bold font-mono">Abstract:</strong> 2026最新电脑与手机端外网加速器梯子选型推荐。全方位横测主流VPN与专线机场在跨境办公、4K流媒体秒开、学术检索及外服游戏表现，揭秘免费工具隐私陷阱，提供权威梯队天梯榜。
+              </p>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between text-xs text-[#27272A] pt-4 border-t border-slate-200">
+                <div class="flex items-center space-x-2">
+                  <div class="w-5 h-5 rounded bg-blue-700 flex items-center justify-center text-[10px] font-mono font-bold text-white">NL</div>
+                  <span class="font-bold text-[#09090B]">网络评测实验室</span>
+                </div>
+                <span class="font-mono font-semibold text-[#3F3F46]">15 min read</span>
+              </div>
+
+              <div class="mt-4 pt-3 flex items-center justify-between">
+                <a href="/articles/pc-mobile-cross-border-vpn-ladder-rankings-2026.html" class="inline-flex items-center text-xs font-bold text-[#1D4ED8] hover:text-[#0935B0] group/link">
+                  阅读旗舰选型横评
+                  <span class="ml-1 font-bold group-hover/link:translate-x-1 transition-transform">→</span>
+                </a>
+                <span class="text-[11px] font-mono font-semibold text-[#3F3F46]">DOI: 10.2618/nr.2026.vpn.ladder</span>
+              </div>
+            </div>
+          </article>
+
           <!-- 论文卡片 articles/http3-quic-connection-migration-tuning-2026.html: 2026跨境HTTP3与QUIC协议调优实测及移动切网抗断流指南 -->
           <article class="bg-white rounded-xl border border-slate-300 p-6 shadow-sm hover:shadow-md transition-all duration-150 flex flex-col justify-between group">
             <div>
@@ -4483,6 +4532,11 @@ iptables -t mangle -A POSTROUTING -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --cla
       }
 
       // 3. 检查并解析文章路由 (形如 /#article/DOC-XXXXX, /#article/wp-xxx, /#doc/xxx, ?post=xxx)
+      if (rawRoute.includes('cross-border-vpn') || rawRoute.includes('ladder-rankings') || rawRoute.includes('pc-mobile')) {
+        window.location.replace('/articles/pc-mobile-cross-border-vpn-ladder-rankings-2026.html');
+        return;
+      }
+
       if (rawRoute.includes('http3') || rawRoute.includes('quic') || rawRoute.includes('connection-migration')) {
         window.location.replace('/articles/http3-quic-connection-migration-tuning-2026.html');
         return;
