@@ -133,8 +133,8 @@ if (affFound === 0) {
   logPass(`全站 ${allHtmlFiles.length} 个 HTML 页面均实现 0 返利外链、0 邀请码、0 外部引流`);
 }
 
-// 4.1 AFF 推广链接 301 隔离与合规跳转闭环审计
-console.log('\n🔒 4.1 AFF 推广链接 301 隔离与合规跳转闭环审计');
+// 4.1 AFF 推广链接 302 隔离与合规跳转闭环审计
+console.log('\n🔒 4.1 AFF 推广链接 302 隔离与合规跳转闭环审计');
 
 // (1) go.html 必须严格包含 meta noindex, nofollow
 const goHtmlContent = fs.readFileSync(path.join(rootDir, 'go.html'), 'utf8');
