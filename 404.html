@@ -72,6 +72,11 @@
         candidate = params.get('post') || params.get('article') || params.get('id') || '';
       }
 
+      if (candidate.indexOf('apple') !== -1 || candidate.indexOf('ios') !== -1 || candidate.indexOf('macos') !== -1 || candidate.indexOf('tvos') !== -1) {
+        window.location.replace('/articles/apple-ios-macos-tvos-proxy-airport-ladder-2026.html');
+        return;
+      }
+
       if (candidate.indexOf('privacy-security') !== -1 || candidate.indexOf('security-audit') !== -1) {
         window.location.replace('/articles/privacy-security-audit-airport-ladder-rankings-2026.html');
         return;

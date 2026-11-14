@@ -247,6 +247,42 @@
           <span class="w-1.5 h-1.5 rounded-full bg-rose-600 mr-1.5"></span>
           跑路雷达
         </button>
+
+        <!-- 长文矩阵下拉菜单 -->
+        <div class="relative group">
+          <button 
+            type="button" 
+            class="nav-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-[#3F3F46] hover:text-[#09090B] transition-all duration-150 inline-flex items-center gap-1"
+          >
+            <span>长文矩阵</span>
+            <svg class="w-3.5 h-3.5 text-slate-500 group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div class="absolute left-0 mt-1 w-80 sm:w-96 rounded-xl bg-white border border-slate-300 shadow-xl p-4 hidden group-hover:block z-50">
+            <div class="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider mb-2 pb-1 border-b border-slate-200">高阶应用与工程实战</div>
+            <ul class="space-y-2 text-xs">
+              <li>
+                <a href="articles/apple-ios-macos-tvos-proxy-airport-ladder-2026.html" class="block font-semibold text-slate-800 hover:text-blue-700 p-1.5 rounded hover:bg-slate-50 transition-colors">
+                  • 苹果 iOS/Mac 与 Apple TV 全生态指南
+                </a>
+              </li>
+              <li>
+                <a href="articles/pc-mobile-cross-border-vpn-ladder-rankings-2026.html" class="block font-semibold text-slate-800 hover:text-blue-700 p-1.5 rounded hover:bg-slate-50 transition-colors">
+                  • 2026 电脑与手机外网加速器梯子推荐及测速评测天梯
+                </a>
+              </li>
+              <li>
+                <a href="articles/privacy-security-audit-airport-ladder-rankings-2026.html" class="block font-semibold text-slate-800 hover:text-blue-700 p-1.5 rounded hover:bg-slate-50 transition-colors">
+                  • 2026 翻墙梯子隐私安全审计与高速机场推荐天梯榜
+                </a>
+              </li>
+              <li>
+                <a href="articles/http3-quic-connection-migration-tuning-2026.html" class="block font-semibold text-slate-800 hover:text-blue-700 p-1.5 rounded hover:bg-slate-50 transition-colors">
+                  • 2026 跨境 HTTP3 与 QUIC 协议调优实测及移动切网抗断流指南
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </nav>
 
       <!-- 右侧：更新版本号药丸徽章 + Telegram 频道入口 -->
@@ -366,8 +402,27 @@
               <div class="text-xs font-semibold text-[#27272A] mt-0.5">已确认识别失联跑路机场档案</div>
             </div>
           </div>
-        <!-- 最新核心研报公告 (突出显示 2026 安全审计与旗舰选型长文) -->
+        <!-- 最新核心研报公告 (突出显示 2026 苹果生态、安全审计与旗舰选型长文) -->
         <div class="mt-8 max-w-4xl mx-auto space-y-3">
+          <a href="/articles/apple-ios-macos-tvos-proxy-airport-ladder-2026.html" class="flex flex-col sm:flex-row items-center justify-between p-4 rounded-xl bg-gradient-to-r from-slate-50 via-gray-50 to-slate-50 hover:from-slate-100 hover:to-gray-100 border-2 border-slate-600/40 transition-all group shadow-sm">
+            <div class="flex items-center space-x-3 text-left w-full sm:w-auto mb-2 sm:mb-0">
+              <span class="px-2.5 py-1 rounded bg-slate-800 text-white font-mono font-bold text-xs shrink-0 tracking-wide">
+                2026 苹果生态
+              </span>
+              <div>
+                <span class="text-xs sm:text-base font-extrabold text-[#09090B] group-hover:text-blue-700 transition-colors block">
+                  《2026苹果iOS与Mac翻墙梯子及高速机场推荐指南》
+                </span>
+                <span class="text-[11px] sm:text-xs text-slate-600 block mt-0.5">
+                  Apple 全生态网络工程 · 3500+字深度白皮书 · 拆解 Surge/Loon/Stash/小火箭内核与 iCloud 专用代理冲突
+                </span>
+              </div>
+            </div>
+            <span class="inline-flex items-center text-xs font-bold text-slate-800 font-mono shrink-0 group-hover:translate-x-1 transition-transform self-end sm:self-auto">
+              查阅生态指南 →
+            </span>
+          </a>
+
           <a href="/articles/privacy-security-audit-airport-ladder-rankings-2026.html" class="flex flex-col sm:flex-row items-center justify-between p-4 rounded-xl bg-gradient-to-r from-red-50 via-rose-50 to-red-50 hover:from-red-100 hover:to-rose-100 border-2 border-red-500/50 transition-all group shadow-sm">
             <div class="flex items-center space-x-3 text-left w-full sm:w-auto mb-2 sm:mb-0">
               <span class="px-2.5 py-1 rounded bg-red-700 text-white font-mono font-bold text-xs shrink-0 tracking-wide">
@@ -2736,6 +2791,55 @@
         <!-- 论文期刊卡片网格 (高反差实线边框与深色正文) -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
+          <!-- 论文卡片 articles/apple-ios-macos-tvos-proxy-airport-ladder-2026.html: 2026苹果iOS与Mac翻墙梯子及高速机场推荐指南 -->
+          <article class="bg-white rounded-xl border-2 border-slate-600/30 p-6 shadow-sm hover:shadow-md transition-all duration-150 flex flex-col justify-between group relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-slate-800 text-white text-[10px] font-bold px-3 py-0.5 rounded-bl font-mono">
+              APPLE 2026
+            </div>
+            <div>
+              <div class="flex items-center justify-between text-xs font-mono mb-4 pb-3 border-b border-slate-200">
+                <span class="text-slate-700 font-bold tracking-wider">APPLE-ECOSYSTEM</span>
+                <span class="text-[#3F3F46] font-semibold">2026.11 技术指南</span>
+              </div>
+
+              <div class="flex flex-wrap gap-1.5 mb-3.5">
+                <span class="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-800 border border-slate-300">#苹果翻墙</span>
+                <span class="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-800 border border-slate-300">#iOS梯子</span>
+                <span class="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-800 border border-slate-300">#Mac代理</span>
+                <span class="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-slate-100 text-[#0F172A] border border-slate-300">#AppleTV4K</span>
+                <span class="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-slate-100 text-[#0F172A] border border-slate-300">#Surge/Loon/Stash</span>
+              </div>
+
+              <h3 class="text-lg font-bold text-[#09090B] leading-snug group-hover:text-blue-700 transition-colors mb-3">
+                <a href="/articles/apple-ios-macos-tvos-proxy-airport-ladder-2026.html" class="focus:outline-none">
+                  2026苹果iOS与Mac翻墙梯子及高速机场推荐指南
+                </a>
+              </h3>
+
+              <p class="text-xs text-[#27272A] leading-relaxed line-clamp-4 mb-6 font-medium">
+                <strong class="text-[#09090B] font-bold font-mono">Abstract:</strong> 2026年最新苹果iOS、macOS与Apple TV全生态翻墙梯子及高速机场推荐指南。深度拆解Surge、Loon、Stash与Shadowrocket核心差异、iCloud私密转接冲突排查、MitM模块复写与4K杜比视界无损解锁，提供苹果生态专线天梯榜。
+              </p>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between text-xs text-[#27272A] pt-4 border-t border-slate-200">
+                <div class="flex items-center space-x-2">
+                  <div class="w-5 h-5 rounded bg-slate-800 flex items-center justify-center text-[10px] font-mono font-bold text-white">NL</div>
+                  <span class="font-bold text-[#09090B]">网络评测实验室</span>
+                </div>
+                <span class="font-mono font-semibold text-[#3F3F46]">17 min read</span>
+              </div>
+
+              <div class="mt-4 pt-3 flex items-center justify-between">
+                <a href="/articles/apple-ios-macos-tvos-proxy-airport-ladder-2026.html" class="inline-flex items-center text-xs font-bold text-slate-800 hover:text-blue-700 group/link">
+                  查阅生态指南
+                  <span class="ml-1 font-bold group-hover/link:translate-x-1 transition-transform">→</span>
+                </a>
+                <span class="text-[11px] font-mono font-semibold text-[#3F3F46]">DOI: 10.2618/nr.2026.apple.proxy</span>
+              </div>
+            </div>
+          </article>
+
           <!-- 论文卡片 articles/privacy-security-audit-airport-ladder-rankings-2026.html: 2026翻墙梯子隐私安全审计与高速机场推荐天梯榜 -->
           <article class="bg-white rounded-xl border-2 border-red-600/30 p-6 shadow-sm hover:shadow-md transition-all duration-150 flex flex-col justify-between group relative overflow-hidden">
             <div class="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold px-3 py-0.5 rounded-bl font-mono">
@@ -4612,6 +4716,11 @@ iptables -t mangle -A POSTROUTING -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --cla
       }
 
       // 3. 检查并解析文章路由 (形如 /#article/DOC-XXXXX, /#article/wp-xxx, /#doc/xxx, ?post=xxx)
+      if (rawRoute.includes('apple') || rawRoute.includes('ios') || rawRoute.includes('macos') || rawRoute.includes('tvos')) {
+        window.location.replace('/articles/apple-ios-macos-tvos-proxy-airport-ladder-2026.html');
+        return;
+      }
+
       if (rawRoute.includes('privacy-security') || rawRoute.includes('security-audit')) {
         window.location.replace('/articles/privacy-security-audit-airport-ladder-rankings-2026.html');
         return;
