@@ -247,60 +247,6 @@
           <span class="w-1.5 h-1.5 rounded-full bg-rose-600 mr-1.5"></span>
           跑路雷达
         </button>
-
-        <!-- 长文矩阵下拉菜单 -->
-        <div class="relative" id="nav-dropdown-articles">
-          <button 
-            type="button" 
-            id="nav-btn-articles-toggle"
-            onclick="toggleArticlesMenu(event)"
-            class="nav-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-[#3F3F46] hover:text-[#09090B] transition-all duration-150 inline-flex items-center gap-1 cursor-pointer focus:outline-none"
-            aria-expanded="false"
-            aria-haspopup="true"
-          >
-            <span>长文矩阵</span>
-            <svg id="nav-articles-arrow" class="w-3.5 h-3.5 text-slate-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-          </button>
-          <div id="nav-articles-dropdown" class="absolute left-0 mt-1 w-80 sm:w-96 rounded-xl bg-white border border-slate-300 shadow-xl p-4 hidden z-50">
-            <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-200">
-              <span class="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider">高阶应用与工程实战</span>
-              <a href="articles/index.html" class="text-[11px] font-bold text-blue-700 hover:underline">专区主页 →</a>
-            </div>
-            <ul class="space-y-2 text-xs">
-              <li>
-                <a href="articles/2026-airport-ladder-beginner-pitfalls-guide.html" class="block font-semibold text-slate-800 hover:text-blue-700 p-1.5 rounded hover:bg-slate-50 transition-colors">
-                  • 2026 机场推荐与梯子推荐新手避坑指南
-                </a>
-              </li>
-              <li>
-                <a href="articles/apple-ios-macos-tvos-proxy-airport-ladder-2026.html" class="block font-semibold text-slate-800 hover:text-blue-700 p-1.5 rounded hover:bg-slate-50 transition-colors">
-                  • 苹果 iOS/Mac 与 Apple TV 全生态指南
-                </a>
-              </li>
-              <li>
-                <a href="articles/pc-mobile-cross-border-vpn-ladder-rankings-2026.html" class="block font-semibold text-slate-800 hover:text-blue-700 p-1.5 rounded hover:bg-slate-50 transition-colors">
-                  • 2026 电脑与手机外网加速器梯子推荐及测速评测天梯
-                </a>
-              </li>
-              <li>
-                <a href="articles/privacy-security-audit-airport-ladder-rankings-2026.html" class="block font-semibold text-slate-800 hover:text-blue-700 p-1.5 rounded hover:bg-slate-50 transition-colors">
-                  • 2026 翻墙梯子隐私安全审计与高速机场推荐天梯榜
-                </a>
-              </li>
-              <li>
-                <a href="articles/http3-quic-connection-migration-tuning-2026.html" class="block font-semibold text-slate-800 hover:text-blue-700 p-1.5 rounded hover:bg-slate-50 transition-colors">
-                  • 2026 跨境 HTTP3 与 QUIC 协议调优实测及移动切网抗断流指南
-                </a>
-              </li>
-            </ul>
-            <div class="mt-3 pt-2 border-t border-slate-200 text-right">
-              <a href="articles/index.html" class="text-xs font-bold text-blue-700 hover:underline inline-flex items-center gap-1">
-                <span>浏览全部 5 篇核心长文</span>
-                <span>→</span>
-              </a>
-            </div>
-          </div>
-        </div>
       </nav>
 
       <!-- 右侧：更新版本号药丸徽章 + Telegram 频道入口 -->
@@ -4813,60 +4759,6 @@ iptables -t mangle -A POSTROUTING -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --cla
       }
 
       return null;
-    }
-
-    // 长文矩阵下拉菜单交互控制 (支持点击开关与点击外部关闭)
-    function toggleArticlesMenu(e) {
-      if (e) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-      const menu = document.getElementById('nav-articles-dropdown');
-      const arrow = document.getElementById('nav-articles-arrow');
-      const btn = document.getElementById('nav-btn-articles-toggle');
-      if (!menu) return;
-      const isClosed = menu.classList.contains('hidden');
-      if (isClosed) {
-        menu.classList.remove('hidden');
-        if (arrow) arrow.classList.add('rotate-180');
-        if (btn) btn.setAttribute('aria-expanded', 'true');
-      } else {
-        menu.classList.add('hidden');
-        if (arrow) arrow.classList.remove('rotate-180');
-        if (btn) btn.setAttribute('aria-expanded', 'false');
-      }
-    }
-
-    document.addEventListener('click', function(e) {
-      const container = document.getElementById('nav-dropdown-articles');
-      const menu = document.getElementById('nav-articles-dropdown');
-      const arrow = document.getElementById('nav-articles-arrow');
-      const btn = document.getElementById('nav-btn-articles-toggle');
-      if (container && menu && !container.contains(e.target)) {
-        menu.classList.add('hidden');
-        if (arrow) arrow.classList.remove('rotate-180');
-        if (btn) btn.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    const articlesDropdownWrap = document.getElementById('nav-dropdown-articles');
-    if (articlesDropdownWrap) {
-      articlesDropdownWrap.addEventListener('mouseenter', function() {
-        const menu = document.getElementById('nav-articles-dropdown');
-        const arrow = document.getElementById('nav-articles-arrow');
-        const btn = document.getElementById('nav-btn-articles-toggle');
-        if (menu) menu.classList.remove('hidden');
-        if (arrow) arrow.classList.add('rotate-180');
-        if (btn) btn.setAttribute('aria-expanded', 'true');
-      });
-      articlesDropdownWrap.addEventListener('mouseleave', function() {
-        const menu = document.getElementById('nav-articles-dropdown');
-        const arrow = document.getElementById('nav-articles-arrow');
-        const btn = document.getElementById('nav-btn-articles-toggle');
-        if (menu) menu.classList.add('hidden');
-        if (arrow) arrow.classList.remove('rotate-180');
-        if (btn) btn.setAttribute('aria-expanded', 'false');
-      });
     }
 
     // 绑定 load 与 hashchange 双重事件监听，确保初次直开与站内切换均能触发分发
