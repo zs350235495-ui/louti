@@ -72,6 +72,11 @@
         candidate = params.get('post') || params.get('article') || params.get('id') || '';
       }
 
+      if (candidate.indexOf('streaming') !== -1 || candidate.indexOf('4k-buffer') !== -1) {
+        window.location.replace('/articles/2026-airport-ladder-streaming-guide.html');
+        return;
+      }
+
       if (candidate.indexOf('beginner') !== -1 || candidate.indexOf('pitfalls') !== -1 || candidate.indexOf('beginner-pitfalls') !== -1) {
         window.location.replace('/articles/2026-airport-ladder-beginner-pitfalls-guide.html');
         return;

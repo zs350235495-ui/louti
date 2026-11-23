@@ -53,6 +53,7 @@
 
 ## 核心技术白皮书与研报目录 (Research Whitepapers)
 
+- 2026机场推荐与梯子推荐流媒体指南：4K缓冲排查、画质掉码与跨区稳连实战: https://tizivpn.net/articles/2026-airport-ladder-streaming-guide.html
 - 2026机场推荐与梯子推荐新手避坑指南：术语扫盲、套餐选型与防跑路实操: https://tizivpn.net/articles/2026-airport-ladder-beginner-pitfalls-guide.html
 - 2026苹果iOS与Mac翻墙梯子及高速机场推荐指南: https://tizivpn.net/articles/apple-ios-macos-tvos-proxy-airport-ladder-2026.html
 - 2026翻墙梯子隐私安全审计与高速机场推荐天梯榜: https://tizivpn.net/articles/privacy-security-audit-airport-ladder-rankings-2026.html
