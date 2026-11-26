@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ChatGPT 与 Claude 访问故障排查白皮书：AI 风控、纯净度与防封指南 - 节点白皮书</title>
-  <meta name="description" content="随着ChatGPT-4o、Claude 3.5 Sonnet及Midjourney等生成式AI工具深入生产力流程，海外大模型厂商对API与Web访问施加了极其严苛的IP纯净度风控与信誉库审查。本文系统剖析OpenAI与Anthropic的七层风控模型，详解Cloudflare Turnstile、Arkose Labs人机校验与IP2Location/MaxMind地理标记欺骗机制，并给出科学防封号、住宅IP配置与客户端精细化分流规则。">
-  <meta name="keywords" content="ChatGPT打不开,Claude被封号,OpenAI Access Denied,Cloudflare人机验证,AI专线机场,住宅原生IP,ChatGPT梯子推荐">
+  <meta name="description" content="ChatGPT 机场推荐与 AI 风控白皮书：深入剖析 OpenAI 与 Anthropic 的七层 IP 纯净度审查模型，详解 Cloudflare 人机验证、防封号策略及稳定专线机场推荐分流规则配置。">
+  <meta name="keywords" content="ChatGPT 机场推荐,AI专线机场,稳定机场推荐,专线机场推荐,ChatGPT打不开,Claude被封号,住宅原生IP">
   <meta property="og:title" content="ChatGPT 与 Claude 访问故障排查白皮书：AI 风控、纯净度与防封指南">
   <meta property="og:description" content="随着ChatGPT-4o、Claude 3.5 Sonnet及Midjourney等生成式AI工具深入生产力流程，海外大模型厂商对API与Web访问施加了极其严苛的IP纯净度风控与信誉库审查。本文系统剖析OpenAI与Anthropic的七层风控模型，详解Cloudflare Turnstile、Arkose Labs人机校验与IP2Location/MaxMind地理标记欺骗机制，并给出科学防封号、住宅IP配置与客户端精细化分流规则。">
   <meta property="og:url" content="https://tizivpn.net/posts/wp-26106.html">
@@ -235,7 +235,7 @@
       </table>
 
       <h2>四、 Clash / Sing-box AI专项分流规则实战</h2>
-      <p>为避免AI流量被误导至低质量节点，必须在客户端中配置独立的 <strong>OpenAI / Claude 策略组</strong>，将所有相关域名与IP归属精准引导至纯净节点：</p>
+      <p>选好支持纯净住宅出口的 <strong>ChatGPT 机场推荐</strong> 专线后，为避免 AI 流量被误导至低质量机房节点，必须在客户端中配置独立的 <strong>OpenAI / Claude 策略组</strong>，将所有相关域名与 IP 归属精准引导至纯净节点：</p>
 
       <pre><code># Clash Verge Rev 策略组配置示例
 proxy-groups:
